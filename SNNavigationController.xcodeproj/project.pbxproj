@@ -16,6 +16,9 @@
 		9824252A212ECB0F0006876D /* SNNavigationControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242529212ECB0F0006876D /* SNNavigationControllerTests.m */; };
 		98242535212ECB0F0006876D /* SNNavigationControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242534212ECB0F0006876D /* SNNavigationControllerUITests.m */; };
 		98242544212ECBB50006876D /* SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242543212ECBB50006876D /* SNNavigationController.m */; };
+		98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */; };
+		9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */; };
+		9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,12 @@
 		98242536212ECB0F0006876D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98242542212ECBB50006876D /* SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationController.h; sourceTree = "<group>"; };
 		98242543212ECBB50006876D /* SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationController.m; sourceTree = "<group>"; };
+		98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SNNavigationController.h"; sourceTree = "<group>"; };
+		98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SNNavigationController.m"; sourceTree = "<group>"; };
+		98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+SNNavigationBar.h"; sourceTree = "<group>"; };
+		9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+SNNavigationBar.m"; sourceTree = "<group>"; };
+		9824254C212ECE440006876D /* UINavigationItem+SNNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+SNNavigationItem.h"; sourceTree = "<group>"; };
+		9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SNNavigationItem.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +150,12 @@
 			children = (
 				98242542212ECBB50006876D /* SNNavigationController.h */,
 				98242543212ECBB50006876D /* SNNavigationController.m */,
+				98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */,
+				98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */,
+				98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */,
+				9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */,
+				9824254C212ECE440006876D /* UINavigationItem+SNNavigationItem.h */,
+				9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */,
 			);
 			path = SNNavigationController;
 			sourceTree = "<group>";
@@ -276,6 +291,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				98242544212ECBB50006876D /* SNNavigationController.m in Sources */,
+				98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */,
+				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
+				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
 				98242512212ECB0D0006876D /* AppDelegate.m in Sources */,
