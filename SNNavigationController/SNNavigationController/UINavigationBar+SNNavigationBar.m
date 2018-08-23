@@ -8,6 +8,8 @@
 
 #import "UINavigationBar+SNNavigationBar.h"
 
+#import <objc/runtime.h>
+
 @implementation UINavigationBar (SNNavigationBar)
 
 @end

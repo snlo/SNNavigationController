@@ -8,6 +8,8 @@
 
 #import "UINavigationItem+SNNavigationItem.h"
 
+#import <objc/runtime.h>
+
 @implementation UINavigationItem (SNNavigationItem)
 
 @end

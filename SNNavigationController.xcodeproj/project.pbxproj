@@ -19,6 +19,8 @@
 		98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */; };
 		9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */; };
 		9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */; };
+		98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242553212EDC300006876D /* UIViewController+SNNavigationController.m */; };
+		98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242556212EDCD40006876D /* SNNavigationControllerTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+SNNavigationBar.m"; sourceTree = "<group>"; };
 		9824254C212ECE440006876D /* UINavigationItem+SNNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+SNNavigationItem.h"; sourceTree = "<group>"; };
 		9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SNNavigationItem.m"; sourceTree = "<group>"; };
+		98242552212EDC300006876D /* UIViewController+SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNNavigationController.h"; sourceTree = "<group>"; };
+		98242553212EDC300006876D /* UIViewController+SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNNavigationController.m"; sourceTree = "<group>"; };
+		98242555212EDCD40006876D /* SNNavigationControllerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationControllerTool.h; sourceTree = "<group>"; };
+		98242556212EDCD40006876D /* SNNavigationControllerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationControllerTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,10 @@
 			children = (
 				98242542212ECBB50006876D /* SNNavigationController.h */,
 				98242543212ECBB50006876D /* SNNavigationController.m */,
+				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
+				98242556212EDCD40006876D /* SNNavigationControllerTool.m */,
+				98242552212EDC300006876D /* UIViewController+SNNavigationController.h */,
+				98242553212EDC300006876D /* UIViewController+SNNavigationController.m */,
 				98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */,
 				98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */,
 				98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */,
@@ -291,8 +301,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				98242544212ECBB50006876D /* SNNavigationController.m in Sources */,
+				98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */,
 				98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
+				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
