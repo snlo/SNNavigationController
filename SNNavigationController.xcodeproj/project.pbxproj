@@ -15,6 +15,7 @@
 		98242520212ECB0F0006876D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824251F212ECB0F0006876D /* main.m */; };
 		9824252A212ECB0F0006876D /* SNNavigationControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242529212ECB0F0006876D /* SNNavigationControllerTests.m */; };
 		98242535212ECB0F0006876D /* SNNavigationControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242534212ECB0F0006876D /* SNNavigationControllerUITests.m */; };
+		98242544212ECBB50006876D /* SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242543212ECBB50006876D /* SNNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		98242530212ECB0F0006876D /* SNNavigationControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNNavigationControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242534212ECB0F0006876D /* SNNavigationControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationControllerUITests.m; sourceTree = "<group>"; };
 		98242536212ECB0F0006876D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98242542212ECBB50006876D /* SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationController.h; sourceTree = "<group>"; };
+		98242543212ECBB50006876D /* SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 				98242511212ECB0D0006876D /* AppDelegate.m */,
 				98242513212ECB0D0006876D /* ViewController.h */,
 				98242514212ECB0D0006876D /* ViewController.m */,
+				98242545212ECBB90006876D /* SNNavigationController */,
 				98242516212ECB0D0006876D /* Main.storyboard */,
 				98242519212ECB0F0006876D /* Assets.xcassets */,
 				9824251B212ECB0F0006876D /* LaunchScreen.storyboard */,
@@ -130,6 +134,15 @@
 				98242536212ECB0F0006876D /* Info.plist */,
 			);
 			path = SNNavigationControllerUITests;
+			sourceTree = "<group>";
+		};
+		98242545212ECBB90006876D /* SNNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				98242542212ECBB50006876D /* SNNavigationController.h */,
+				98242543212ECBB50006876D /* SNNavigationController.m */,
+			);
+			path = SNNavigationController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98242544212ECBB50006876D /* SNNavigationController.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
 				98242512212ECB0D0006876D /* AppDelegate.m in Sources */,
