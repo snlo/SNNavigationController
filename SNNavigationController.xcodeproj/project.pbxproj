@@ -21,6 +21,14 @@
 		9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */; };
 		98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242553212EDC300006876D /* UIViewController+SNNavigationController.m */; };
 		98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242556212EDCD40006876D /* SNNavigationControllerTool.m */; };
+		98242594213411170006876D /* ViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242592213411170006876D /* ViewControllerCell.m */; };
+		98242595213411170006876D /* ViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98242593213411170006876D /* ViewControllerCell.xib */; };
+		982425982134140A0006876D /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425972134140A0006876D /* TabBarController.m */; };
+		9824259B213416550006876D /* RespectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824259A213416550006876D /* RespectedViewController.m */; };
+		9824259E213416EA0006876D /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824259D213416EA0006876D /* FoundViewController.m */; };
+		982425A1213416F80006876D /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425A0213416F80006876D /* MyViewController.m */; };
+		982425A421341D870006876D /* MyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425A321341D870006876D /* MyDetailViewController.m */; };
+		982425AB213420610006876D /* MyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982425AA213420610006876D /* MyDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +77,20 @@
 		98242553212EDC300006876D /* UIViewController+SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNNavigationController.m"; sourceTree = "<group>"; };
 		98242555212EDCD40006876D /* SNNavigationControllerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationControllerTool.h; sourceTree = "<group>"; };
 		98242556212EDCD40006876D /* SNNavigationControllerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationControllerTool.m; sourceTree = "<group>"; };
+		98242591213411170006876D /* ViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerCell.h; sourceTree = "<group>"; };
+		98242592213411170006876D /* ViewControllerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerCell.m; sourceTree = "<group>"; };
+		98242593213411170006876D /* ViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewControllerCell.xib; sourceTree = "<group>"; };
+		982425962134140A0006876D /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		982425972134140A0006876D /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		98242599213416550006876D /* RespectedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespectedViewController.h; sourceTree = "<group>"; };
+		9824259A213416550006876D /* RespectedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespectedViewController.m; sourceTree = "<group>"; };
+		9824259C213416EA0006876D /* FoundViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = "<group>"; };
+		9824259D213416EA0006876D /* FoundViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = "<group>"; };
+		9824259F213416F80006876D /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		982425A0213416F80006876D /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		982425A221341D870006876D /* MyDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyDetailViewController.h; sourceTree = "<group>"; };
+		982425A321341D870006876D /* MyDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDetailViewController.m; sourceTree = "<group>"; };
+		982425AA213420610006876D /* MyDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +145,10 @@
 				98242511212ECB0D0006876D /* AppDelegate.m */,
 				98242513212ECB0D0006876D /* ViewController.h */,
 				98242514212ECB0D0006876D /* ViewController.m */,
+				98242591213411170006876D /* ViewControllerCell.h */,
+				98242592213411170006876D /* ViewControllerCell.m */,
+				98242593213411170006876D /* ViewControllerCell.xib */,
+				9824258E21340C8E0006876D /* view_nav_tabbar_nav_view */,
 				98242545212ECBB90006876D /* SNNavigationController */,
 				98242516212ECB0D0006876D /* Main.storyboard */,
 				98242519212ECB0F0006876D /* Assets.xcassets */,
@@ -168,6 +194,24 @@
 				9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */,
 			);
 			path = SNNavigationController;
+			sourceTree = "<group>";
+		};
+		9824258E21340C8E0006876D /* view_nav_tabbar_nav_view */ = {
+			isa = PBXGroup;
+			children = (
+				982425962134140A0006876D /* TabBarController.h */,
+				982425972134140A0006876D /* TabBarController.m */,
+				98242599213416550006876D /* RespectedViewController.h */,
+				9824259A213416550006876D /* RespectedViewController.m */,
+				9824259C213416EA0006876D /* FoundViewController.h */,
+				9824259D213416EA0006876D /* FoundViewController.m */,
+				9824259F213416F80006876D /* MyViewController.h */,
+				982425A0213416F80006876D /* MyViewController.m */,
+				982425A221341D870006876D /* MyDetailViewController.h */,
+				982425A321341D870006876D /* MyDetailViewController.m */,
+				982425AA213420610006876D /* MyDetailViewController.xib */,
+			);
+			path = view_nav_tabbar_nav_view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +318,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9824251D212ECB0F0006876D /* LaunchScreen.storyboard in Resources */,
+				982425AB213420610006876D /* MyDetailViewController.xib in Resources */,
 				9824251A212ECB0F0006876D /* Assets.xcassets in Resources */,
+				98242595213411170006876D /* ViewControllerCell.xib in Resources */,
 				98242518212ECB0D0006876D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,12 +346,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98242594213411170006876D /* ViewControllerCell.m in Sources */,
 				98242544212ECBB50006876D /* SNNavigationController.m in Sources */,
+				9824259B213416550006876D /* RespectedViewController.m in Sources */,
 				98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */,
 				98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
+				982425A1213416F80006876D /* MyViewController.m in Sources */,
+				982425982134140A0006876D /* TabBarController.m in Sources */,
 				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
+				9824259E213416EA0006876D /* FoundViewController.m in Sources */,
+				982425A421341D870006876D /* MyDetailViewController.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
 				98242512212ECB0D0006876D /* AppDelegate.m in Sources */,
