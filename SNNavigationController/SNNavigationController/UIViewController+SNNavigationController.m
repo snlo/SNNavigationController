@@ -15,12 +15,10 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replaceMethod(self, @selector(loadView), self, @selector(ahudahudsh));
+        
     });
 }
 
-- (void)ahudahudsh {
-    
-}
+
 
 @end
