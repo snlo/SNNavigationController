@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyDetailViewController">
             <connections>
+                <outlet property="tableView" destination="OqK-0z-HId" id="8hx-Wv-Byu"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5QW-Y9-KIJ"/>
             </connections>
         </placeholder>
@@ -20,8 +21,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OqK-0z-HId">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeI-vm-OMZ">
-                    <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
+                    <rect key="frame" x="164" y="318" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="handleButton:" destination="-1" eventType="touchUpInside" id="woo-S4-PHf"/>
@@ -30,8 +35,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="OqK-0z-HId" secondAttribute="bottom" id="2Mo-xS-H4I"/>
                 <constraint firstItem="AeI-vm-OMZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7Wk-Qo-uhE"/>
                 <constraint firstItem="AeI-vm-OMZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CEY-rk-kdo"/>
+                <constraint firstItem="OqK-0z-HId" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ddd-mG-Obk"/>
+                <constraint firstItem="OqK-0z-HId" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RTM-84-9tg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OqK-0z-HId" secondAttribute="trailing" id="rrn-rf-lZP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

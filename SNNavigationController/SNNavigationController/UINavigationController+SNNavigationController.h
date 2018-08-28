@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SNNavigationBar.h"
+
 @interface UINavigationController (SNNavigationController)
+
+@property (nonatomic, strong) SNNavigationBar * sn_navigationBar;
 
 @end

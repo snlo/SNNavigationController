@@ -1,36 +1,27 @@
 //
-//  RespectedViewController.m
+//  NavigationController.m
 //  SNNavigationController
 //
-//  Created by snlo on 2018/8/27.
+//  Created by snlo on 2018/8/28.
 //  Copyright © 2018年 snlo. All rights reserved.
 //
 
-#import "RespectedViewController.h"
+#import "NavigationController.h"
 
-#import "SNNavigationControllerTool.h"
+#import "UINavigationController+SNNavigationController.h"
 
-@interface RespectedViewController ()
+@interface NavigationController ()
 
 @end
 
-@implementation RespectedViewController
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    UIView * view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor blackColor];
-    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
-    [SNNavigationControllerTool sharedManager].navigationBar = view;
-}
+@implementation NavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//	self.title = @"tui chong";
-
+    self.view.backgroundColor = [UIColor blueColor];
     
+    self.sn_navigationBar.hidden = NO;
     
 }
 

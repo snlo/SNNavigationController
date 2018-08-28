@@ -29,6 +29,11 @@
 		982425A1213416F80006876D /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425A0213416F80006876D /* MyViewController.m */; };
 		982425A421341D870006876D /* MyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425A321341D870006876D /* MyDetailViewController.m */; };
 		982425AB213420610006876D /* MyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982425AA213420610006876D /* MyDetailViewController.xib */; };
+		982425AE213517040006876D /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425AD213517040006876D /* NavigationController.m */; };
+		982425B621354A740006876D /* SNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425B521354A740006876D /* SNNavigationBar.m */; };
+		982425B921354A8C0006876D /* SNTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425B821354A8C0006876D /* SNTabBar.m */; };
+		982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425BB21354AB00006876D /* UITabBarController+SNController.m */; };
+		982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425BE21354B470006876D /* UITabBar+SNTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +96,18 @@
 		982425A221341D870006876D /* MyDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyDetailViewController.h; sourceTree = "<group>"; };
 		982425A321341D870006876D /* MyDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDetailViewController.m; sourceTree = "<group>"; };
 		982425AA213420610006876D /* MyDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDetailViewController.xib; sourceTree = "<group>"; };
+		982425AC213517040006876D /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		982425AD213517040006876D /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		982425AF213517EF0006876D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		982425B021352D0F0006876D /* Singletion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singletion.h; sourceTree = "<group>"; };
+		982425B421354A740006876D /* SNNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationBar.h; sourceTree = "<group>"; };
+		982425B521354A740006876D /* SNNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationBar.m; sourceTree = "<group>"; };
+		982425B721354A8C0006876D /* SNTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTabBar.h; sourceTree = "<group>"; };
+		982425B821354A8C0006876D /* SNTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTabBar.m; sourceTree = "<group>"; };
+		982425BA21354AB00006876D /* UITabBarController+SNController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+SNController.h"; sourceTree = "<group>"; };
+		982425BB21354AB00006876D /* UITabBarController+SNController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+SNController.m"; sourceTree = "<group>"; };
+		982425BD21354B470006876D /* UITabBar+SNTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+SNTabBar.h"; sourceTree = "<group>"; };
+		982425BE21354B470006876D /* UITabBar+SNTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+SNTabBar.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +172,7 @@
 				9824251B212ECB0F0006876D /* LaunchScreen.storyboard */,
 				9824251E212ECB0F0006876D /* Info.plist */,
 				9824251F212ECB0F0006876D /* main.m */,
+				982425AF213517EF0006876D /* PrefixHeader.pch */,
 			);
 			path = SNNavigationController;
 			sourceTree = "<group>";
@@ -184,14 +202,23 @@
 				98242543212ECBB50006876D /* SNNavigationController.m */,
 				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
 				98242556212EDCD40006876D /* SNNavigationControllerTool.m */,
+				982425B021352D0F0006876D /* Singletion.h */,
 				98242552212EDC300006876D /* UIViewController+SNNavigationController.h */,
 				98242553212EDC300006876D /* UIViewController+SNNavigationController.m */,
 				98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */,
 				98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */,
+				982425B421354A740006876D /* SNNavigationBar.h */,
+				982425B521354A740006876D /* SNNavigationBar.m */,
 				98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */,
 				9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */,
 				9824254C212ECE440006876D /* UINavigationItem+SNNavigationItem.h */,
 				9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */,
+				982425BA21354AB00006876D /* UITabBarController+SNController.h */,
+				982425BB21354AB00006876D /* UITabBarController+SNController.m */,
+				982425B721354A8C0006876D /* SNTabBar.h */,
+				982425B821354A8C0006876D /* SNTabBar.m */,
+				982425BD21354B470006876D /* UITabBar+SNTabBar.h */,
+				982425BE21354B470006876D /* UITabBar+SNTabBar.m */,
 			);
 			path = SNNavigationController;
 			sourceTree = "<group>";
@@ -199,6 +226,8 @@
 		9824258E21340C8E0006876D /* view_nav_tabbar_nav_view */ = {
 			isa = PBXGroup;
 			children = (
+				982425AC213517040006876D /* NavigationController.h */,
+				982425AD213517040006876D /* NavigationController.m */,
 				982425962134140A0006876D /* TabBarController.h */,
 				982425972134140A0006876D /* TabBarController.m */,
 				98242599213416550006876D /* RespectedViewController.h */,
@@ -346,18 +375,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */,
 				98242594213411170006876D /* ViewControllerCell.m in Sources */,
 				98242544212ECBB50006876D /* SNNavigationController.m in Sources */,
 				9824259B213416550006876D /* RespectedViewController.m in Sources */,
 				98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */,
+				982425B921354A8C0006876D /* SNTabBar.m in Sources */,
 				98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */,
+				982425AE213517040006876D /* NavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
 				982425A1213416F80006876D /* MyViewController.m in Sources */,
 				982425982134140A0006876D /* TabBarController.m in Sources */,
 				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
+				982425B621354A740006876D /* SNNavigationBar.m in Sources */,
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
 				9824259E213416EA0006876D /* FoundViewController.m in Sources */,
 				982425A421341D870006876D /* MyDetailViewController.m in Sources */,
+				982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
 				98242512212ECB0D0006876D /* AppDelegate.m in Sources */,
@@ -530,6 +564,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SNNavigationController/PrefixHeader.pch";
 				INFOPLIST_FILE = SNNavigationController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -546,6 +581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SNNavigationController/PrefixHeader.pch";
 				INFOPLIST_FILE = SNNavigationController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

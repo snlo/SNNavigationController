@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface SNNavigationControllerTool : NSObject
+#import "Singletion.h"
+
+//@interface SNNavigationControllerTool : NSObject
+
+singletonInterface(SNNavigationControllerTool)
 
 void replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod);
+
+@property (nonatomic, strong) UIView * navigationBar;
 
 @end

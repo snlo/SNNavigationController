@@ -9,12 +9,26 @@
 #import "MyDetailViewController.h"
 
 #import "UIViewController+SNNavigationController.h"
+#import "UINavigationController+SNNavigationController.h"
 
 @interface MyDetailViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation MyDetailViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.sn_navigationController.sn_navigationBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.sn_navigationController.sn_navigationBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +37,7 @@
 	self.title = @"详情页";
 	
     self.view.backgroundColor = [UIColor redColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,7 +46,8 @@
 }
 
 - (IBAction)handleButton:(id)sender {
-    [self.sn_navigationController popViewControllerAnimated:YES];
+    
+//    [self.sn_navigationController popViewControllerAnimated:YES];
 }
 
 /*

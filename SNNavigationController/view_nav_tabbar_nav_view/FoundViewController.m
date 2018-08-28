@@ -13,6 +13,7 @@
 #import "UIViewController+SNNavigationController.h"
 
 @interface FoundViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

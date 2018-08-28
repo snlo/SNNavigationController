@@ -12,19 +12,33 @@
 
 #import "UIViewController+SNNavigationController.h"
 
+#import "SNNavigationControllerTool.h"
+
 @interface MyViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation MyViewController
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    UIView * view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor redColor];
+    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 98);
+    [SNNavigationControllerTool sharedManager].navigationBar = view;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
 	self.title = @"我的";
 	
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+    });
+    
 }
 
 - (void)didReceiveMemoryWarning {

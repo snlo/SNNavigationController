@@ -1,16 +1,14 @@
 //
-//  UINavigationItem+SNNavigationItem.m
+//  UITabBar+SNTabBar.m
 //  SNNavigationController
 //
-//  Created by snlo on 2018/8/23.
+//  Created by snlo on 2018/8/28.
 //  Copyright © 2018年 snlo. All rights reserved.
 //
 
-#import "UINavigationItem+SNNavigationItem.h"
+#import "UITabBar+SNTabBar.h"
 
-#import <objc/runtime.h>
-
-@implementation UINavigationItem (SNNavigationItem)
+@implementation UITabBar (SNTabBar)
 
 + (void)load {
     static dispatch_once_t onceToken;
@@ -20,7 +18,11 @@
 }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.backgroundColor = [UIColor blueColor];
+}
 #pragma clang diagnostic pop
 
 @end
