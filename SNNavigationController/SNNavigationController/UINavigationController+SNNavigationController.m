@@ -17,7 +17,7 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replaceMethod(self, @selector(popViewControllerAnimated:), self, @selector(sn_popViewControllerAnimated:));
+//        replaceMethod(self, @selector(popViewControllerAnimated:), self, @selector(sn_popViewControllerAnimated:));
     });
 }
 

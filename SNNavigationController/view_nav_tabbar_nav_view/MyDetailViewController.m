@@ -8,6 +8,8 @@
 
 #import "MyDetailViewController.h"
 
+#import "UIViewController+SNNavigationController.h"
+
 @interface MyDetailViewController ()
 
 @end
@@ -17,7 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+	
+	self.title = @"详情页";
+	
     self.view.backgroundColor = [UIColor redColor];
 }
 
@@ -27,8 +31,7 @@
 }
 
 - (IBAction)handleButton:(id)sender {
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.sn_navigationController popViewControllerAnimated:YES];
 }
 
 /*

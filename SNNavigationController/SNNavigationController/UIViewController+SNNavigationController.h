@@ -10,4 +10,9 @@
 
 @interface UIViewController (SNNavigationController)
 
+/**
+ 包含了tabBarController.navigationController
+ */
+@property (nonatomic, strong) UINavigationController * sn_navigationController;
+
 @end

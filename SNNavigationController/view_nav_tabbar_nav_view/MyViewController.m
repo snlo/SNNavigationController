@@ -10,15 +10,21 @@
 
 #import "MyDetailViewController.h"
 
+#import "UIViewController+SNNavigationController.h"
+
 @interface MyViewController ()
 
 @end
 
 @implementation MyViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	
+	self.title = @"我的";
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,7 +33,7 @@
 }
 - (IBAction)handlePushButton:(UIButton *)sender {
     MyDetailViewController * VC = [[MyDetailViewController alloc] init];
-    [self.tabBarController.navigationController pushViewController:VC animated:YES];
+	[self.sn_navigationController pushViewController:VC animated:YES];
 }
 
 /*

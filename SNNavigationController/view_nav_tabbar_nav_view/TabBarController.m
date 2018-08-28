@@ -23,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"tabbar`navigation";
-    self.navigationController.navigationBar.hidden = YES;
+    
+//	self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

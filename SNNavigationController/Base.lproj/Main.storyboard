@@ -51,6 +51,7 @@
         <!--Navigation Controller-->
         <scene sceneID="BGu-eO-NV1">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rUo-xH-iaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="rFO-Cg-Lvt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ulx-98-D3d">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -60,7 +61,6 @@
                         <segue destination="bzw-Kf-NAO" kind="relationship" relationship="rootViewController" id="IMl-pB-iir"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rUo-xH-iaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="926" y="32"/>
         </scene>
@@ -77,7 +77,7 @@
                     <connections>
                         <segue destination="bRL-la-nrJ" kind="relationship" relationship="viewControllers" id="kfl-h3-ZT1"/>
                         <segue destination="gyh-1h-LeG" kind="relationship" relationship="viewControllers" id="dGa-PV-807"/>
-                        <segue destination="qwm-DD-bu7" kind="relationship" relationship="viewControllers" id="kOy-Vs-pUt"/>
+                        <segue destination="jH5-z4-gyx" kind="relationship" relationship="viewControllers" id="SBf-tK-JxR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAV-ih-9VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,7 +141,20 @@
                     <view key="view" contentMode="scaleToFill" id="SHl-3L-a4k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RJ-Xa-u9a">
+                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="mQx-Tq-HSP" eventType="touchUpInside" id="i07-sN-3gq"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8RJ-Xa-u9a" firstAttribute="centerX" secondItem="SHl-3L-a4k" secondAttribute="centerX" id="XCn-rN-MoH"/>
+                            <constraint firstItem="8RJ-Xa-u9a" firstAttribute="centerY" secondItem="SHl-3L-a4k" secondAttribute="centerY" id="fGC-33-CGU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VqQ-55-75P"/>
                     </view>
                     <navigationItem key="navigationItem" title="发现" id="3FY-MC-m6R" customClass="发现"/>
@@ -153,6 +166,7 @@
         <!--我的-->
         <scene sceneID="Ofe-NB-drw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Sb-xp-zAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="qwm-DD-bu7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" id="oE6-es-Qtd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nby-zl-nhf">
@@ -163,7 +177,6 @@
                         <segue destination="jH5-z4-gyx" kind="relationship" relationship="rootViewController" id="Utr-dA-gym"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Sb-xp-zAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2601" y="1218"/>
         </scene>
@@ -179,7 +192,7 @@
                                 <rect key="frame" x="170.5" y="318.5" width="34" height="30"/>
                                 <state key="normal" title="push"/>
                                 <connections>
-                                    <action selector="handlePushButton:" destination="jH5-z4-gyx" eventType="touchUpInside" id="LZt-hg-aHz"/>
+                                    <action selector="handlePushButton:" destination="jH5-z4-gyx" eventType="touchUpInside" id="AyK-ma-dXD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -190,6 +203,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TcH-Vh-OA3"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="我的" id="YpA-iv-BqE"/>
                     <navigationItem key="navigationItem" title="我的" id="2BL-Fu-TFD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKl-bV-9ZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -197,4 +211,7 @@
             <point key="canvasLocation" x="3374" y="1218"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SBf-tK-JxR"/>
+    </inferredMetricsTieBreakers>
 </document>
