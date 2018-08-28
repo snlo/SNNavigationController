@@ -14,6 +14,8 @@
 
 #import "SNNavigationControllerTool.h"
 
+#import "UINavigationController+SNNavigationController.h"
+
 @interface MyViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -36,7 +38,7 @@
 	self.title = @"我的";
 	
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
+        self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
     });
     
 }

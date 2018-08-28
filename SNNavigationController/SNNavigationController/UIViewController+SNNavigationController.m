@@ -38,6 +38,16 @@
         return;
     }
     
+    __block UIScrollView * scrollview;
+    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[UIScrollView class]]) {
+            scrollview = obj;
+        }
+    }];
+    if (scrollview) {
+        NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:scrollview attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:self.sn_navigationController.sn_navigationBar.frame.size.height];
+        [self.view addConstraint:constraint1];
+    }
     
 //
 //    self.tabBarController.navigationController.navigationBar.hidden = YES;
@@ -83,16 +93,7 @@
 //}
 - (void)viewDidLoad {
 //    [self.sn_navigationController.sn_navigationBar addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
-    __block UIScrollView * scrollview;
-    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UIScrollView class]]) {
-            scrollview = obj;
-        }
-    }];
-    if (scrollview) {
-        NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:scrollview attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:self.sn_navigationController.sn_navigationBar.frame.size.height];
-        [self.view addConstraint:constraint1];
-    }
+    
 }
 #pragma clang diagnostic pop
 
