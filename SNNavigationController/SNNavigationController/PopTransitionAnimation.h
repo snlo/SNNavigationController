@@ -11,4 +11,14 @@
 
 @interface PopTransitionAnimation : NSObject <UIViewControllerAnimatedTransitioning>
 
+/**
+ The direction of the animation.
+ */
+@property (nonatomic, assign) BOOL reverse;
+
+/**
+ The animation duration.
+ */
+@property (nonatomic, assign) NSTimeInterval duration;
+
 @end
