@@ -11,7 +11,7 @@
 #import "UIViewController+SNNavigationController.h"
 #import "UINavigationController+SNNavigationController.h"
 
-@interface MyDetailViewController ()
+@interface MyDetailViewController () <UIViewControllerTransitioningDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -21,13 +21,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.sn_navigationController.sn_navigationBar.hidden = YES;
+    self.sn_navigationController.sn_navigationBar.backgroundColor = [UIColor clearColor];
 }
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.sn_navigationController.sn_navigationBar.hidden = NO;
+    self.sn_navigationController.sn_navigationBar.backgroundColor = [UIColor blueColor];
 }
 
 - (void)viewDidLoad {
@@ -35,9 +34,10 @@
     // Do any additional setup after loading the view.
 	
 	self.title = @"详情页";
-	
-    self.view.backgroundColor = [UIColor redColor];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.transitioningDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +46,7 @@
 }
 
 - (IBAction)handleButton:(id)sender {
-    
+    NSLog(@"%@",[self.sn_navigationController popViewControllerAnimated:YES]);
 //    [self.sn_navigationController popViewControllerAnimated:YES];
 }
 
@@ -59,5 +59,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

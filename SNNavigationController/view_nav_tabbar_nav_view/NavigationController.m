@@ -10,7 +10,9 @@
 
 #import "UINavigationController+SNNavigationController.h"
 
-@interface NavigationController ()
+@interface NavigationController (){
+    
+}
 
 @end
 
@@ -22,6 +24,7 @@
     self.view.backgroundColor = [UIColor blueColor];
     
     self.sn_navigationBar.hidden = NO;
+    
     
 }
 

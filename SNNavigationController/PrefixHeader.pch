@@ -18,4 +18,11 @@
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+#import "SNAnimationController.h"
+#import "SNInteractionController.h"
+#define AppDelegateAccessor [SNNavigationControllerTool sharedManager]
+
+#import <Masonry.h>
+#import <ReactiveObjC.h>
+
 #endif /* PrefixHeader_pch */

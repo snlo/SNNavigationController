@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E0D175E31784927B1D943CB /* libPods-SNNavigationControllerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 219201320588B573DF8655E1 /* libPods-SNNavigationControllerUITests.a */; };
+		6D125B4243D69E10E372C9BF /* libPods-SNNavigationController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */; };
 		98242512212ECB0D0006876D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242511212ECB0D0006876D /* AppDelegate.m */; };
 		98242515212ECB0D0006876D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242514212ECB0D0006876D /* ViewController.m */; };
 		98242518212ECB0D0006876D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98242516212ECB0D0006876D /* Main.storyboard */; };
@@ -34,6 +36,13 @@
 		982425B921354A8C0006876D /* SNTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425B821354A8C0006876D /* SNTabBar.m */; };
 		982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425BB21354AB00006876D /* UITabBarController+SNController.m */; };
 		982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425BE21354B470006876D /* UITabBar+SNTabBar.m */; };
+		982425C22136852C0006876D /* SNAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425C12136852C0006876D /* SNAnimationController.m */; };
+		982425C5213685B20006876D /* SNInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425C4213685B20006876D /* SNInteractionController.m */; };
+		982425C82136974C0006876D /* SNNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425C72136974C0006876D /* SNNavigationDelegate.m */; };
+		982425CF2136A3CA0006876D /* PushTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425CB2136A3CA0006876D /* PushTransitionAnimation.m */; };
+		982425D02136A3CA0006876D /* CustonNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425CC2136A3CA0006876D /* CustonNavigationControllerDelegate.m */; };
+		982425D12136A3CA0006876D /* PopTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425CE2136A3CA0006876D /* PopTransitionAnimation.m */; };
+		EB2EEB04E728CBCDB29B007E /* libPods-SNNavigationControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		219201320588B573DF8655E1 /* libPods-SNNavigationControllerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationControllerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37259AB3C37730B3C134F9B8 /* Pods-SNNavigationControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerTests/Pods-SNNavigationControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3BBC231FF5D02FE5AAF4B4D6 /* Pods-SNNavigationControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerTests/Pods-SNNavigationControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9824250D212ECB0D0006876D /* SNNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242510212ECB0D0006876D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98242511212ECB0D0006876D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -108,6 +121,23 @@
 		982425BB21354AB00006876D /* UITabBarController+SNController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+SNController.m"; sourceTree = "<group>"; };
 		982425BD21354B470006876D /* UITabBar+SNTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+SNTabBar.h"; sourceTree = "<group>"; };
 		982425BE21354B470006876D /* UITabBar+SNTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+SNTabBar.m"; sourceTree = "<group>"; };
+		982425C02136852C0006876D /* SNAnimationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAnimationController.h; sourceTree = "<group>"; };
+		982425C12136852C0006876D /* SNAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAnimationController.m; sourceTree = "<group>"; };
+		982425C3213685B20006876D /* SNInteractionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNInteractionController.h; sourceTree = "<group>"; };
+		982425C4213685B20006876D /* SNInteractionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNInteractionController.m; sourceTree = "<group>"; };
+		982425C62136974C0006876D /* SNNavigationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationDelegate.h; sourceTree = "<group>"; };
+		982425C72136974C0006876D /* SNNavigationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationDelegate.m; sourceTree = "<group>"; };
+		982425C92136A3C90006876D /* CustonNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustonNavigationControllerDelegate.h; sourceTree = "<group>"; };
+		982425CA2136A3C90006876D /* PopTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopTransitionAnimation.h; sourceTree = "<group>"; };
+		982425CB2136A3CA0006876D /* PushTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushTransitionAnimation.m; sourceTree = "<group>"; };
+		982425CC2136A3CA0006876D /* CustonNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustonNavigationControllerDelegate.m; sourceTree = "<group>"; };
+		982425CD2136A3CA0006876D /* PushTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushTransitionAnimation.h; sourceTree = "<group>"; };
+		982425CE2136A3CA0006876D /* PopTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopTransitionAnimation.m; sourceTree = "<group>"; };
+		C6532BFB38D370291198AECB /* Pods-SNNavigationController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.release.xcconfig"; sourceTree = "<group>"; };
+		CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D764AEE40A48C6351A004C5B /* Pods-SNNavigationController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.debug.xcconfig"; sourceTree = "<group>"; };
+		E881B6CFB354ECF5EA7A1C49 /* Pods-SNNavigationControllerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerUITests/Pods-SNNavigationControllerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC4F13BE2A9677785EFD6BE4 /* Pods-SNNavigationControllerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerUITests/Pods-SNNavigationControllerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D125B4243D69E10E372C9BF /* libPods-SNNavigationController.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB2EEB04E728CBCDB29B007E /* libPods-SNNavigationControllerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,12 +161,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E0D175E31784927B1D943CB /* libPods-SNNavigationControllerUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F9A767691AF4564E3B31978 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D764AEE40A48C6351A004C5B /* Pods-SNNavigationController.debug.xcconfig */,
+				C6532BFB38D370291198AECB /* Pods-SNNavigationController.release.xcconfig */,
+				37259AB3C37730B3C134F9B8 /* Pods-SNNavigationControllerTests.debug.xcconfig */,
+				3BBC231FF5D02FE5AAF4B4D6 /* Pods-SNNavigationControllerTests.release.xcconfig */,
+				E881B6CFB354ECF5EA7A1C49 /* Pods-SNNavigationControllerUITests.debug.xcconfig */,
+				FC4F13BE2A9677785EFD6BE4 /* Pods-SNNavigationControllerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		90F18DC6BECEB441D712B243 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */,
+				CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */,
+				219201320588B573DF8655E1 /* libPods-SNNavigationControllerUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		98242504212ECB0C0006876D = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +198,8 @@
 				98242528212ECB0F0006876D /* SNNavigationControllerTests */,
 				98242533212ECB0F0006876D /* SNNavigationControllerUITests */,
 				9824250E212ECB0D0006876D /* Products */,
+				8F9A767691AF4564E3B31978 /* Pods */,
+				90F18DC6BECEB441D712B243 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,6 +256,12 @@
 		98242545212ECBB90006876D /* SNNavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				982425C92136A3C90006876D /* CustonNavigationControllerDelegate.h */,
+				982425CC2136A3CA0006876D /* CustonNavigationControllerDelegate.m */,
+				982425CA2136A3C90006876D /* PopTransitionAnimation.h */,
+				982425CE2136A3CA0006876D /* PopTransitionAnimation.m */,
+				982425CD2136A3CA0006876D /* PushTransitionAnimation.h */,
+				982425CB2136A3CA0006876D /* PushTransitionAnimation.m */,
 				98242542212ECBB50006876D /* SNNavigationController.h */,
 				98242543212ECBB50006876D /* SNNavigationController.m */,
 				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
@@ -205,6 +269,12 @@
 				982425B021352D0F0006876D /* Singletion.h */,
 				98242552212EDC300006876D /* UIViewController+SNNavigationController.h */,
 				98242553212EDC300006876D /* UIViewController+SNNavigationController.m */,
+				982425C02136852C0006876D /* SNAnimationController.h */,
+				982425C12136852C0006876D /* SNAnimationController.m */,
+				982425C3213685B20006876D /* SNInteractionController.h */,
+				982425C4213685B20006876D /* SNInteractionController.m */,
+				982425C62136974C0006876D /* SNNavigationDelegate.h */,
+				982425C72136974C0006876D /* SNNavigationDelegate.m */,
 				98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */,
 				98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */,
 				982425B421354A740006876D /* SNNavigationBar.h */,
@@ -250,6 +320,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98242539212ECB0F0006876D /* Build configuration list for PBXNativeTarget "SNNavigationController" */;
 			buildPhases = (
+				B19B7EBE00680F81104189E4 /* [CP] Check Pods Manifest.lock */,
 				98242509212ECB0D0006876D /* Sources */,
 				9824250A212ECB0D0006876D /* Frameworks */,
 				9824250B212ECB0D0006876D /* Resources */,
@@ -267,6 +338,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9824253C212ECB0F0006876D /* Build configuration list for PBXNativeTarget "SNNavigationControllerTests" */;
 			buildPhases = (
+				B5555B1230FCDBE4E27A4FEC /* [CP] Check Pods Manifest.lock */,
 				98242521212ECB0F0006876D /* Sources */,
 				98242522212ECB0F0006876D /* Frameworks */,
 				98242523212ECB0F0006876D /* Resources */,
@@ -285,6 +357,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9824253F212ECB0F0006876D /* Build configuration list for PBXNativeTarget "SNNavigationControllerUITests" */;
 			buildPhases = (
+				6D2E16D0680DFAA722E4824F /* [CP] Check Pods Manifest.lock */,
 				9824252C212ECB0F0006876D /* Sources */,
 				9824252D212ECB0F0006876D /* Frameworks */,
 				9824252E212ECB0F0006876D /* Resources */,
@@ -370,24 +443,87 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6D2E16D0680DFAA722E4824F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNNavigationControllerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B19B7EBE00680F81104189E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNNavigationController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5555B1230FCDBE4E27A4FEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNNavigationControllerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		98242509212ECB0D0006876D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */,
+				982425C22136852C0006876D /* SNAnimationController.m in Sources */,
 				98242594213411170006876D /* ViewControllerCell.m in Sources */,
 				98242544212ECBB50006876D /* SNNavigationController.m in Sources */,
 				9824259B213416550006876D /* RespectedViewController.m in Sources */,
+				982425C5213685B20006876D /* SNInteractionController.m in Sources */,
 				98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */,
 				982425B921354A8C0006876D /* SNTabBar.m in Sources */,
 				98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */,
 				982425AE213517040006876D /* NavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
 				982425A1213416F80006876D /* MyViewController.m in Sources */,
+				982425C82136974C0006876D /* SNNavigationDelegate.m in Sources */,
+				982425D12136A3CA0006876D /* PopTransitionAnimation.m in Sources */,
 				982425982134140A0006876D /* TabBarController.m in Sources */,
 				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
+				982425CF2136A3CA0006876D /* PushTransitionAnimation.m in Sources */,
 				982425B621354A740006876D /* SNNavigationBar.m in Sources */,
+				982425D02136A3CA0006876D /* CustonNavigationControllerDelegate.m in Sources */,
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
 				9824259E213416EA0006876D /* FoundViewController.m in Sources */,
 				982425A421341D870006876D /* MyDetailViewController.m in Sources */,
@@ -561,9 +697,11 @@
 		};
 		9824253A212ECB0F0006876D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D764AEE40A48C6351A004C5B /* Pods-SNNavigationController.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 49VK52PYYX;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNNavigationController/PrefixHeader.pch";
 				INFOPLIST_FILE = SNNavigationController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -578,9 +716,11 @@
 		};
 		9824253B212ECB0F0006876D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6532BFB38D370291198AECB /* Pods-SNNavigationController.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 49VK52PYYX;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNNavigationController/PrefixHeader.pch";
 				INFOPLIST_FILE = SNNavigationController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -595,6 +735,7 @@
 		};
 		9824253D212ECB0F0006876D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37259AB3C37730B3C134F9B8 /* Pods-SNNavigationControllerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -613,6 +754,7 @@
 		};
 		9824253E212ECB0F0006876D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BBC231FF5D02FE5AAF4B4D6 /* Pods-SNNavigationControllerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -631,6 +773,7 @@
 		};
 		98242540212ECB0F0006876D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E881B6CFB354ECF5EA7A1C49 /* Pods-SNNavigationControllerUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SNNavigationControllerUITests/Info.plist;
@@ -648,6 +791,7 @@
 		};
 		98242541212ECB0F0006876D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC4F13BE2A9677785EFD6BE4 /* Pods-SNNavigationControllerUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SNNavigationControllerUITests/Info.plist;

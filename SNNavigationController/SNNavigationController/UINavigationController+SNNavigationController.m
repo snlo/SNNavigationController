@@ -12,6 +12,14 @@
 
 #import "SNNavigationControllerTool.h"
 
+#import "CustonNavigationControllerDelegate.h"
+
+@interface UINavigationController ()
+
+@property (nonatomic, weak) CustonNavigationControllerDelegate * custonDelegate;
+
+@end
+
 @implementation UINavigationController (SNNavigationController)
 
 + (void)load {
@@ -21,28 +29,18 @@
     });
 }
 
+
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-- (void)dealloc {
-    [self.sn_navigationBar removeObserver:self forKeyPath:@"hidden" context:nil];
-}
 - (void)viewDidLoad {
     self.navigationBar.hidden = YES;
     [self.view addSubview:self.sn_navigationBar];
-    [self.sn_navigationBar addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
+
+    self.delegate = self.custonDelegate;
 }
 #pragma clang diagnostic pop
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([object isKindOfClass:[SNNavigationBar class]] && [keyPath isEqualToString:@"hidden"]) {
-        
-        if (!self.sn_navigationBar.hidden) {
-            self.navigationBar.hidden = YES;
-        } else {
-            self.navigationBar.hidden = NO;
-        }
-    }
-}
 
 - (UIViewController *)sn_popViewControllerAnimated:(BOOL)animated {
     return [UIViewController new];
@@ -59,5 +57,56 @@
         objc_setAssociatedObject(self, @selector(sn_navigationBar), view, OBJC_ASSOCIATION_ASSIGN);
     } return view;
 }
+
+
+- (void)setCustonDelegate:(CustonNavigationControllerDelegate *)custonDelegate {
+    objc_setAssociatedObject(self, @selector(custonDelegate), custonDelegate, OBJC_ASSOCIATION_RETAIN);
+}
+- (CustonNavigationControllerDelegate *)custonDelegate {
+    CustonNavigationControllerDelegate * delegate = objc_getAssociatedObject(self, _cmd);
+    if (!delegate) {
+        delegate = [[CustonNavigationControllerDelegate alloc] init];
+        objc_setAssociatedObject(self, @selector(custonDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
+    } return delegate;
+}
+
+
+
+
+
+
+
+
+//- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//
+//    [self wirePopInteractionControllerTo:viewController];
+//}
+//
+//- (void)wirePopInteractionControllerTo:(UIViewController *)viewController
+//{
+//    // when a push occurs, wire the interaction controller to the to- view controller
+//    if (!AppDelegateAccessor.navigationControllerInteractionController) {
+//        return;
+//    }
+//
+//    [AppDelegateAccessor.navigationControllerInteractionController wireToViewController:viewController forOperation:CEInteractionOperationPop];
+//}
+//
+//
+//- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+//
+//    if (AppDelegateAccessor.navigationControllerAnimationController) {
+//        AppDelegateAccessor.navigationControllerAnimationController.reverse = operation == UINavigationControllerOperationPop;
+//    }
+//
+//    return (id)AppDelegateAccessor.navigationControllerAnimationController;
+//}
+//
+//- (id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController {
+//
+//    // if we have an interaction controller - and it is currently in progress, return it
+//    return AppDelegateAccessor.navigationControllerInteractionController && AppDelegateAccessor.navigationControllerInteractionController.interactionInProgress ? AppDelegateAccessor.navigationControllerInteractionController : nil;
+//}
+
 
 @end
