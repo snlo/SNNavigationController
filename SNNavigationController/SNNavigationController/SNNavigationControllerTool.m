@@ -20,6 +20,7 @@ void replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod) {
     Method newMethods = class_getInstanceMethod(newClass, newMethod);
 
     if(class_addMethod(aClass, aMethod, method_getImplementation(newMethods), method_getTypeEncoding(newMethods))) {
+        
         class_replaceMethod(aClass, newMethod, method_getImplementation(aMethods), method_getTypeEncoding(aMethods));
     } else {
         method_exchangeImplementations(aMethods, newMethods);

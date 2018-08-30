@@ -1,42 +1,30 @@
 //
-//  RespectedViewController.m
+//  RespectedDetailViewController.m
 //  SNNavigationController
 //
-//  Created by snlo on 2018/8/27.
+//  Created by snlo on 2018/8/30.
 //  Copyright © 2018年 snlo. All rights reserved.
 //
 
-#import "RespectedViewController.h"
+#import "RespectedDetailViewController.h"
 
-#import "SNNavigationControllerTool.h"
-
-@interface RespectedViewController ()
+@interface RespectedDetailViewController ()
 
 @end
 
-@implementation RespectedViewController
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-//    UIView * view = [[UIView alloc] init];
-//    view.backgroundColor = [UIColor blackColor];
-//    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
-//    [SNNavigationControllerTool sharedManager].navigationBar = view;
-}
+@implementation RespectedDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//	self.title = @"tui chong";
-
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)handleButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

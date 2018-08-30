@@ -12,11 +12,9 @@
 
 #import "SNNavigationControllerTool.h"
 
-#import "CustonNavigationControllerDelegate.h"
-
 @interface UINavigationController ()
 
-@property (nonatomic, weak) CustonNavigationControllerDelegate * custonDelegate;
+@property (nonatomic, weak) SNNavigationTransitionDelegate * sn_navigationDelegate;
 
 @end
 
@@ -25,26 +23,29 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
+        replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
     });
 }
 
+- (void)sn_viewDidLoad {
+//    self.navigationBar.hidden = YES;
+//    [self.view addSubview:self.sn_navigationBar];
 
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-- (void)viewDidLoad {
-    self.navigationBar.hidden = YES;
-    [self.view addSubview:self.sn_navigationBar];
-
-    self.delegate = self.custonDelegate;
+//    self.delegate = self.custonDelegate;
+    self.delegate = self.sn_navigationDelegate;
+    
+    UIScreenEdgePanGestureRecognizer * leftScreenEdgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftScreenEdgePanGesturexx:)];
+    
+    leftScreenEdgePan.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:leftScreenEdgePan];
 }
-#pragma clang diagnostic pop
 
-
-- (UIViewController *)sn_popViewControllerAnimated:(BOOL)animated {
-    return [UIViewController new];
+- (void)handleLeftScreenEdgePanGesturexx:(UIScreenEdgePanGestureRecognizer *)gesture {
+    
+    CGFloat progress = [gesture translationInView:self.view].x / self.view.bounds.size.width / 2;
+    [self.sn_navigationDelegate updateState:gesture.state progress:progress forViewController:self];
 }
+
 
 #pragma mark -- getter / setter
 - (void)setSn_navigationBar:(SNNavigationBar *)sn_navigationBar {
@@ -54,59 +55,22 @@
     SNNavigationBar * view = objc_getAssociatedObject(self, _cmd);
     if (!view) {
         view = [[SNNavigationBar alloc] init];
+        self.navigationBar.hidden = YES;
+        [self.view addSubview:view];
         objc_setAssociatedObject(self, @selector(sn_navigationBar), view, OBJC_ASSOCIATION_ASSIGN);
     } return view;
 }
 
-
-- (void)setCustonDelegate:(CustonNavigationControllerDelegate *)custonDelegate {
-    objc_setAssociatedObject(self, @selector(custonDelegate), custonDelegate, OBJC_ASSOCIATION_RETAIN);
+- (void)setSn_navigationDelegate:(SNNavigationTransitionDelegate *)sn_navigationDelegate {
+    objc_setAssociatedObject(self, @selector(sn_navigationDelegate), sn_navigationDelegate, OBJC_ASSOCIATION_RETAIN);
 }
-- (CustonNavigationControllerDelegate *)custonDelegate {
-    CustonNavigationControllerDelegate * delegate = objc_getAssociatedObject(self, _cmd);
+- (SNNavigationTransitionDelegate *)sn_navigationDelegate {
+    SNNavigationTransitionDelegate * delegate = objc_getAssociatedObject(self, _cmd);
     if (!delegate) {
-        delegate = [[CustonNavigationControllerDelegate alloc] init];
-        objc_setAssociatedObject(self, @selector(custonDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
+        delegate = [[SNNavigationTransitionDelegate alloc] init];
+        objc_setAssociatedObject(self, @selector(sn_navigationDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
     } return delegate;
 }
-
-
-
-
-
-
-
-
-//- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//
-//    [self wirePopInteractionControllerTo:viewController];
-//}
-//
-//- (void)wirePopInteractionControllerTo:(UIViewController *)viewController
-//{
-//    // when a push occurs, wire the interaction controller to the to- view controller
-//    if (!AppDelegateAccessor.navigationControllerInteractionController) {
-//        return;
-//    }
-//
-//    [AppDelegateAccessor.navigationControllerInteractionController wireToViewController:viewController forOperation:CEInteractionOperationPop];
-//}
-//
-//
-//- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
-//
-//    if (AppDelegateAccessor.navigationControllerAnimationController) {
-//        AppDelegateAccessor.navigationControllerAnimationController.reverse = operation == UINavigationControllerOperationPop;
-//    }
-//
-//    return (id)AppDelegateAccessor.navigationControllerAnimationController;
-//}
-//
-//- (id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController {
-//
-//    // if we have an interaction controller - and it is currently in progress, return it
-//    return AppDelegateAccessor.navigationControllerInteractionController && AppDelegateAccessor.navigationControllerInteractionController.interactionInProgress ? AppDelegateAccessor.navigationControllerInteractionController : nil;
-//}
 
 
 @end

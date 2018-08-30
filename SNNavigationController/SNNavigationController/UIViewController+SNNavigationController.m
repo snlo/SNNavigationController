@@ -8,12 +8,6 @@
 
 #import "UIViewController+SNNavigationController.h"
 
-#import <objc/runtime.h>
-
-#import "SNNavigationControllerTool.h"
-
-#import "UINavigationController+SNNavigationController.h"
-
 @interface UIViewController () 
 
 @end
@@ -23,19 +17,16 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-		
+        replaceMethod(self, @selector(viewWillAppear:), self, @selector(sn_viewWillAppear:));
+        replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
     });
 }
 
-#pragma mark -- life cycle
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-- (void)viewWillAppear:(BOOL)animated {
+- (void)sn_viewWillAppear:(BOOL)animated {
     if ([self isKindOfClass:[UINavigationController class]] ||
         [self isKindOfClass:[UITabBarController class]]) {
         return;
     }
-    NSLog(@" ==-- %@",self.sn_navigationController.topViewController);
     if (self.tabBarController) {
         if ([self.tabBarController.navigationController isEqual:self.navigationController]) {
             self.tabBarController.navigationController.sn_navigationBar.hidden = NO;
@@ -46,10 +37,8 @@
     } else {
         self.navigationController.sn_navigationBar.hidden = NO;
     }
-	
 }
-
-- (void)viewDidLoad {
+- (void)sn_viewDidLoad {
     [RACObserve(self.sn_navigationController.sn_navigationBar, frame) subscribeNext:^(id  _Nullable x) {
         __block UIScrollView * scrollview;
         [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -60,14 +49,11 @@
         if (scrollview) {
             [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
+                [scrollview layoutIfNeeded];
             }];
         }
     }];
-    
 }
-#pragma clang diagnostic pop
-
-
 
 #pragma mark -- getter / setter
 

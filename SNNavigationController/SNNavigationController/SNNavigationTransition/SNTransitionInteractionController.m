@@ -1,21 +1,21 @@
 //
-//  SNInteractionController.m
+//  SNTransitionInteractionController.m
 //  SNNavigationController
 //
-//  Created by snlo on 2018/8/29.
+//  Created by snlo on 2018/8/30.
 //  Copyright © 2018年 snlo. All rights reserved.
 //
 
-#import "SNInteractionController.h"
+#import "SNTransitionInteractionController.h"
 
-@implementation SNInteractionController
+@implementation SNTransitionInteractionController
 
-- (void)wireToViewController:(UIViewController *)viewController forOperation:(CEInteractionOperation)operation {
+- (void)wireToViewController:(UIViewController*)viewController forOperation:(SNTransitionInteractionOperation)operation {
     
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
                                  userInfo:nil];
-    
 }
+
 
 @end

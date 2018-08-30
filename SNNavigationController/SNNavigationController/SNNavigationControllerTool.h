@@ -15,14 +15,12 @@
 
 singletonInterface(SNNavigationControllerTool)
 
+/**
+ 函数替换，不能被替换将被交换。
+ */
 void replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod);
 
 @property (nonatomic, strong) UIView * navigationBar;
-
-@property (strong, nonatomic) SNAnimationController *settingsAnimationController;
-@property (strong, nonatomic) SNAnimationController *navigationControllerAnimationController;
-@property (strong, nonatomic) SNInteractionController *navigationControllerInteractionController;
-@property (strong, nonatomic) SNInteractionController *settingsInteractionController;
 
 
 @end

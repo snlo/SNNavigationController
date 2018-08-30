@@ -17,7 +17,6 @@
 		98242520212ECB0F0006876D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824251F212ECB0F0006876D /* main.m */; };
 		9824252A212ECB0F0006876D /* SNNavigationControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242529212ECB0F0006876D /* SNNavigationControllerTests.m */; };
 		98242535212ECB0F0006876D /* SNNavigationControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242534212ECB0F0006876D /* SNNavigationControllerUITests.m */; };
-		98242544212ECBB50006876D /* SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242543212ECBB50006876D /* SNNavigationController.m */; };
 		98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */; };
 		9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */; };
 		9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */; };
@@ -36,12 +35,14 @@
 		982425B921354A8C0006876D /* SNTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425B821354A8C0006876D /* SNTabBar.m */; };
 		982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425BB21354AB00006876D /* UITabBarController+SNController.m */; };
 		982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425BE21354B470006876D /* UITabBar+SNTabBar.m */; };
-		982425C22136852C0006876D /* SNAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425C12136852C0006876D /* SNAnimationController.m */; };
-		982425C5213685B20006876D /* SNInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425C4213685B20006876D /* SNInteractionController.m */; };
-		982425C82136974C0006876D /* SNNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425C72136974C0006876D /* SNNavigationDelegate.m */; };
-		982425CF2136A3CA0006876D /* PushTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425CB2136A3CA0006876D /* PushTransitionAnimation.m */; };
-		982425D02136A3CA0006876D /* CustonNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425CC2136A3CA0006876D /* CustonNavigationControllerDelegate.m */; };
-		982425D12136A3CA0006876D /* PopTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425CE2136A3CA0006876D /* PopTransitionAnimation.m */; };
+		982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425D82137BA900006876D /* SNNavigationTransitionDelegate.m */; };
+		982425DC2137BB100006876D /* SNTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425DB2137BB100006876D /* SNTransitionAnimationController.m */; };
+		982425DF2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425DE2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m */; };
+		982425E22137BDB90006876D /* SNNavigationPopTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E12137BDB90006876D /* SNNavigationPopTransitionAnimation.m */; };
+		982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */; };
+		982425E82137C1730006876D /* UIViewController+SNNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */; };
+		982425EE2137C3900006876D /* SNTransitionInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425ED2137C3900006876D /* SNTransitionInteractionController.m */; };
+		982425F12137F0030006876D /* RespectedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F02137F0030006876D /* RespectedDetailViewController.m */; };
 		EB2EEB04E728CBCDB29B007E /* libPods-SNNavigationControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */; };
 /* End PBXBuildFile section */
 
@@ -83,8 +84,6 @@
 		98242530212ECB0F0006876D /* SNNavigationControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNNavigationControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242534212ECB0F0006876D /* SNNavigationControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationControllerUITests.m; sourceTree = "<group>"; };
 		98242536212ECB0F0006876D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98242542212ECBB50006876D /* SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationController.h; sourceTree = "<group>"; };
-		98242543212ECBB50006876D /* SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationController.m; sourceTree = "<group>"; };
 		98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SNNavigationController.h"; sourceTree = "<group>"; };
 		98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SNNavigationController.m"; sourceTree = "<group>"; };
 		98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+SNNavigationBar.h"; sourceTree = "<group>"; };
@@ -121,18 +120,22 @@
 		982425BB21354AB00006876D /* UITabBarController+SNController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+SNController.m"; sourceTree = "<group>"; };
 		982425BD21354B470006876D /* UITabBar+SNTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+SNTabBar.h"; sourceTree = "<group>"; };
 		982425BE21354B470006876D /* UITabBar+SNTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+SNTabBar.m"; sourceTree = "<group>"; };
-		982425C02136852C0006876D /* SNAnimationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAnimationController.h; sourceTree = "<group>"; };
-		982425C12136852C0006876D /* SNAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAnimationController.m; sourceTree = "<group>"; };
-		982425C3213685B20006876D /* SNInteractionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNInteractionController.h; sourceTree = "<group>"; };
-		982425C4213685B20006876D /* SNInteractionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNInteractionController.m; sourceTree = "<group>"; };
-		982425C62136974C0006876D /* SNNavigationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationDelegate.h; sourceTree = "<group>"; };
-		982425C72136974C0006876D /* SNNavigationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationDelegate.m; sourceTree = "<group>"; };
-		982425C92136A3C90006876D /* CustonNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustonNavigationControllerDelegate.h; sourceTree = "<group>"; };
-		982425CA2136A3C90006876D /* PopTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopTransitionAnimation.h; sourceTree = "<group>"; };
-		982425CB2136A3CA0006876D /* PushTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushTransitionAnimation.m; sourceTree = "<group>"; };
-		982425CC2136A3CA0006876D /* CustonNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustonNavigationControllerDelegate.m; sourceTree = "<group>"; };
-		982425CD2136A3CA0006876D /* PushTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushTransitionAnimation.h; sourceTree = "<group>"; };
-		982425CE2136A3CA0006876D /* PopTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopTransitionAnimation.m; sourceTree = "<group>"; };
+		982425D72137BA900006876D /* SNNavigationTransitionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationTransitionDelegate.h; sourceTree = "<group>"; };
+		982425D82137BA900006876D /* SNNavigationTransitionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationTransitionDelegate.m; sourceTree = "<group>"; };
+		982425DA2137BB100006876D /* SNTransitionAnimationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTransitionAnimationController.h; sourceTree = "<group>"; };
+		982425DB2137BB100006876D /* SNTransitionAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTransitionAnimationController.m; sourceTree = "<group>"; };
+		982425DD2137BD9F0006876D /* SNNavigationPushTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPushTransitionAnimation.h; sourceTree = "<group>"; };
+		982425DE2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPushTransitionAnimation.m; sourceTree = "<group>"; };
+		982425E02137BDB90006876D /* SNNavigationPopTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPopTransitionAnimation.h; sourceTree = "<group>"; };
+		982425E12137BDB90006876D /* SNNavigationPopTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPopTransitionAnimation.m; sourceTree = "<group>"; };
+		982425E32137BF9F0006876D /* UINavigationController+SNNavigationTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SNNavigationTransition.h"; sourceTree = "<group>"; };
+		982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SNNavigationTransition.m"; sourceTree = "<group>"; };
+		982425E62137C1730006876D /* UIViewController+SNNavigationTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNNavigationTransition.h"; sourceTree = "<group>"; };
+		982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNNavigationTransition.m"; sourceTree = "<group>"; };
+		982425EC2137C3900006876D /* SNTransitionInteractionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTransitionInteractionController.h; sourceTree = "<group>"; };
+		982425ED2137C3900006876D /* SNTransitionInteractionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTransitionInteractionController.m; sourceTree = "<group>"; };
+		982425EF2137F0030006876D /* RespectedDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespectedDetailViewController.h; sourceTree = "<group>"; };
+		982425F02137F0030006876D /* RespectedDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespectedDetailViewController.m; sourceTree = "<group>"; };
 		C6532BFB38D370291198AECB /* Pods-SNNavigationController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.release.xcconfig"; sourceTree = "<group>"; };
 		CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D764AEE40A48C6351A004C5B /* Pods-SNNavigationController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.debug.xcconfig"; sourceTree = "<group>"; };
@@ -256,29 +259,15 @@
 		98242545212ECBB90006876D /* SNNavigationController */ = {
 			isa = PBXGroup;
 			children = (
-				982425C92136A3C90006876D /* CustonNavigationControllerDelegate.h */,
-				982425CC2136A3CA0006876D /* CustonNavigationControllerDelegate.m */,
-				982425CA2136A3C90006876D /* PopTransitionAnimation.h */,
-				982425CE2136A3CA0006876D /* PopTransitionAnimation.m */,
-				982425CD2136A3CA0006876D /* PushTransitionAnimation.h */,
-				982425CB2136A3CA0006876D /* PushTransitionAnimation.m */,
-				98242542212ECBB50006876D /* SNNavigationController.h */,
-				98242543212ECBB50006876D /* SNNavigationController.m */,
+				982425D32137A8BD0006876D /* SNNavigationTransition */,
+				982425D22137A87B0006876D /* SNNavigationBar */,
+				98242552212EDC300006876D /* UIViewController+SNNavigationController.h */,
+				98242553212EDC300006876D /* UIViewController+SNNavigationController.m */,
+				98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */,
+				98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */,
 				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
 				98242556212EDCD40006876D /* SNNavigationControllerTool.m */,
 				982425B021352D0F0006876D /* Singletion.h */,
-				98242552212EDC300006876D /* UIViewController+SNNavigationController.h */,
-				98242553212EDC300006876D /* UIViewController+SNNavigationController.m */,
-				982425C02136852C0006876D /* SNAnimationController.h */,
-				982425C12136852C0006876D /* SNAnimationController.m */,
-				982425C3213685B20006876D /* SNInteractionController.h */,
-				982425C4213685B20006876D /* SNInteractionController.m */,
-				982425C62136974C0006876D /* SNNavigationDelegate.h */,
-				982425C72136974C0006876D /* SNNavigationDelegate.m */,
-				98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */,
-				98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */,
-				982425B421354A740006876D /* SNNavigationBar.h */,
-				982425B521354A740006876D /* SNNavigationBar.m */,
 				98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */,
 				9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */,
 				9824254C212ECE440006876D /* UINavigationItem+SNNavigationItem.h */,
@@ -302,6 +291,8 @@
 				982425972134140A0006876D /* TabBarController.m */,
 				98242599213416550006876D /* RespectedViewController.h */,
 				9824259A213416550006876D /* RespectedViewController.m */,
+				982425EF2137F0030006876D /* RespectedDetailViewController.h */,
+				982425F02137F0030006876D /* RespectedDetailViewController.m */,
 				9824259C213416EA0006876D /* FoundViewController.h */,
 				9824259D213416EA0006876D /* FoundViewController.m */,
 				9824259F213416F80006876D /* MyViewController.h */,
@@ -311,6 +302,36 @@
 				982425AA213420610006876D /* MyDetailViewController.xib */,
 			);
 			path = view_nav_tabbar_nav_view;
+			sourceTree = "<group>";
+		};
+		982425D22137A87B0006876D /* SNNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				982425B421354A740006876D /* SNNavigationBar.h */,
+				982425B521354A740006876D /* SNNavigationBar.m */,
+			);
+			path = SNNavigationBar;
+			sourceTree = "<group>";
+		};
+		982425D32137A8BD0006876D /* SNNavigationTransition */ = {
+			isa = PBXGroup;
+			children = (
+				982425E32137BF9F0006876D /* UINavigationController+SNNavigationTransition.h */,
+				982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */,
+				982425E62137C1730006876D /* UIViewController+SNNavigationTransition.h */,
+				982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */,
+				982425D72137BA900006876D /* SNNavigationTransitionDelegate.h */,
+				982425D82137BA900006876D /* SNNavigationTransitionDelegate.m */,
+				982425DD2137BD9F0006876D /* SNNavigationPushTransitionAnimation.h */,
+				982425DE2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m */,
+				982425E02137BDB90006876D /* SNNavigationPopTransitionAnimation.h */,
+				982425E12137BDB90006876D /* SNNavigationPopTransitionAnimation.m */,
+				982425DA2137BB100006876D /* SNTransitionAnimationController.h */,
+				982425DB2137BB100006876D /* SNTransitionAnimationController.m */,
+				982425EC2137C3900006876D /* SNTransitionInteractionController.h */,
+				982425ED2137C3900006876D /* SNTransitionInteractionController.m */,
+			);
+			path = SNNavigationTransition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,31 +526,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				982425F12137F0030006876D /* RespectedDetailViewController.m in Sources */,
 				982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */,
-				982425C22136852C0006876D /* SNAnimationController.m in Sources */,
 				98242594213411170006876D /* ViewControllerCell.m in Sources */,
-				98242544212ECBB50006876D /* SNNavigationController.m in Sources */,
 				9824259B213416550006876D /* RespectedViewController.m in Sources */,
-				982425C5213685B20006876D /* SNInteractionController.m in Sources */,
 				98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */,
+				982425DC2137BB100006876D /* SNTransitionAnimationController.m in Sources */,
 				982425B921354A8C0006876D /* SNTabBar.m in Sources */,
 				98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */,
+				982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */,
 				982425AE213517040006876D /* NavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
+				982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */,
 				982425A1213416F80006876D /* MyViewController.m in Sources */,
-				982425C82136974C0006876D /* SNNavigationDelegate.m in Sources */,
-				982425D12136A3CA0006876D /* PopTransitionAnimation.m in Sources */,
+				982425E22137BDB90006876D /* SNNavigationPopTransitionAnimation.m in Sources */,
 				982425982134140A0006876D /* TabBarController.m in Sources */,
 				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
-				982425CF2136A3CA0006876D /* PushTransitionAnimation.m in Sources */,
 				982425B621354A740006876D /* SNNavigationBar.m in Sources */,
-				982425D02136A3CA0006876D /* CustonNavigationControllerDelegate.m in Sources */,
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
 				9824259E213416EA0006876D /* FoundViewController.m in Sources */,
+				982425DF2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m in Sources */,
 				982425A421341D870006876D /* MyDetailViewController.m in Sources */,
 				982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
+				982425E82137C1730006876D /* UIViewController+SNNavigationTransition.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
+				982425EE2137C3900006876D /* SNTransitionInteractionController.m in Sources */,
 				98242512212ECB0D0006876D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

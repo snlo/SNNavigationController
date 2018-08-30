@@ -11,8 +11,18 @@
 #import "UIViewController+SNNavigationController.h"
 #import "UINavigationController+SNNavigationController.h"
 
-@interface MyDetailViewController () <UIViewControllerTransitioningDelegate>
+#import "UIViewController+SNNavigationTransition.h"
+
+#import "SNNavigationPopTransitionAnimation.h"
+#import "SNNavigationPushTransitionAnimation.h"
+
+@interface MyDetailViewController () <UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition * percentDrivenTransition;
+
+@property (nonatomic, weak) SNNavigationTransitionDelegate * sn_navigationDelegate;
 
 @end
 
@@ -21,14 +31,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.sn_navigationController.sn_navigationBar.backgroundColor = [UIColor clearColor];
+    
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.sn_navigationController.sn_navigationBar.backgroundColor = [UIColor blueColor];
+    
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+//    [self startLeftScreenEdgePanGesture];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -36,8 +50,18 @@
 	self.title = @"详情页";
     
     self.view.backgroundColor = [UIColor whiteColor];
+    NSLog(@"000000");
     
-    self.transitioningDelegate = self;
+    // 加入左侧边界手势
+    
+//    [self startLeftScreenEdgePanGesture];
+    
+    self.navigationController.delegate = self;
+    UIScreenEdgePanGestureRecognizer * leftScreenEdgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftScreenEdgePanGesturess:)];
+
+    leftScreenEdgePan.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:leftScreenEdgePan];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,19 +71,54 @@
 
 - (IBAction)handleButton:(id)sender {
     NSLog(@"%@",[self.sn_navigationController popViewControllerAnimated:YES]);
-//    [self.sn_navigationController popViewControllerAnimated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)handleLeftScreenEdgePanGesturess:(UIScreenEdgePanGestureRecognizer *)gesture {
+    
+    CGFloat progress = [gesture translationInView:self.view].x / self.view.bounds.size.width / 2;
+    [self updateState:gesture.state progress:progress forViewController:self];
 }
-*/
 
 
+- (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    if (operation == UINavigationControllerOperationPop) {
+        return [[SNNavigationPopTransitionAnimation alloc] init];
+    }
+    if (operation == UINavigationControllerOperationPush) {
+        return [[SNNavigationPushTransitionAnimation alloc] init];
+    }
+    return nil;
+}
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+    
+    if([animationController isKindOfClass:[SNNavigationPopTransitionAnimation class]]){
+        return self.percentDrivenTransition;
+    } else {
+        return nil;
+    }
+}
+
+- (void)updateState:(UIGestureRecognizerState)state progress:(CGFloat)progress forViewController:(UIViewController *)viewController {
+    switch (state) {
+        case UIGestureRecognizerStateBegan: {
+            self.percentDrivenTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
+            [viewController.navigationController popViewControllerAnimated:YES];
+        } break;
+        case UIGestureRecognizerStateChanged: {
+            [self.percentDrivenTransition updateInteractiveTransition:progress];
+        } break;
+        case UIGestureRecognizerStateCancelled: case UIGestureRecognizerStateEnded: {
+            if(progress > 0.2){
+                [self.percentDrivenTransition finishInteractiveTransition];
+            }else{
+                [self.percentDrivenTransition cancelInteractiveTransition];
+            }
+            self.percentDrivenTransition = nil;
+        } break;
+        default: {
+            
+        } break;
+    }
+}
 
 @end

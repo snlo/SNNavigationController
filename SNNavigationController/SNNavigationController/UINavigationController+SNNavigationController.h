@@ -10,8 +10,12 @@
 
 #import "SNNavigationBar.h"
 
+#import "SNNavigationTransitionDelegate.h"
+
 @interface UINavigationController (SNNavigationController)
 
 @property (nonatomic, strong) SNNavigationBar * sn_navigationBar;
+
+@property (nonatomic, readonly) SNNavigationTransitionDelegate * sn_navigationDelegate;
 
 @end
