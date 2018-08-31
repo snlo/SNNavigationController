@@ -12,10 +12,21 @@
 
 #import "SNTransitionInteractionController.h"
 
+
 @interface SNNavigationTransitionDelegate : NSObject <UINavigationControllerDelegate>
 
-@property (nonatomic, strong) UIPercentDrivenInteractiveTransition * percentDrivenTransition;
+/**
+ 交互驱动
+ */
+@property (nonatomic, strong) SNTransitionInteractionController * percentDrivenTransition;
 
+/**
+ 更新交互驱动进度
+
+ @param state 手势交互状态
+ @param progress 进度
+ @param viewController 承载手势的视图控制器
+ */
 - (void)updateState:(UIGestureRecognizerState)state progress:(CGFloat)progress forViewController:(UIViewController *)viewController;
 
 @end

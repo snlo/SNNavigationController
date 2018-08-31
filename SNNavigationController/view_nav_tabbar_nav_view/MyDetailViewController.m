@@ -8,13 +8,6 @@
 
 #import "MyDetailViewController.h"
 
-#import "UIViewController+SNNavigationController.h"
-#import "UINavigationController+SNNavigationController.h"
-
-#import "UIViewController+SNNavigationTransition.h"
-
-#import "SNNavigationPopTransitionAnimation.h"
-#import "SNNavigationPushTransitionAnimation.h"
 
 @interface MyDetailViewController () <UINavigationControllerDelegate>
 
@@ -41,7 +34,12 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-//    [self startLeftScreenEdgePanGesture];
+//    self.sn_leftScreenEdgePanGesture.enabled = NO;
+}
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,18 +48,7 @@
 	self.title = @"详情页";
     
     self.view.backgroundColor = [UIColor whiteColor];
-    NSLog(@"000000");
-    
-    // 加入左侧边界手势
-    
-//    [self startLeftScreenEdgePanGesture];
-    
-    self.navigationController.delegate = self;
-    UIScreenEdgePanGestureRecognizer * leftScreenEdgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftScreenEdgePanGesturess:)];
 
-    leftScreenEdgePan.edges = UIRectEdgeLeft;
-    [self.view addGestureRecognizer:leftScreenEdgePan];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,53 +59,12 @@
 - (IBAction)handleButton:(id)sender {
     NSLog(@"%@",[self.sn_navigationController popViewControllerAnimated:YES]);
 }
-
-- (void)handleLeftScreenEdgePanGesturess:(UIScreenEdgePanGestureRecognizer *)gesture {
-    
-    CGFloat progress = [gesture translationInView:self.view].x / self.view.bounds.size.width / 2;
-    [self updateState:gesture.state progress:progress forViewController:self];
+- (IBAction)handlePushButton:(id)sender {
+    UIViewController * VC = [[UIViewController alloc] init];
+    VC.view.backgroundColor = [UIColor greenColor];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 
-- (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
-    if (operation == UINavigationControllerOperationPop) {
-        return [[SNNavigationPopTransitionAnimation alloc] init];
-    }
-    if (operation == UINavigationControllerOperationPush) {
-        return [[SNNavigationPushTransitionAnimation alloc] init];
-    }
-    return nil;
-}
-- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
-    
-    if([animationController isKindOfClass:[SNNavigationPopTransitionAnimation class]]){
-        return self.percentDrivenTransition;
-    } else {
-        return nil;
-    }
-}
-
-- (void)updateState:(UIGestureRecognizerState)state progress:(CGFloat)progress forViewController:(UIViewController *)viewController {
-    switch (state) {
-        case UIGestureRecognizerStateBegan: {
-            self.percentDrivenTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
-            [viewController.navigationController popViewControllerAnimated:YES];
-        } break;
-        case UIGestureRecognizerStateChanged: {
-            [self.percentDrivenTransition updateInteractiveTransition:progress];
-        } break;
-        case UIGestureRecognizerStateCancelled: case UIGestureRecognizerStateEnded: {
-            if(progress > 0.2){
-                [self.percentDrivenTransition finishInteractiveTransition];
-            }else{
-                [self.percentDrivenTransition cancelInteractiveTransition];
-            }
-            self.percentDrivenTransition = nil;
-        } break;
-        default: {
-            
-        } break;
-    }
-}
 
 @end

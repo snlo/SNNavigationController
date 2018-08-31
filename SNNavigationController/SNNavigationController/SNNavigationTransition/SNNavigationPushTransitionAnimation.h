@@ -6,8 +6,8 @@
 //  Copyright © 2018年 snlo. All rights reserved.
 //
 
-#import "SNTransitionAnimationController.h"
+#import "SNNavigationNavigationBarPushPopTransitionAnimation.h"
 
-@interface SNNavigationPushTransitionAnimation : SNTransitionAnimationController
+@interface SNNavigationPushTransitionAnimation : SNNavigationNavigationBarPushPopTransitionAnimation
 
 @end

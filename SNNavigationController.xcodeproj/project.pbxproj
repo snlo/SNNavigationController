@@ -17,10 +17,8 @@
 		98242520212ECB0F0006876D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824251F212ECB0F0006876D /* main.m */; };
 		9824252A212ECB0F0006876D /* SNNavigationControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242529212ECB0F0006876D /* SNNavigationControllerTests.m */; };
 		98242535212ECB0F0006876D /* SNNavigationControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242534212ECB0F0006876D /* SNNavigationControllerUITests.m */; };
-		98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */; };
 		9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */; };
 		9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */; };
-		98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242553212EDC300006876D /* UIViewController+SNNavigationController.m */; };
 		98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242556212EDCD40006876D /* SNNavigationControllerTool.m */; };
 		98242594213411170006876D /* ViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242592213411170006876D /* ViewControllerCell.m */; };
 		98242595213411170006876D /* ViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98242593213411170006876D /* ViewControllerCell.xib */; };
@@ -38,11 +36,13 @@
 		982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425D82137BA900006876D /* SNNavigationTransitionDelegate.m */; };
 		982425DC2137BB100006876D /* SNTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425DB2137BB100006876D /* SNTransitionAnimationController.m */; };
 		982425DF2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425DE2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m */; };
-		982425E22137BDB90006876D /* SNNavigationPopTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E12137BDB90006876D /* SNNavigationPopTransitionAnimation.m */; };
 		982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */; };
 		982425E82137C1730006876D /* UIViewController+SNNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */; };
 		982425EE2137C3900006876D /* SNTransitionInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425ED2137C3900006876D /* SNTransitionInteractionController.m */; };
 		982425F12137F0030006876D /* RespectedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F02137F0030006876D /* RespectedDetailViewController.m */; };
+		982425F4213912410006876D /* SNNavigationPopRightTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F3213912410006876D /* SNNavigationPopRightTransitionAnimation.m */; };
+		982425F7213922480006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F6213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m */; };
+		982425FA213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F9213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m */; };
 		EB2EEB04E728CBCDB29B007E /* libPods-SNNavigationControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */; };
 /* End PBXBuildFile section */
 
@@ -84,14 +84,10 @@
 		98242530212ECB0F0006876D /* SNNavigationControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNNavigationControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242534212ECB0F0006876D /* SNNavigationControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationControllerUITests.m; sourceTree = "<group>"; };
 		98242536212ECB0F0006876D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SNNavigationController.h"; sourceTree = "<group>"; };
-		98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SNNavigationController.m"; sourceTree = "<group>"; };
 		98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+SNNavigationBar.h"; sourceTree = "<group>"; };
 		9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+SNNavigationBar.m"; sourceTree = "<group>"; };
 		9824254C212ECE440006876D /* UINavigationItem+SNNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+SNNavigationItem.h"; sourceTree = "<group>"; };
 		9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SNNavigationItem.m"; sourceTree = "<group>"; };
-		98242552212EDC300006876D /* UIViewController+SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNNavigationController.h"; sourceTree = "<group>"; };
-		98242553212EDC300006876D /* UIViewController+SNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNNavigationController.m"; sourceTree = "<group>"; };
 		98242555212EDCD40006876D /* SNNavigationControllerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationControllerTool.h; sourceTree = "<group>"; };
 		98242556212EDCD40006876D /* SNNavigationControllerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationControllerTool.m; sourceTree = "<group>"; };
 		98242591213411170006876D /* ViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerCell.h; sourceTree = "<group>"; };
@@ -126,8 +122,6 @@
 		982425DB2137BB100006876D /* SNTransitionAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTransitionAnimationController.m; sourceTree = "<group>"; };
 		982425DD2137BD9F0006876D /* SNNavigationPushTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPushTransitionAnimation.h; sourceTree = "<group>"; };
 		982425DE2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPushTransitionAnimation.m; sourceTree = "<group>"; };
-		982425E02137BDB90006876D /* SNNavigationPopTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPopTransitionAnimation.h; sourceTree = "<group>"; };
-		982425E12137BDB90006876D /* SNNavigationPopTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPopTransitionAnimation.m; sourceTree = "<group>"; };
 		982425E32137BF9F0006876D /* UINavigationController+SNNavigationTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SNNavigationTransition.h"; sourceTree = "<group>"; };
 		982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SNNavigationTransition.m"; sourceTree = "<group>"; };
 		982425E62137C1730006876D /* UIViewController+SNNavigationTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNNavigationTransition.h"; sourceTree = "<group>"; };
@@ -136,6 +130,12 @@
 		982425ED2137C3900006876D /* SNTransitionInteractionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTransitionInteractionController.m; sourceTree = "<group>"; };
 		982425EF2137F0030006876D /* RespectedDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespectedDetailViewController.h; sourceTree = "<group>"; };
 		982425F02137F0030006876D /* RespectedDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespectedDetailViewController.m; sourceTree = "<group>"; };
+		982425F2213912410006876D /* SNNavigationPopRightTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPopRightTransitionAnimation.h; sourceTree = "<group>"; };
+		982425F3213912410006876D /* SNNavigationPopRightTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPopRightTransitionAnimation.m; sourceTree = "<group>"; };
+		982425F5213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationNavigationBarPushPopTransitionAnimation.h; sourceTree = "<group>"; };
+		982425F6213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationNavigationBarPushPopTransitionAnimation.m; sourceTree = "<group>"; };
+		982425F8213934F00006876D /* SNNavigationPopLeftTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPopLeftTransitionAnimation.h; sourceTree = "<group>"; };
+		982425F9213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPopLeftTransitionAnimation.m; sourceTree = "<group>"; };
 		C6532BFB38D370291198AECB /* Pods-SNNavigationController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.release.xcconfig"; sourceTree = "<group>"; };
 		CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D764AEE40A48C6351A004C5B /* Pods-SNNavigationController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,10 +261,6 @@
 			children = (
 				982425D32137A8BD0006876D /* SNNavigationTransition */,
 				982425D22137A87B0006876D /* SNNavigationBar */,
-				98242552212EDC300006876D /* UIViewController+SNNavigationController.h */,
-				98242553212EDC300006876D /* UIViewController+SNNavigationController.m */,
-				98242546212ECE020006876D /* UINavigationController+SNNavigationController.h */,
-				98242547212ECE020006876D /* UINavigationController+SNNavigationController.m */,
 				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
 				98242556212EDCD40006876D /* SNNavigationControllerTool.m */,
 				982425B021352D0F0006876D /* Singletion.h */,
@@ -320,12 +316,16 @@
 				982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */,
 				982425E62137C1730006876D /* UIViewController+SNNavigationTransition.h */,
 				982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */,
+				982425F5213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.h */,
+				982425F6213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m */,
 				982425D72137BA900006876D /* SNNavigationTransitionDelegate.h */,
 				982425D82137BA900006876D /* SNNavigationTransitionDelegate.m */,
 				982425DD2137BD9F0006876D /* SNNavigationPushTransitionAnimation.h */,
 				982425DE2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m */,
-				982425E02137BDB90006876D /* SNNavigationPopTransitionAnimation.h */,
-				982425E12137BDB90006876D /* SNNavigationPopTransitionAnimation.m */,
+				982425F8213934F00006876D /* SNNavigationPopLeftTransitionAnimation.h */,
+				982425F9213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m */,
+				982425F2213912410006876D /* SNNavigationPopRightTransitionAnimation.h */,
+				982425F3213912410006876D /* SNNavigationPopRightTransitionAnimation.m */,
 				982425DA2137BB100006876D /* SNTransitionAnimationController.h */,
 				982425DB2137BB100006876D /* SNTransitionAnimationController.m */,
 				982425EC2137C3900006876D /* SNTransitionInteractionController.h */,
@@ -530,16 +530,15 @@
 				982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */,
 				98242594213411170006876D /* ViewControllerCell.m in Sources */,
 				9824259B213416550006876D /* RespectedViewController.m in Sources */,
-				98242554212EDC300006876D /* UIViewController+SNNavigationController.m in Sources */,
 				982425DC2137BB100006876D /* SNTransitionAnimationController.m in Sources */,
 				982425B921354A8C0006876D /* SNTabBar.m in Sources */,
-				98242548212ECE020006876D /* UINavigationController+SNNavigationController.m in Sources */,
 				982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */,
 				982425AE213517040006876D /* NavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
 				982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */,
+				982425F7213922480006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m in Sources */,
 				982425A1213416F80006876D /* MyViewController.m in Sources */,
-				982425E22137BDB90006876D /* SNNavigationPopTransitionAnimation.m in Sources */,
+				982425F4213912410006876D /* SNNavigationPopRightTransitionAnimation.m in Sources */,
 				982425982134140A0006876D /* TabBarController.m in Sources */,
 				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
 				982425B621354A740006876D /* SNNavigationBar.m in Sources */,
@@ -547,6 +546,7 @@
 				9824259E213416EA0006876D /* FoundViewController.m in Sources */,
 				982425DF2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m in Sources */,
 				982425A421341D870006876D /* MyDetailViewController.m in Sources */,
+				982425FA213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m in Sources */,
 				982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
 				982425E82137C1730006876D /* UIViewController+SNNavigationTransition.m in Sources */,

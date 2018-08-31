@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class SNNavigationTransitionDelegate;
+#import "SNNavigationBar.h"
+#import "SNNavigationTransitionDelegate.h"
 
 @interface UINavigationController (SNNavigationTransition)
+
+@property (nonatomic, strong) SNNavigationBar * sn_navigationBar;
+
+@property (nonatomic, weak) SNNavigationTransitionDelegate * sn_navigationDelegate;
 
 @end

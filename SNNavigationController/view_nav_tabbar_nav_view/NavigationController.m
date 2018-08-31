@@ -8,11 +8,9 @@
 
 #import "NavigationController.h"
 
-#import "UINavigationController+SNNavigationController.h"
 
-@interface NavigationController (){
-    
-}
+
+@interface NavigationController ()
 
 @end
 
@@ -25,7 +23,7 @@
     
     self.sn_navigationBar.hidden = NO;
     
-    
+//    self.delegate = self.sn_navigationDelegate;
 }
 
 - (void)didReceiveMemoryWarning {

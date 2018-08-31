@@ -10,45 +10,89 @@
 
 //animations
 #import "SNNavigationPushTransitionAnimation.h"
-#import "SNNavigationPopTransitionAnimation.h"
+#import "SNNavigationPopLeftTransitionAnimation.h"
+#import "SNNavigationPopRightTransitionAnimation.h"
 
-@interface SNNavigationTransitionDelegate ()
+
+@interface SNNavigationTransitionDelegate () {
+    
+    UIViewController *  _viewController;
+    UIRectEdge          _gestureEdge;
+}
 
 @property (nonatomic, strong) SNNavigationPushTransitionAnimation * pushAnimation;
-@property (nonatomic, strong) SNNavigationPopTransitionAnimation *  popAnimation;
+@property (nonatomic, strong) SNNavigationPopLeftTransitionAnimation *  popLeftAnimation;
+@property (nonatomic, strong) SNNavigationPopRightTransitionAnimation *  popRightAnimation;
+
 
 @end
 
 @implementation SNNavigationTransitionDelegate
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    
     if (operation == UINavigationControllerOperationPop) {
-        return [[SNNavigationPopTransitionAnimation alloc] init];
+        switch (_gestureEdge) {
+            case UIRectEdgeLeft: {
+                _gestureEdge = UIRectEdgeNone;
+                self.popLeftAnimation.reverse = YES;
+                return self.popLeftAnimation;
+            } break;
+            case UIRectEdgeRight: {
+                _gestureEdge = UIRectEdgeNone;
+                self.popRightAnimation.reverse = YES;
+                return self.popRightAnimation;
+            } break;
+            default: {
+                self.popLeftAnimation.reverse = YES;
+                return self.popLeftAnimation;
+            } break;
+        }
     }
     if (operation == UINavigationControllerOperationPush) {
-        return [[SNNavigationPushTransitionAnimation alloc] init];
+        
+        [toVC.view addGestureRecognizer:toVC.sn_leftScreenEdgePanGesture];
+        [toVC.view addGestureRecognizer:toVC.sn_rightScreenEdgePanGesture];
+        _viewController = toVC;
+        
+        [toVC.sn_leftScreenEdgePanGesture addTarget:self action:@selector(handleGesture:)];
+        [toVC.sn_rightScreenEdgePanGesture addTarget:self action:@selector(handleGesture:)];
+        self.pushAnimation.reverse = NO;
+        return self.pushAnimation;
     }
     return nil;
 }
 - (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
-
-    if([animationController isKindOfClass:[SNNavigationPopTransitionAnimation class]]){
-        return self.percentDrivenTransition;
+    
+    if([animationController isKindOfClass:[SNNavigationPopLeftTransitionAnimation class]] ||
+       [animationController isKindOfClass:[SNNavigationPopRightTransitionAnimation class]]){
+        if (self.percentDrivenTransition) {
+            return self.percentDrivenTransition;
+        }
+        return nil;
     } else {
         return nil;
     }
 }
 
+- (void)handleGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
+    _gestureEdge = gesture.edges;
+    CGFloat progress = [gesture translationInView:_viewController.view].x / _viewController.view.bounds.size.width / 2;
+    [self updateState:gesture.state progress:fabs(progress) forViewController:_viewController];
+}
 - (void)updateState:(UIGestureRecognizerState)state progress:(CGFloat)progress forViewController:(UIViewController *)viewController {
     switch (state) {
         case UIGestureRecognizerStateBegan: {
-            self.percentDrivenTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
+            self.percentDrivenTransition = [[SNTransitionInteractionController alloc] init];
+            self.percentDrivenTransition.interactionInProgress = YES;
             [viewController.navigationController popViewControllerAnimated:YES];
         } break;
         case UIGestureRecognizerStateChanged: {
+            self.percentDrivenTransition.interactionInProgress = YES;
             [self.percentDrivenTransition updateInteractiveTransition:progress];
         } break;
         case UIGestureRecognizerStateCancelled: case UIGestureRecognizerStateEnded: {
+            self.percentDrivenTransition.interactionInProgress = NO;
             if(progress > 0.2){
                 [self.percentDrivenTransition finishInteractiveTransition];
             }else{
@@ -57,7 +101,8 @@
             self.percentDrivenTransition = nil;
         } break;
         default: {
-
+            [self.percentDrivenTransition cancelInteractiveTransition];
+            self.percentDrivenTransition = nil;
         } break;
     }
 }
@@ -69,15 +114,15 @@
         _pushAnimation = [[SNNavigationPushTransitionAnimation alloc] init];
     } return _pushAnimation;
 }
-- (SNNavigationPopTransitionAnimation *)popAnimation {
-    if (!_popAnimation) {
-        _popAnimation = [[SNNavigationPopTransitionAnimation alloc] init];
-    } return _popAnimation;
+- (SNNavigationPopLeftTransitionAnimation *)popLeftAnimation {
+    if (!_popLeftAnimation) {
+        _popLeftAnimation = [[SNNavigationPopLeftTransitionAnimation alloc] init];
+    } return _popLeftAnimation;
 }
-- (UIPercentDrivenInteractiveTransition *)percentDrivenTransition {
-    if (!_percentDrivenTransition) {
-        _percentDrivenTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
-    } return _percentDrivenTransition;
+- (SNNavigationPopRightTransitionAnimation *)popRightAnimation {
+    if (!_popRightAnimation) {
+        _popRightAnimation = [[SNNavigationPopRightTransitionAnimation alloc] init];
+    } return _popRightAnimation;
 }
 
 @end

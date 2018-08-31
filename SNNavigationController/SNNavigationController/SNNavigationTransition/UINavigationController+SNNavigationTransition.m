@@ -9,7 +9,6 @@
 #import "UINavigationController+SNNavigationTransition.h"
 
 
-
 @interface UINavigationController ()
 
 @end
@@ -19,15 +18,37 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replaceMethod(self, @selector(pushViewController:animated:), self, @selector(sn_pushViewController:animated:));
+        replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
     });
 }
-
-- (void)sn_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+- (void)sn_viewDidLoad {
+    self.navigationBar.hidden = YES;
     self.delegate = self.sn_navigationDelegate;
-    [self pushViewController:viewController animated:YES];
+}
+#pragma mark -- getter / setter
+- (void)setSn_navigationBar:(SNNavigationBar *)sn_navigationBar {
+    objc_setAssociatedObject(self, @selector(sn_navigationBar), sn_navigationBar, OBJC_ASSOCIATION_ASSIGN);
+}
+- (SNNavigationBar *)sn_navigationBar {
+    SNNavigationBar * view = objc_getAssociatedObject(self, _cmd);
+    if (!view) {
+        view = [[SNNavigationBar alloc] init];
+        self.navigationBar.hidden = YES;
+        [self.view addSubview:view];
+        objc_setAssociatedObject(self, @selector(sn_navigationBar), view, OBJC_ASSOCIATION_ASSIGN);
+    } return view;
 }
 
+- (void)setSn_navigationDelegate:(SNNavigationTransitionDelegate *)sn_navigationDelegate {
+    objc_setAssociatedObject(self, @selector(sn_navigationDelegate), sn_navigationDelegate, OBJC_ASSOCIATION_RETAIN);
+}
+- (SNNavigationTransitionDelegate *)sn_navigationDelegate {
+    SNNavigationTransitionDelegate * delegate = objc_getAssociatedObject(self, _cmd);
+    if (!delegate) {
+        delegate = [[SNNavigationTransitionDelegate alloc] init];
+        objc_setAssociatedObject(self, @selector(sn_navigationDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
+    } return delegate;
+}
 
 
 @end

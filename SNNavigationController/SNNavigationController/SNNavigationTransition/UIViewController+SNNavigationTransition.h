@@ -10,20 +10,12 @@
 
 @interface UIViewController (SNNavigationTransition)
 
-
-
 /**
- 启动屏幕左边缘拖拽手势
-
- @return 屏幕边缘手势识别器，可用于区分手势冲突
+ 包含了tabBarController.navigationController
  */
-- (UIScreenEdgePanGestureRecognizer *)startLeftScreenEdgePanGesture;
+@property (nonatomic, strong) UINavigationController * sn_navigationController;
 
-/**
- 启动屏幕右边缘拖拽手势
-
- @return 屏幕边缘手势识别器，可用于区分手势冲突
- */
-- (UIScreenEdgePanGestureRecognizer *)startRightScreenEdgePanGesture;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer * sn_leftScreenEdgePanGesture;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer * sn_rightScreenEdgePanGesture;
 
 @end

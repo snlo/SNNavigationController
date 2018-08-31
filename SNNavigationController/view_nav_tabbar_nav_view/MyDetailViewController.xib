@@ -26,8 +26,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeI-vm-OMZ">
-                    <rect key="frame" x="164" y="318" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                    <rect key="frame" x="172" y="318" width="30" height="30"/>
+                    <state key="normal" title="pop"/>
                     <connections>
                         <action selector="handleButton:" destination="-1" eventType="touchUpInside" id="woo-S4-PHf"/>
                     </connections>
@@ -39,6 +39,13 @@
                         <constraint firstAttribute="height" constant="44" id="gZq-x5-YlI"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgJ-Hl-fpd">
+                    <rect key="frame" x="170" y="392" width="34" height="30"/>
+                    <state key="normal" title="push"/>
+                    <connections>
+                        <action selector="handlePushButton:" destination="-1" eventType="touchUpInside" id="Zma-Pa-Z8S"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -51,6 +58,8 @@
                 <constraint firstItem="0HE-fE-KcE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kDu-hU-fIx"/>
                 <constraint firstItem="0HE-fE-KcE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ndk-1G-Zhi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OqK-0z-HId" secondAttribute="trailing" id="rrn-rf-lZP"/>
+                <constraint firstItem="NgJ-Hl-fpd" firstAttribute="top" secondItem="AeI-vm-OMZ" secondAttribute="bottom" constant="44" id="xE1-KJ-NJQ"/>
+                <constraint firstItem="NgJ-Hl-fpd" firstAttribute="centerX" secondItem="AeI-vm-OMZ" secondAttribute="centerX" id="zwe-VL-7sy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

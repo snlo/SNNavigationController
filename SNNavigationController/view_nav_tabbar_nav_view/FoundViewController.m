@@ -10,7 +10,6 @@
 
 #import "MyDetailViewController.h"
 
-#import "UIViewController+SNNavigationController.h"
 
 #import "ViewControllerCell.h"
 

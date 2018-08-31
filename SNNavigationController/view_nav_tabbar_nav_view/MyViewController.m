@@ -10,11 +10,9 @@
 
 #import "MyDetailViewController.h"
 
-#import "UIViewController+SNNavigationController.h"
 
 #import "SNNavigationControllerTool.h"
 
-#import "UINavigationController+SNNavigationController.h"
 
 @interface MyViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

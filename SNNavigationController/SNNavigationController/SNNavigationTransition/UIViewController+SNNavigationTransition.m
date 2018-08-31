@@ -14,49 +14,91 @@
 
 @interface UIViewController ()
 
-@property (nonatomic, weak) SNNavigationTransitionDelegate * sn_navigationDelegate;
-
 @end
 
 @implementation UIViewController (SNNavigationTransition)
 
-- (UIScreenEdgePanGestureRecognizer *)startRightScreenEdgePanGesture {
-    
-    self.navigationController.delegate = self.sn_navigationDelegate;
-    
-    UIScreenEdgePanGestureRecognizer * rightScreenEdgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRightScreenEdgePanGesture:)];
-    
-    rightScreenEdgePan.edges = UIRectEdgeRight;
-    [self.view addGestureRecognizer:rightScreenEdgePan];
-    
-    return rightScreenEdgePan;
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        replaceMethod(self, @selector(viewWillAppear:), self, @selector(sn_viewWillAppear:));
+        replaceMethod(self, @selector(viewDidAppear:), self, @selector(sn_viewDidAppear:));
+        replaceMethod(self, @selector(viewWillDisappear:), self, @selector(sn_viewWillDisappear:));
+        replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
+    });
 }
 
-- (UIScreenEdgePanGestureRecognizer *)startLeftScreenEdgePanGesture {
-    
-    self.navigationController.delegate = self.sn_navigationDelegate;
-    UIScreenEdgePanGestureRecognizer * leftScreenEdgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftScreenEdgePanGesture:)];
-    
-    leftScreenEdgePan.edges = UIRectEdgeLeft;
-    [self.view addGestureRecognizer:leftScreenEdgePan];
-    
-    return leftScreenEdgePan;
+- (void)sn_viewWillAppear:(BOOL)animated {
+    if ([self isKindOfClass:[UINavigationController class]] ||
+        [self isKindOfClass:[UITabBarController class]]) {
+        return;
+    }
+    if (self.tabBarController) {
+        if ([self.tabBarController.navigationController isEqual:self.navigationController]) {
+            self.tabBarController.navigationController.sn_navigationBar.hidden = NO;
+        } else {
+            self.tabBarController.navigationController.sn_navigationBar.hidden = YES;
+        }
+        self.tabBarController.navigationItem.title = self.title;
+    } else {
+        self.navigationController.sn_navigationBar.hidden = NO;
+    }
+    __block UIScrollView * scrollview;
+    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[UIScrollView class]]) {
+            scrollview = obj;
+        }
+    }];
+    if (scrollview) {
+        [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
+        }];
+    }
+    [self sn_viewWillAppear:animated];
 }
-#pragma mark -- action
-- (void)handleRightScreenEdgePanGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
-    CGFloat progress = self.view.bounds.size.width / [gesture translationInView:self.view].x / 2;
-    [self.navigationController.sn_navigationDelegate updateState:gesture.state progress:progress forViewController:self];
+- (void)sn_viewDidAppear:(BOOL)animated {
+    [RACObserve(self.sn_navigationController.sn_navigationBar, frame) subscribeNext:^(id  _Nullable x) {
+        
+    }];
+    __block UIScrollView * scrollview;
+    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[UIScrollView class]]) {
+            scrollview = obj;
+        }
+    }];
+    if (scrollview) {
+        [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
+        }];
+    }
+    [self sn_viewDidAppear:animated];
 }
-
-- (void)handleLeftScreenEdgePanGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
-
-    CGFloat progress = [gesture translationInView:self.view].x / self.view.bounds.size.width / 2;
-    [self.navigationController.sn_navigationDelegate updateState:gesture.state progress:progress forViewController:self];
+- (void)sn_viewWillDisappear:(BOOL)animated {
+    
+    [self sn_viewWillDisappear:animated];
 }
-
-#pragma mark -- UINavigationControllerDelegate
+- (void)sn_viewDidLoad {
+    
+    [self sn_viewDidLoad];
+}
 
 #pragma mark -- getter / setter
+
+- (void)setSn_navigationController:(UINavigationController *)sn_navigationController {
+    objc_setAssociatedObject(self, @selector(sn_navigationController), sn_navigationController, OBJC_ASSOCIATION_ASSIGN);
+}
+- (UINavigationController *)sn_navigationController {
+    if (self.navigationController) {
+        return self.navigationController;
+    } else if (self.tabBarController) {
+        return self.tabBarController.navigationController;
+    } else if ([self isKindOfClass:[UINavigationController class]]) {
+        return (UINavigationController *)self;
+    } else {
+        return objc_getAssociatedObject(self, _cmd);
+    }
+}
+
 
 - (void)setSn_navigationDelegate:(SNNavigationTransitionDelegate *)sn_navigationDelegate {
     objc_setAssociatedObject(self, @selector(sn_navigationDelegate), sn_navigationDelegate, OBJC_ASSOCIATION_RETAIN);
@@ -67,6 +109,31 @@
         delegate = [[SNNavigationTransitionDelegate alloc] init];
         objc_setAssociatedObject(self, @selector(sn_navigationDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
     } return delegate;
+}
+
+
+- (void)setSn_leftScreenEdgePanGesture:(UIScreenEdgePanGestureRecognizer *)sn_leftScreenEdgePanGesture {
+    objc_setAssociatedObject(self, @selector(setSn_leftScreenEdgePanGesture:), sn_leftScreenEdgePanGesture, OBJC_ASSOCIATION_ASSIGN);
+}
+- (UIScreenEdgePanGestureRecognizer *)sn_leftScreenEdgePanGesture {
+    UIScreenEdgePanGestureRecognizer * gesture = objc_getAssociatedObject(self, _cmd);
+    if (!gesture) {
+        gesture = [[UIScreenEdgePanGestureRecognizer alloc] init];
+        gesture.edges = UIRectEdgeLeft;
+        objc_setAssociatedObject(self, @selector(sn_leftScreenEdgePanGesture), gesture, OBJC_ASSOCIATION_ASSIGN);
+    } return gesture;
+}
+
+- (void)setSn_rightScreenEdgePanGesture:(UIScreenEdgePanGestureRecognizer *)sn_rightScreenEdgePanGesture {
+    objc_setAssociatedObject(self, @selector(sn_rightScreenEdgePanGesture), sn_rightScreenEdgePanGesture, OBJC_ASSOCIATION_ASSIGN);
+}
+- (UIScreenEdgePanGestureRecognizer *)sn_rightScreenEdgePanGesture {
+    UIScreenEdgePanGestureRecognizer * gesture = objc_getAssociatedObject(self, _cmd);
+    if (!gesture) {
+        gesture = [[UIScreenEdgePanGestureRecognizer alloc] init];
+        gesture.edges = UIRectEdgeRight;
+        objc_setAssociatedObject(self, @selector(sn_rightScreenEdgePanGesture), gesture, OBJC_ASSOCIATION_ASSIGN);
+    } return gesture;
 }
 
 @end
