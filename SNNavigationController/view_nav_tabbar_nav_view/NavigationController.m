@@ -19,11 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor blueColor];
-    
-    self.sn_navigationBar.hidden = NO;
-    
-//    self.delegate = self.sn_navigationDelegate;
 }
 
 - (void)didReceiveMemoryWarning {

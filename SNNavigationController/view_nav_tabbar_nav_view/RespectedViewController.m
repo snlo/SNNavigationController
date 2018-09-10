@@ -19,19 +19,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    UIView * view = [[UIView alloc] init];
-//    view.backgroundColor = [UIColor blackColor];
-//    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
-//    [SNNavigationControllerTool sharedManager].navigationBar = view;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//	self.title = @"tui chong";
 
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

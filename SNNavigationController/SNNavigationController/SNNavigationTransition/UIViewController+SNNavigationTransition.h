@@ -15,7 +15,12 @@
  */
 @property (nonatomic, strong) UINavigationController * sn_navigationController;
 
+//手势
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer * sn_leftScreenEdgePanGesture;
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer * sn_rightScreenEdgePanGesture;
+@property (nonatomic, strong) UIPanGestureRecognizer * sn_pullScreenBackPanGesture;
+
+//
+
 
 @end

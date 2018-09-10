@@ -20,15 +20,19 @@
     
     
     UIView * maskView = [[UIView alloc] init];
-    maskView.backgroundColor = [UIColor blackColor];
-    maskView.alpha = 0.1;
+	maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
+	maskView.alpha = 1.0;
     maskView.frame = toView.bounds;
     [toView addSubview:maskView];
     
-    fromView.layer.shadowColor = [UIColor blackColor].CGColor;
-    fromView.layer.shadowOpacity = 0.2f;
-    fromView.layer.shadowOffset = CGSizeMake(-3, 0);
-    fromView.layer.shadowRadius = 8;
+	UIView * viewShadown = [[UIView alloc] init];
+	viewShadown.backgroundColor = [UIColor redColor];
+	viewShadown.frame = CGRectMake(SCREEN_WIDTH/2-10, 0, 10, SCREEN_HEIGHT);
+	viewShadown.layer.shadowColor = [UIColor blackColor].CGColor;
+	viewShadown.layer.shadowOpacity = 0.5f;
+	viewShadown.layer.shadowOffset = CGSizeMake(-3, 0);
+	viewShadown.layer.shadowRadius = 8;
+	[maskView addSubview:viewShadown];
     
     // animate
     NSTimeInterval duration = [self transitionDuration:transitionContext];
@@ -36,7 +40,8 @@
         
         fromView.frame = CGRectMake(-SCREEN_WIDTH, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
         toView.frame = CGRectMake(0, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
-        maskView.alpha = 0;
+        maskView.alpha = 0.0;
+		viewShadown.frame = CGRectMake(-10, 0, 10, SCREEN_HEIGHT);
         
     } completion:^(BOOL finished) {
         if ([transitionContext transitionWasCancelled]) {

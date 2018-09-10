@@ -10,4 +10,9 @@
 
 @interface SNNavigationBar : UIView
 
+@property (nonatomic, strong) UIView * viewTitle;
+
+@property (nonatomic, strong) UILabel * labelTitle;
+@property (nonatomic, strong) UILabel * labelMoveTile;
+
 @end

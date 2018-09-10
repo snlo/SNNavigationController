@@ -43,6 +43,10 @@
     } else {
         self.navigationController.sn_navigationBar.hidden = NO;
     }
+
+//	self.navigationController.sn_navigationBar.labelTitle.text = self.title;
+//	self.navigationController.sn_navigationBar.labelMoveTile.
+	
     __block UIScrollView * scrollview;
     [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[UIScrollView class]]) {
@@ -57,20 +61,20 @@
     [self sn_viewWillAppear:animated];
 }
 - (void)sn_viewDidAppear:(BOOL)animated {
-    [RACObserve(self.sn_navigationController.sn_navigationBar, frame) subscribeNext:^(id  _Nullable x) {
-        
-    }];
-    __block UIScrollView * scrollview;
-    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UIScrollView class]]) {
-            scrollview = obj;
-        }
-    }];
-    if (scrollview) {
-        [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
-        }];
-    }
+//    [RACObserve(self.sn_navigationController.sn_navigationBar, frame) subscribeNext:^(id  _Nullable x) {
+//		__block UIScrollView * scrollview;
+//		[self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//			if ([obj isKindOfClass:[UIScrollView class]]) {
+//				scrollview = obj;
+//			}
+//		}];
+//		if (scrollview) {
+//			[scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
+//				make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
+//			}];
+//		}
+//    }];
+	
     [self sn_viewDidAppear:animated];
 }
 - (void)sn_viewWillDisappear:(BOOL)animated {
@@ -84,6 +88,7 @@
 
 #pragma mark -- getter / setter
 
+//多导航栏
 - (void)setSn_navigationController:(UINavigationController *)sn_navigationController {
     objc_setAssociatedObject(self, @selector(sn_navigationController), sn_navigationController, OBJC_ASSOCIATION_ASSIGN);
 }
@@ -99,7 +104,7 @@
     }
 }
 
-
+//转场代理
 - (void)setSn_navigationDelegate:(SNNavigationTransitionDelegate *)sn_navigationDelegate {
     objc_setAssociatedObject(self, @selector(sn_navigationDelegate), sn_navigationDelegate, OBJC_ASSOCIATION_RETAIN);
 }
@@ -111,7 +116,7 @@
     } return delegate;
 }
 
-
+#pragma mark -- 手势
 - (void)setSn_leftScreenEdgePanGesture:(UIScreenEdgePanGestureRecognizer *)sn_leftScreenEdgePanGesture {
     objc_setAssociatedObject(self, @selector(setSn_leftScreenEdgePanGesture:), sn_leftScreenEdgePanGesture, OBJC_ASSOCIATION_ASSIGN);
 }
@@ -132,8 +137,20 @@
     if (!gesture) {
         gesture = [[UIScreenEdgePanGestureRecognizer alloc] init];
         gesture.edges = UIRectEdgeRight;
+		gesture.enabled = NO;
         objc_setAssociatedObject(self, @selector(sn_rightScreenEdgePanGesture), gesture, OBJC_ASSOCIATION_ASSIGN);
     } return gesture;
+}
+- (void)setSn_pullScreenBackPanGesture:(UIPanGestureRecognizer *)sn_pullScreenBackPanGesture {
+	objc_setAssociatedObject(self, @selector(sn_pullScreenBackPanGesture), sn_pullScreenBackPanGesture, OBJC_ASSOCIATION_ASSIGN);
+}
+- (UIPanGestureRecognizer *)sn_pullScreenBackPanGesture {
+	UIPanGestureRecognizer * gesture = objc_getAssociatedObject(self, _cmd);
+	if (!gesture) {
+		gesture = [[UIPanGestureRecognizer alloc] init];
+		gesture.enabled = NO;
+		objc_setAssociatedObject(self, @selector(sn_pullScreenBackPanGesture), gesture, OBJC_ASSOCIATION_ASSIGN);
+	} return gesture;
 }
 
 @end

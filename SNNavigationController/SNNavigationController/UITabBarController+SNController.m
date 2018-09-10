@@ -20,7 +20,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 - (void)viewDidLoad {
-//    self.tabBar.hidden = YES;
+
 }
 #pragma clang diagnostic pop
 
