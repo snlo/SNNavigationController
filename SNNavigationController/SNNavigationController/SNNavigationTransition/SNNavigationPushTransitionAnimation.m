@@ -11,7 +11,7 @@
 @implementation SNNavigationPushTransitionAnimation
 
 - (void)navigationAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController fromView:(UIView *)fromView toView:(UIView *)toView {
-    // Add the toView to the container
+	
     UIView* containerView = [transitionContext containerView];
     [containerView addSubview:toView];
     [containerView bringSubviewToFront:toView];
@@ -20,17 +20,21 @@
     
     
     UIView * maskView = [[UIView alloc] init];
-    maskView.backgroundColor = [UIColor blackColor];
+    maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
     maskView.frame = fromView.bounds;
     maskView.alpha = 0.0;
     [fromView addSubview:maskView];
 
     
-    toView.layer.shadowColor = [UIColor blackColor].CGColor;
-    toView.layer.shadowOpacity = 0.2f;
-    toView.layer.shadowOffset = CGSizeMake(3, 0);
-    toView.layer.shadowRadius = 8;
-    
+	UIView * viewShadown = [[UIView alloc] init];
+	viewShadown.backgroundColor = [UIColor redColor];
+	viewShadown.frame = CGRectMake(SCREEN_WIDTH, 0, 10, SCREEN_HEIGHT);
+	viewShadown.layer.shadowColor = [UIColor blackColor].CGColor;
+	viewShadown.layer.shadowOpacity = 0.5f;
+	viewShadown.layer.shadowOffset = CGSizeMake(3, 0);
+	viewShadown.layer.shadowRadius = 8;
+	[maskView addSubview:viewShadown];
+	
     
     // animate
     NSTimeInterval duration = [self transitionDuration:transitionContext];
@@ -38,9 +42,8 @@
         
         fromView.frame = CGRectMake(-SCREEN_WIDTH/2, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
         toView.frame = CGRectMake(0, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
-        maskView.alpha = 0.1;
-        
-        NSLog(@" -- - -- -wdg - - -%@",toView.subviews);
+        maskView.alpha = 1.0;
+		viewShadown.frame = CGRectMake(SCREEN_WIDTH/2, 0, 10, SCREEN_HEIGHT);
         
     } completion:^(BOOL finished) {
         if ([transitionContext transitionWasCancelled]) {

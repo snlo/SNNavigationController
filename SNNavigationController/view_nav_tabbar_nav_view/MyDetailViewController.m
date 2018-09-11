@@ -12,6 +12,7 @@
 @interface MyDetailViewController () <UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *viewTest;
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition * percentDrivenTransition;
 
@@ -31,10 +32,10 @@
     
     
 }
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    self.sn_leftScreenEdgePanGesture.enabled = NO;
+	self.sn_rightScreenEdgePanGesture.enabled = YES;
 }
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -48,7 +49,17 @@
 	self.title = @"详情页";
     
     self.view.backgroundColor = [UIColor whiteColor];
-
+	
+	[RACObserve(self.tableView, contentOffset) subscribeNext:^(id _Nullable x) {
+		self.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(0, self.tableView.contentOffset.y);
+	}];
+	
+	self.viewTest.layer.shadowColor = [UIColor redColor].CGColor;
+	self.viewTest.layer.shadowOpacity = 0.2f;
+	self.viewTest.layer.shadowOffset = CGSizeMake(3, 0);
+	self.viewTest.layer.shadowRadius = 8;
+	
+	self.navigationController.sn_navigationBar.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,11 +68,31 @@
 }
 
 - (IBAction)handleButton:(id)sender {
-    NSLog(@"%@",[self.sn_navigationController popViewControllerAnimated:YES]);
+	NSLog(@"%@",self.sn_leftScreenEdgePanGesture);
+//    NSLog(@"%@",[self.sn_navigationController popViewControllerAnimated:YES]);
+//	[CATransaction begin];
+//	[CATransaction setDisableActions:YES];
+////	[CATransaction setAnimationDuration:3.0];
+//	self.viewTest.layer.shadowOffset = CGSizeMake(10, 10);
+//	[CATransaction commit];
+	
+	
+//	CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"shadowOffset"];
+//	anim.toValue = [NSValue valueWithCGSize:CGSizeMake(10, 10)];
+//	anim.duration = 3.0;
+//	anim.beginTime = 0;
+//	anim.removedOnCompletion = NO;
+//	anim.fillMode = kCAFillModeForwards;
+//	[self.viewTest.layer addAnimation:anim forKey:@"animName"];
+	
+	[UIView animateWithDuration:3.0 animations:^{
+		self.viewTest.alpha = 0.0f;
+	}];
 }
 - (IBAction)handlePushButton:(id)sender {
     UIViewController * VC = [[UIViewController alloc] init];
     VC.view.backgroundColor = [UIColor greenColor];
+	VC.title = @"什么👻";
     [self.navigationController pushViewController:VC animated:YES];
 }
 

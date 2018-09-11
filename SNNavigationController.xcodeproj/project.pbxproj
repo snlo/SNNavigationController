@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5E0D175E31784927B1D943CB /* libPods-SNNavigationControllerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 219201320588B573DF8655E1 /* libPods-SNNavigationControllerUITests.a */; };
+		5EB3477421411729007482B3 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB3477321411729007482B3 /* OneViewController.m */; };
+		5EB3477721411736007482B3 /* TowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB3477621411736007482B3 /* TowViewController.m */; };
 		6D125B4243D69E10E372C9BF /* libPods-SNNavigationController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */; };
 		98242512212ECB0D0006876D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242511212ECB0D0006876D /* AppDelegate.m */; };
 		98242515212ECB0D0006876D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242514212ECB0D0006876D /* ViewController.m */; };
@@ -67,6 +69,10 @@
 		219201320588B573DF8655E1 /* libPods-SNNavigationControllerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationControllerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37259AB3C37730B3C134F9B8 /* Pods-SNNavigationControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerTests/Pods-SNNavigationControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BBC231FF5D02FE5AAF4B4D6 /* Pods-SNNavigationControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerTests/Pods-SNNavigationControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		5EB3477221411729007482B3 /* OneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneViewController.h; sourceTree = "<group>"; };
+		5EB3477321411729007482B3 /* OneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneViewController.m; sourceTree = "<group>"; };
+		5EB3477521411736007482B3 /* TowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TowViewController.h; sourceTree = "<group>"; };
+		5EB3477621411736007482B3 /* TowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TowViewController.m; sourceTree = "<group>"; };
 		70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9824250D212ECB0D0006876D /* SNNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242510212ECB0D0006876D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -223,6 +229,10 @@
 				98242511212ECB0D0006876D /* AppDelegate.m */,
 				98242513212ECB0D0006876D /* ViewController.h */,
 				98242514212ECB0D0006876D /* ViewController.m */,
+				5EB3477221411729007482B3 /* OneViewController.h */,
+				5EB3477321411729007482B3 /* OneViewController.m */,
+				5EB3477521411736007482B3 /* TowViewController.h */,
+				5EB3477621411736007482B3 /* TowViewController.m */,
 				98242591213411170006876D /* ViewControllerCell.h */,
 				98242592213411170006876D /* ViewControllerCell.m */,
 				98242593213411170006876D /* ViewControllerCell.xib */,
@@ -533,6 +543,7 @@
 				982425DC2137BB100006876D /* SNTransitionAnimationController.m in Sources */,
 				982425B921354A8C0006876D /* SNTabBar.m in Sources */,
 				982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */,
+				5EB3477721411736007482B3 /* TowViewController.m in Sources */,
 				982425AE213517040006876D /* NavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
 				982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */,
@@ -545,6 +556,7 @@
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
 				9824259E213416EA0006876D /* FoundViewController.m in Sources */,
 				982425DF2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m in Sources */,
+				5EB3477421411729007482B3 /* OneViewController.m in Sources */,
 				982425A421341D870006876D /* MyDetailViewController.m in Sources */,
 				982425FA213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m in Sources */,
 				982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */,

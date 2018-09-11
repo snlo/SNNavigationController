@@ -23,6 +23,7 @@
 }
 - (void)sn_viewDidLoad {
     self.navigationBar.hidden = YES;
+	[self sn_navigationBar];
     self.delegate = self.sn_navigationDelegate;
 }
 #pragma mark -- getter / setter
@@ -33,7 +34,6 @@
     SNNavigationBar * view = objc_getAssociatedObject(self, _cmd);
     if (!view) {
         view = [[SNNavigationBar alloc] init];
-        self.navigationBar.hidden = YES;
         [self.view addSubview:view];
         objc_setAssociatedObject(self, @selector(sn_navigationBar), view, OBJC_ASSOCIATION_ASSIGN);
     } return view;
