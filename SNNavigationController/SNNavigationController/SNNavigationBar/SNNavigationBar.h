@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIView * viewTitle;
 
-@property (nonatomic, strong) UILabel * labelTitle;
-@property (nonatomic, strong) UILabel * labelMoveTile;
+@property (nonatomic, strong) UILabel * labelToTitle;
+@property (nonatomic, strong) UILabel * labelFromTile;
 
 @end

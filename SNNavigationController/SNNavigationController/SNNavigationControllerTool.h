@@ -13,6 +13,8 @@
 
 //@interface SNNavigationControllerTool : NSObject
 
+#define kIs_iPhoneX (SCREEN_HEIGHT / SCREEN_WIDTH > 2.1 ? YES : NO)
+
 singletonInterface(SNNavigationControllerTool)
 
 /**

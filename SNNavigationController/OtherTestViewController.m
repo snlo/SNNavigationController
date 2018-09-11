@@ -1,32 +1,27 @@
 //
-//  RespectedViewController.m
+//  OtherTestViewController.m
 //  SNNavigationController
 //
-//  Created by snlo on 2018/8/27.
+//  Created by snlo on 2018/9/11.
 //  Copyright © 2018年 snlo. All rights reserved.
 //
 
-#import "RespectedViewController.h"
+#import "OtherTestViewController.h"
 
-#import "SNNavigationControllerTool.h"
-
-@interface RespectedViewController ()
+@interface OtherTestViewController ()
 
 @end
 
-@implementation RespectedViewController
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-}
+@implementation OtherTestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    self.sn_navigationBarBackgroudColor = [UIColor greenColor];
     
+    self.navigationController.navigationBar.hidden = NO;
+    self.title = @"test";
+    
+    self.navigationController.navigationBar.prefersLargeTitles = YES;
 }
 
 - (void)didReceiveMemoryWarning {

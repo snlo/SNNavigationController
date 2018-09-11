@@ -12,49 +12,54 @@
 
 #pragma mark -- 只针对导航栏动画
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController fromView:(UIView *)fromView toView:(UIView *)toView {
-    
+	
     NSTimeInterval duration = [self transitionDuration:transitionContext];
-	
-	if (self.reverse) { // pop
-		toViewController.navigationController.sn_navigationBar.labelTitle.text = toViewController.title;
-		toViewController.navigationController.sn_navigationBar.labelMoveTile.text = fromViewController.title;
-		toViewController.navigationController.sn_navigationBar.labelTitle.alpha = 0;
-		toViewController.navigationController.sn_navigationBar.labelMoveTile.alpha = 1;
-		toViewController.navigationController.sn_navigationBar.labelMoveTile.center = CGPointMake(SCREEN_WIDTH/2, toViewController.navigationController.sn_navigationBar.labelMoveTile.center.y);
-	} else {
-		toViewController.navigationController.sn_navigationBar.labelTitle.text = toViewController.title;
-		toViewController.navigationController.sn_navigationBar.labelMoveTile.text = fromViewController.title;
-		toViewController.navigationController.sn_navigationBar.labelTitle.alpha = 0;
-		toViewController.navigationController.sn_navigationBar.labelMoveTile.alpha = 1;
-		toViewController.navigationController.sn_navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH, toViewController.navigationController.sn_navigationBar.labelMoveTile.center.y);
-	}
-	
-	
+    SNNavigationBar * navigationBar = toViewController.sn_navigationController.sn_navigationBar;
+    
+    //处理视图控制器为标签栏视图控制器的情况
+    if ([toViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController * tabbarController = (UITabBarController *)toViewController;
+        toViewController = tabbarController.selectedViewController;
+    }
+    if ([fromViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController * tabbarController = (UITabBarController *)fromViewController;
+        fromViewController = tabbarController.selectedViewController;
+    }
+    
+    navigationBar.labelToTitle.text = toViewController.title;
+    navigationBar.labelFromTile.text = fromViewController.title;
+    navigationBar.labelToTitle.alpha = 0;
+    navigationBar.labelFromTile.alpha = 1;
+    navigationBar.backgroundColor = fromViewController.sn_navigationBarBackgroudColor;
+    
+    if (self.reverse) { // pop
+        navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
+    } else {
+        navigationBar.labelToTitle.center = CGPointMake(SCREEN_WIDTH, navigationBar.labelFromTile.center.y);
+    }
+    
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:1 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        navigationBar.labelToTitle.alpha = 1;
+        navigationBar.labelFromTile.alpha = 0;
+        
         if (self.reverse) { // pop
-			
-            toViewController.navigationController.sn_navigationBar.backgroundColor = [UIColor redColor];
-            toViewController.navigationController.sn_navigationBar.alpha = 1;
-            toViewController.navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
-			
-			
-			toViewController.navigationController.sn_navigationBar.labelTitle.alpha = 1;
-			toViewController.navigationController.sn_navigationBar.labelMoveTile.alpha = 0;
-			toViewController.navigationController.sn_navigationBar.labelMoveTile.center = CGPointMake(SCREEN_WIDTH, toViewController.navigationController.sn_navigationBar.labelMoveTile.center.y);
-			
+            
+            navigationBar.backgroundColor = toViewController.sn_navigationBarBackgroudColor;
+//            navigationBar.alpha = 1;
+            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, toViewController.sn_navigationBarHeight);
+            navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH, navigationBar.labelFromTile.center.y);
         } else { // push
-			
-            toViewController.navigationController.sn_navigationBar.backgroundColor = [UIColor blueColor];
-            toViewController.navigationController.sn_navigationBar.alpha = 1;
-            toViewController.navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 128);
-
-			toViewController.navigationController.sn_navigationBar.labelTitle.alpha = 1;
-			toViewController.navigationController.sn_navigationBar.labelMoveTile.alpha = 0;
-			toViewController.navigationController.sn_navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH/2, toViewController.navigationController.sn_navigationBar.labelMoveTile.center.y);
+            
+            navigationBar.backgroundColor = toViewController.sn_navigationBarBackgroudColor;
+//            navigationBar.alpha = 1;
+            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, toViewController.sn_navigationBarHeight);
+            navigationBar.labelToTitle.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
         }
+
     } completion:^(BOOL finished) {
-		toViewController.navigationController.sn_navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH/2, toViewController.navigationController.sn_navigationBar.labelMoveTile.center.y);
-		toViewController.navigationController.sn_navigationBar.labelMoveTile.center = CGPointMake(SCREEN_WIDTH/2, toViewController.navigationController.sn_navigationBar.labelMoveTile.center.y);
+        navigationBar.labelToTitle.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
+        navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
     }];
     [self navigationAnimateTransition:transitionContext fromViewController:fromViewController toViewController:toViewController fromView:fromView toView:toView];
 }

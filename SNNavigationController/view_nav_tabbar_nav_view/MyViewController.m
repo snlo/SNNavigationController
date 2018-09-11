@@ -31,7 +31,9 @@
 	
 	self.title = @"我的";
 	
-    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
+    self.sn_navigationBarBackgroudColor = [UIColor yellowColor];
+    
+//    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
     UILabel *label = [[UILabel alloc] init];
     label.text = @"左标题";
     label.textColor = [UIColor blackColor];

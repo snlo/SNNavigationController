@@ -36,6 +36,8 @@
     [super viewDidAppear:animated];
     
 	self.sn_rightScreenEdgePanGesture.enabled = YES;
+    
+    
 }
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -47,19 +49,30 @@
     // Do any additional setup after loading the view.
 	
 	self.title = @"详情页";
+    self.sn_navigationBarBackgroudColor = [UIColor blueColor];
+//    self.sn_prefersLargeTitles = YES;
+    self.sn_navigationBarHeight = 100;
     
     self.view.backgroundColor = [UIColor whiteColor];
+
+    [RACObserve(self.tableView, contentOffset) subscribeNext:^(id  _Nullable x) {
+        NSLog(@"77777777");
+    }];
+    [RACObserve(self.tableView, contentOffset) subscribeNext:^(id  _Nullable x) {
+        NSLog(@"888888888");
+    }];
 	
-	[RACObserve(self.tableView, contentOffset) subscribeNext:^(id _Nullable x) {
-		self.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(0, self.tableView.contentOffset.y);
-	}];
-	
+    [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+    
 	self.viewTest.layer.shadowColor = [UIColor redColor].CGColor;
 	self.viewTest.layer.shadowOpacity = 0.2f;
 	self.viewTest.layer.shadowOffset = CGSizeMake(3, 0);
 	self.viewTest.layer.shadowRadius = 8;
 	
 	self.navigationController.sn_navigationBar.backgroundColor = [UIColor clearColor];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    NSLog(@"00 00 0 0 0");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,6 +81,7 @@
 }
 
 - (IBAction)handleButton:(id)sender {
+    NSLog(@"----- -- ---------- --- - %@",self.tableView.constraints);
 	NSLog(@"%@",self.sn_leftScreenEdgePanGesture);
 //    NSLog(@"%@",[self.sn_navigationController popViewControllerAnimated:YES]);
 //	[CATransaction begin];
