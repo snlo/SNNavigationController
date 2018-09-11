@@ -43,34 +43,11 @@
     } else {
         self.navigationController.sn_navigationBar.hidden = NO;
     }
-    __block UIScrollView * scrollview;
-    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UIScrollView class]]) {
-            scrollview = obj;
-        }
-    }];
-    if (scrollview) {
-        [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
-        }];
-    }
+    
     [self sn_viewWillAppear:animated];
 }
 - (void)sn_viewDidAppear:(BOOL)animated {
-    [RACObserve(self.sn_navigationController.sn_navigationBar, frame) subscribeNext:^(id  _Nullable x) {
-        
-    }];
-    __block UIScrollView * scrollview;
-    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UIScrollView class]]) {
-            scrollview = obj;
-        }
-    }];
-    if (scrollview) {
-        [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
-        }];
-    }
+    
     [self sn_viewDidAppear:animated];
 }
 - (void)sn_viewWillDisappear:(BOOL)animated {
@@ -78,7 +55,19 @@
     [self sn_viewWillDisappear:animated];
 }
 - (void)sn_viewDidLoad {
-    
+    [RACObserve(self.sn_navigationController.sn_navigationBar, frame) subscribeNext:^(id  _Nullable x) {
+        __block UIScrollView * scrollview;
+        [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[UIScrollView class]]) {
+                scrollview = obj;
+            }
+        }];
+        if (scrollview) {
+            [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.view.mas_top).offset(self.sn_navigationController.sn_navigationBar.frame.size.height);
+            }];
+        }
+    }];
     [self sn_viewDidLoad];
 }
 

@@ -13,30 +13,6 @@
 #pragma mark -- 只针对导航栏动画
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController fromView:(UIView *)fromView toView:(UIView *)toView {
     
-//    __block UIScrollView * scrollview;
-//    __block UIScrollView * scrollview2;
-//    [toView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if ([obj isKindOfClass:[UIScrollView class]]) {
-//            scrollview = obj;
-//        }
-//    }];
-//    [fromView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if ([obj isKindOfClass:[UIScrollView class]]) {
-//            scrollview2 = obj;
-//        }
-//    }];
-//
-//    if (scrollview) {
-//        [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(toView.mas_top).offset(toViewController.sn_navigationController.sn_navigationBar.frame.size.height);
-//        }];
-//    }
-//    if (scrollview2) {
-//        [scrollview mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(fromView.mas_top).offset(fromViewController.sn_navigationController.sn_navigationBar.frame.size.height);
-//        }];
-//    }
-    
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:1 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
         if (self.reverse) { // pop
