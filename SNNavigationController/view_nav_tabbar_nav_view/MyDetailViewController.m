@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *viewTest;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelTest;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition * percentDrivenTransition;
 
 @property (nonatomic, weak) SNNavigationTransitionDelegate * sn_navigationDelegate;
@@ -35,8 +36,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-	self.sn_rightScreenEdgePanGesture.enabled = YES;
-    
     
 }
 - (void)viewDidDisappear:(BOOL)animated {
@@ -49,20 +48,22 @@
     // Do any additional setup after loading the view.
 	
 	self.title = @"详情页";
-    self.sn_navigationBarBackgroudColor = [UIColor blueColor];
-//    self.sn_prefersLargeTitles = YES;
-    self.sn_navigationBarHeight = 100;
+    
+    self.sn_navigationItem.barBackgroudColor = [UIColor whiteColor];
+    self.sn_navigationItem.prefersLargeTitles = YES;
+    self.sn_rightScreenEdgePanGesture.enabled = YES;
     
     self.view.backgroundColor = [UIColor whiteColor];
-
-    [RACObserve(self.tableView, contentOffset) subscribeNext:^(id  _Nullable x) {
-        NSLog(@"77777777");
-    }];
-    [RACObserve(self.tableView, contentOffset) subscribeNext:^(id  _Nullable x) {
-        NSLog(@"888888888");
-    }];
-	
-    [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+    
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"sssssss" forState:UIControlStateNormal];
+    
+    UIButton * button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button1 setTitle:@"ddddd" forState:UIControlStateNormal];
+    
+    self.sn_navigationController.sn_navigationBar.leftBarButtonItems = @[button,button1];
+    
+    
     
 	self.viewTest.layer.shadowColor = [UIColor redColor].CGColor;
 	self.viewTest.layer.shadowOpacity = 0.2f;
@@ -71,18 +72,18 @@
 	
 	self.navigationController.sn_navigationBar.backgroundColor = [UIColor clearColor];
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    NSLog(@"00 00 0 0 0");
+- (void)test:(UIBarButtonItem *)sender {
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)handleButton:(id)sender {
-    NSLog(@"----- -- ---------- --- - %@",self.tableView.constraints);
-	NSLog(@"%@",self.sn_leftScreenEdgePanGesture);
+    
+    NSLog(@"%@",self.labelTest.constraints);
+    
 //    NSLog(@"%@",[self.sn_navigationController popViewControllerAnimated:YES]);
 //	[CATransaction begin];
 //	[CATransaction setDisableActions:YES];

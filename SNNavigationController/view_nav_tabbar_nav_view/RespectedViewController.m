@@ -20,13 +20,17 @@
     [super viewWillAppear:animated];
     
 }
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.sn_navigationBarBackgroudColor = [UIColor greenColor];
     
+    self.sn_navigationItem.barBackgroudColor = [UIColor greenColor];
 }
 
 - (void)didReceiveMemoryWarning {

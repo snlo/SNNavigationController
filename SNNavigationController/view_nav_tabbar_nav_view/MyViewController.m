@@ -25,13 +25,18 @@
     [super viewWillAppear:animated];
     
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
 	self.title = @"我的";
-	
-    self.sn_navigationBarBackgroudColor = [UIColor yellowColor];
+	self.sn_navigationItem.barBackgroudColor = [UIColor yellowColor];
+    
     
 //    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
     UILabel *label = [[UILabel alloc] init];

@@ -18,10 +18,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.sn_navigationController.sn_navigationBar.hidden = YES;
     self.navigationController.navigationBar.hidden = NO;
-    self.title = @"test";
+    self.title = @"xxxxxxxxxxxxxxxxxxxxxxxxAxxxxxxxxxxxxxxxxxxxxxxxxxx";
     
     self.navigationController.navigationBar.prefersLargeTitles = YES;
+    self.navigationItem.leftBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:@"xxxxxxxx" style:UIBarButtonItemStyleDone target:self action:@selector(test:)], [[UIBarButtonItem alloc] initWithTitle:@"sssssssddddddddd" style:UIBarButtonItemStyleDone target:self action:@selector(test:)]];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:@"xxxxxxxx" style:UIBarButtonItemStyleDone target:self action:@selector(test:)], [[UIBarButtonItem alloc] initWithTitle:@"sssssdd" style:UIBarButtonItemStyleDone target:self action:@selector(test:)]];
+}
+
+- (void)test:(UIBarButtonItem *)sender {
+    
 }
 
 - (void)didReceiveMemoryWarning {

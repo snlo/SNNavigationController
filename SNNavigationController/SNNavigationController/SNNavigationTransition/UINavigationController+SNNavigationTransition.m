@@ -21,6 +21,9 @@
         replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
     });
 }
+
+
+
 - (void)sn_viewDidLoad {
     self.navigationBar.hidden = YES;
 	[self sn_navigationBar];

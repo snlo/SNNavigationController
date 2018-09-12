@@ -47,6 +47,7 @@
 		982425FA213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F9213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m */; };
 		98F7A844214770AF00C7624F /* UIViewController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F7A843214770AF00C7624F /* UIViewController+Custom.m */; };
 		98F7A847214797D500C7624F /* OtherTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F7A846214797D500C7624F /* OtherTestViewController.m */; };
+		98F7A84A2148BA4700C7624F /* SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F7A8492148BA4700C7624F /* SNNavigationItem.m */; };
 		EB2EEB04E728CBCDB29B007E /* libPods-SNNavigationControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,8 @@
 		98F7A843214770AF00C7624F /* UIViewController+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Custom.m"; sourceTree = "<group>"; };
 		98F7A845214797D500C7624F /* OtherTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherTestViewController.h; sourceTree = "<group>"; };
 		98F7A846214797D500C7624F /* OtherTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherTestViewController.m; sourceTree = "<group>"; };
+		98F7A8482148BA4700C7624F /* SNNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationItem.h; sourceTree = "<group>"; };
+		98F7A8492148BA4700C7624F /* SNNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationItem.m; sourceTree = "<group>"; };
 		C6532BFB38D370291198AECB /* Pods-SNNavigationController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.release.xcconfig"; sourceTree = "<group>"; };
 		CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D764AEE40A48C6351A004C5B /* Pods-SNNavigationController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.debug.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +328,8 @@
 			children = (
 				982425B421354A740006876D /* SNNavigationBar.h */,
 				982425B521354A740006876D /* SNNavigationBar.m */,
+				98F7A8482148BA4700C7624F /* SNNavigationItem.h */,
+				98F7A8492148BA4700C7624F /* SNNavigationItem.m */,
 			);
 			path = SNNavigationBar;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
 				982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */,
 				982425F7213922480006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m in Sources */,
+				98F7A84A2148BA4700C7624F /* SNNavigationItem.m in Sources */,
 				98F7A847214797D500C7624F /* OtherTestViewController.m in Sources */,
 				982425A1213416F80006876D /* MyViewController.m in Sources */,
 				982425F4213912410006876D /* SNNavigationPopRightTransitionAnimation.m in Sources */,

@@ -14,11 +14,17 @@
 
 @implementation RespectedDetailViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.sn_navigationBarBackgroudColor = [UIColor orangeColor];
+    self.sn_navigationItem.barBackgroudColor = [UIColor orangeColor];
 }
 
 - (void)didReceiveMemoryWarning {

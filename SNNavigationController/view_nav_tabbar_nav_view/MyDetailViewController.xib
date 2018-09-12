@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyDetailViewController">
             <connections>
+                <outlet property="labelTest" destination="piy-0N-c3r" id="wnh-R8-aRk"/>
                 <outlet property="tableView" destination="OqK-0z-HId" id="8hx-Wv-Byu"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5QW-Y9-KIJ"/>
                 <outlet property="viewTest" destination="3eO-8q-yD7" id="Oih-gA-WNH"/>
@@ -54,6 +55,12 @@
                         <constraint firstAttribute="height" constant="60" id="q9m-91-H6y"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piy-0N-c3r">
+                    <rect key="frame" x="166.5" y="273" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -62,6 +69,7 @@
                 <constraint firstItem="AeI-vm-OMZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CEY-rk-kdo"/>
                 <constraint firstItem="OqK-0z-HId" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ddd-mG-Obk"/>
                 <constraint firstItem="3eO-8q-yD7" firstAttribute="centerX" secondItem="NgJ-Hl-fpd" secondAttribute="centerX" id="Dw7-4k-rLC"/>
+                <constraint firstItem="piy-0N-c3r" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-50" id="RKF-OW-KpC"/>
                 <constraint firstItem="OqK-0z-HId" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RTM-84-9tg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0HE-fE-KcE" secondAttribute="trailing" id="SGR-A6-Asm"/>
                 <constraint firstItem="0HE-fE-KcE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kDu-hU-fIx"/>
@@ -70,6 +78,7 @@
                 <constraint firstItem="0HE-fE-KcE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ndk-1G-Zhi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3eO-8q-yD7" secondAttribute="trailing" constant="60" id="rbJ-Bz-wNE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OqK-0z-HId" secondAttribute="trailing" id="rrn-rf-lZP"/>
+                <constraint firstItem="piy-0N-c3r" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="t98-pR-hp6"/>
                 <constraint firstItem="NgJ-Hl-fpd" firstAttribute="top" secondItem="AeI-vm-OMZ" secondAttribute="bottom" constant="44" id="xE1-KJ-NJQ"/>
                 <constraint firstItem="NgJ-Hl-fpd" firstAttribute="centerX" secondItem="AeI-vm-OMZ" secondAttribute="centerX" id="zwe-VL-7sy"/>
             </constraints>

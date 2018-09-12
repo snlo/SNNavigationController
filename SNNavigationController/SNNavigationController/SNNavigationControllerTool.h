@@ -14,6 +14,7 @@
 //@interface SNNavigationControllerTool : NSObject
 
 #define kIs_iPhoneX (SCREEN_HEIGHT / SCREEN_WIDTH > 2.1 ? YES : NO)
+#define kNavigationBarHeight (kIs_iPhoneX ? 88:64)
 
 singletonInterface(SNNavigationControllerTool)
 

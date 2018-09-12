@@ -28,7 +28,7 @@
         replaceMethod(self, @selector(viewWillDisappear:), self, @selector(sn_viewWillDisappear:));
         replaceMethod(self, @selector(viewDidDisappear:), self, @selector(sn_viewDidDisappear:));
         replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
-        replaceMethod(self, @selector(observeValueForKeyPath:ofObject:change:context:), self, @selector(sn_observeValueForKeyPath:ofObject:change:context:));
+        
     });
 }
 
@@ -50,8 +50,8 @@
     }
     
     //基本属性交接
-    self.sn_navigationController.sn_navigationBar.labelToTitle.text = self.title;
-    self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationBarBackgroudColor;
+    self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
+    self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
 //	self.navigationController.sn_navigationBar.labelMoveTile.
     
     //处理滑动视图偏移
@@ -68,23 +68,25 @@
                                         toItem:self.view
                                      attribute:NSLayoutAttributeTop
                                     multiplier:1.0f
-                                      constant:self.sn_navigationBarHeight].active = YES;
+                                      constant:kNavigationBarHeight].active = YES;
+        self.sn_currentScrollView.contentInset = UIEdgeInsetsMake(self.sn_navigationItem.barHeight-kNavigationBarHeight, 0, 0, 0);
     }
     
     [self sn_viewWillAppear:animated];
 }
 - (void)sn_viewDidAppear:(BOOL)animated {
-	
-//    if (self.sn_currentScrollView.observationInfo) {
-//        [self.sn_currentScrollView removeObserver:self forKeyPath:@"contentOffset"];
-//    }
-//    [self.sn_currentScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:@"sn_currentScrollView_contentOffset"];
     
-    [RACObserve(self.sn_currentScrollView, contentOffset) subscribeNext:^(id  _Nullable x) {
-        NSLog(@"%@",NSStringFromCGPoint(CGPointMake(100, 32)));
-        NSLog(@" -- - -000 - -- -%f",self.sn_currentScrollView.contentOffset.y);
-    }];
-    
+    if (self.sn_navigationItem.prefersLargeTitles) {
+        [RACObserve(self.sn_currentScrollView, contentOffset) subscribeNext:^(id  _Nullable x) {
+            CGFloat offset_y = self.sn_currentScrollView.contentOffset.y + self.sn_currentScrollView.contentInset.top;
+            if (offset_y != 0) {
+                CGFloat height = self.sn_navigationItem.barHeight - offset_y;
+                if (height > kNavigationBarHeight) {
+                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+                }
+            }
+        }];
+    }
     [self sn_viewDidAppear:animated];
 }
 - (void)sn_viewWillDisappear:(BOOL)animated {
@@ -93,30 +95,13 @@
 }
 - (void)sn_viewDidDisappear:(BOOL)animated {
     
-//    [self.sn_currentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     [self sn_viewDidDisappear:animated];
 }
 - (void)sn_viewDidLoad {
     
-    NSLog(@" -- - -- %@",self.sn_currentScrollView);
-    
-    
     [self sn_viewDidLoad];
 }
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-//    NSLog(@"keyPath=%@,object=%@,change=%@,context=%@",keyPath,object,change,context);
-//}
-- (void)sn_observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    
-    if ([[NSString stringWithFormat:@"%@",context] isEqualToString:@"sn_currentScrollView_contentOffset"]) {
-        NSLog(@"-- -- - -- ");
-        CGPoint * offset = (__bridge CGPoint *)([change objectForKey:NSKeyValueChangeNewKey]);
-        self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.sn_navigationController.sn_navigationBar.frame.size.height+offset->y);
-    } else {
-        
-    }
-    [self sn_observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-}
+
 #pragma mark -- getter / setter
 
 #pragma mark -- 多导航栏
@@ -159,19 +144,19 @@
 
 #pragma mark -- 手势
 - (void)setSn_leftScreenEdgePanGesture:(UIScreenEdgePanGestureRecognizer *)sn_leftScreenEdgePanGesture {
-    objc_setAssociatedObject(self, @selector(setSn_leftScreenEdgePanGesture:), sn_leftScreenEdgePanGesture, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(setSn_leftScreenEdgePanGesture:), sn_leftScreenEdgePanGesture, OBJC_ASSOCIATION_RETAIN);
 }
 - (UIScreenEdgePanGestureRecognizer *)sn_leftScreenEdgePanGesture {
     UIScreenEdgePanGestureRecognizer * gesture = objc_getAssociatedObject(self, _cmd);
     if (!gesture) {
         gesture = [[UIScreenEdgePanGestureRecognizer alloc] init];
         gesture.edges = UIRectEdgeLeft;
-        objc_setAssociatedObject(self, @selector(sn_leftScreenEdgePanGesture), gesture, OBJC_ASSOCIATION_ASSIGN);
+        objc_setAssociatedObject(self, @selector(sn_leftScreenEdgePanGesture), gesture, OBJC_ASSOCIATION_RETAIN);
     } return gesture;
 }
 
 - (void)setSn_rightScreenEdgePanGesture:(UIScreenEdgePanGestureRecognizer *)sn_rightScreenEdgePanGesture {
-    objc_setAssociatedObject(self, @selector(sn_rightScreenEdgePanGesture), sn_rightScreenEdgePanGesture, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(sn_rightScreenEdgePanGesture), sn_rightScreenEdgePanGesture, OBJC_ASSOCIATION_RETAIN);
 }
 - (UIScreenEdgePanGestureRecognizer *)sn_rightScreenEdgePanGesture {
     UIScreenEdgePanGestureRecognizer * gesture = objc_getAssociatedObject(self, _cmd);
@@ -179,63 +164,33 @@
         gesture = [[UIScreenEdgePanGestureRecognizer alloc] init];
         gesture.edges = UIRectEdgeRight;
         gesture.enabled = NO;
-        objc_setAssociatedObject(self, @selector(sn_rightScreenEdgePanGesture), gesture, OBJC_ASSOCIATION_ASSIGN);
+        objc_setAssociatedObject(self, @selector(sn_rightScreenEdgePanGesture), gesture, OBJC_ASSOCIATION_RETAIN);
     } return gesture;
 }
 - (void)setSn_pullScreenBackPanGesture:(UIPanGestureRecognizer *)sn_pullScreenBackPanGesture {
-    objc_setAssociatedObject(self, @selector(sn_pullScreenBackPanGesture), sn_pullScreenBackPanGesture, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(sn_pullScreenBackPanGesture), sn_pullScreenBackPanGesture, OBJC_ASSOCIATION_RETAIN);
 }
 - (UIPanGestureRecognizer *)sn_pullScreenBackPanGesture {
     UIPanGestureRecognizer * gesture = objc_getAssociatedObject(self, _cmd);
     if (!gesture) {
         gesture = [[UIPanGestureRecognizer alloc] init];
         gesture.enabled = NO;
-        objc_setAssociatedObject(self, @selector(sn_pullScreenBackPanGesture), gesture, OBJC_ASSOCIATION_ASSIGN);
+        objc_setAssociatedObject(self, @selector(sn_pullScreenBackPanGesture), gesture, OBJC_ASSOCIATION_RETAIN);
     } return gesture;
 }
 
-#pragma mark -- 导航栏属性
-//
-- (void)setSn_navigationBarBackgroudColor:(UIColor *)sn_navigationBarBackgroudColor {
-    self.sn_navigationController.sn_navigationBar.backgroundColor = sn_navigationBarBackgroudColor;
-    objc_setAssociatedObject(self, @selector(sn_navigationBarBackgroudColor), sn_navigationBarBackgroudColor, OBJC_ASSOCIATION_ASSIGN);
+#pragma mark -- SNNavigationItem
+- (void)setSn_navigationItem:(SNNavigationItem *)sn_navigationItem {
+    objc_setAssociatedObject(self, @selector(sn_navigationItem), sn_navigationItem, OBJC_ASSOCIATION_RETAIN);
 }
-- (UIColor *)sn_navigationBarBackgroudColor {
-    UIColor * color = objc_getAssociatedObject(self, _cmd);
-    if (!color) {
-        color = [UIColor whiteColor];
-        objc_setAssociatedObject(self, @selector(sn_navigationBarBackgroudColor), color, OBJC_ASSOCIATION_ASSIGN);
-    } return color;
+- (SNNavigationItem *)sn_navigationItem {
+    SNNavigationItem * navigationItem = objc_getAssociatedObject(self, _cmd);
+    if (!navigationItem) {
+        navigationItem = [[SNNavigationItem alloc] init];
+        navigationItem.barBackgroudColor = [UIColor whiteColor];
+        navigationItem.prefersLargeTitles = NO;
+        objc_setAssociatedObject(self, @selector(sn_navigationItem), navigationItem, OBJC_ASSOCIATION_RETAIN);
+    } return navigationItem;
 }
-//
-- (void)setSn_navigationBarHeight:(CGFloat)sn_navigationBarHeight {
-    NSNumber * number = [NSNumber numberWithFloat:sn_navigationBarHeight];
-    objc_setAssociatedObject(self, @selector(sn_navigationBarHeight), number, OBJC_ASSOCIATION_RETAIN);
-}
-- (CGFloat)sn_navigationBarHeight {
-    NSNumber * number = objc_getAssociatedObject(self, _cmd);
-    if (!number) {
-        number = [NSNumber numberWithFloat:kIs_iPhoneX ? 88:64];
-        objc_setAssociatedObject(self, @selector(sn_navigationBarHeight), number, OBJC_ASSOCIATION_RETAIN);
-    } return [number floatValue];
-}
-//
-- (void)setSn_prefersLargeTitles:(BOOL)sn_prefersLargeTitles {
-    NSNumber * number = [NSNumber numberWithBool:sn_prefersLargeTitles];
-    if ([number boolValue]) {
-        self.sn_navigationBarHeight = (kIs_iPhoneX ? 88:64)+52;
-    } else {
-        self.sn_navigationBarHeight = kIs_iPhoneX ? 88:64;
-    }
-    objc_setAssociatedObject(self, @selector(sn_prefersLargeTitles), number, OBJC_ASSOCIATION_RETAIN);
-}
-- (BOOL)sn_prefersLargeTitles {
-    NSNumber * number = objc_getAssociatedObject(self, _cmd);
-    if (!number) {
-        number = [NSNumber numberWithBool:NO];
-        objc_setAssociatedObject(self, @selector(sn_prefersLargeTitles), number, OBJC_ASSOCIATION_RETAIN);
-    } return [number boolValue];
-}
-
 
 @end

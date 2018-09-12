@@ -20,10 +20,17 @@
 
 @implementation FoundViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"发现了";
+    self.sn_navigationItem.barBackgroudColor = [UIColor whiteColor];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -31,7 +38,7 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 14, 0, 0); //设置分割线缩颈
     self.tableView.allowsSelection = NO; //cell交互
     self.tableView.delaysContentTouches = NO; //延迟（能让cell上的事件响应灵敏，但也会带来交互误触的弊端）
-    self.sn_navigationBarBackgroudColor = [UIColor redColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {

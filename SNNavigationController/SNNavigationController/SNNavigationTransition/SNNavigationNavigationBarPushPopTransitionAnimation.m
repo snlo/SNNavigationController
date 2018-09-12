@@ -26,39 +26,59 @@
         fromViewController = tabbarController.selectedViewController;
     }
     
-    navigationBar.labelToTitle.text = toViewController.title;
+    SNNavigationItem * navigationItemFrom = fromViewController.sn_navigationItem;
+    SNNavigationItem * navigationItemTo = toViewController.sn_navigationItem;
+    
+    navigationBar.labelTitle.text = toViewController.title;
     navigationBar.labelFromTile.text = fromViewController.title;
-    navigationBar.labelToTitle.alpha = 0;
+    
+    navigationBar.labelTitle.alpha = 0;
     navigationBar.labelFromTile.alpha = 1;
-    navigationBar.backgroundColor = fromViewController.sn_navigationBarBackgroudColor;
+    
+    navigationBar.viewLeftBarButtonStack.alpha = 0;
+    navigationBar.viewFromLeftBarButtonStack.alpha = 1;
+    
+    navigationBar.backgroundColor = navigationItemFrom.barBackgroudColor;
     
     if (self.reverse) { // pop
         navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
     } else {
-        navigationBar.labelToTitle.center = CGPointMake(SCREEN_WIDTH, navigationBar.labelFromTile.center.y);
+        navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH, navigationBar.labelFromTile.center.y);
     }
+    
+    [UIView animateWithDuration:duration/2 animations:^{
+        
+        navigationBar.viewFromLeftBarButtonStack.alpha = 0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:duration/2 animations:^{
+            navigationBar.viewLeftBarButtonStack.alpha = 1;
+        }];
+    }];
     
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:1 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        navigationBar.labelToTitle.alpha = 1;
+        navigationBar.labelTitle.alpha = 1;
         navigationBar.labelFromTile.alpha = 0;
+        
+        
         
         if (self.reverse) { // pop
             
-            navigationBar.backgroundColor = toViewController.sn_navigationBarBackgroudColor;
-//            navigationBar.alpha = 1;
-            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, toViewController.sn_navigationBarHeight);
+            navigationBar.backgroundColor = navigationItemTo.barBackgroudColor;
+            navigationBar.alpha = 1;
+            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, navigationItemTo.barHeight);
             navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH, navigationBar.labelFromTile.center.y);
         } else { // push
             
-            navigationBar.backgroundColor = toViewController.sn_navigationBarBackgroudColor;
-//            navigationBar.alpha = 1;
-            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, toViewController.sn_navigationBarHeight);
-            navigationBar.labelToTitle.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
+            navigationBar.backgroundColor = navigationItemTo.barBackgroudColor;
+            navigationBar.alpha = 1;
+            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, navigationItemTo.barHeight);
+            navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
         }
 
+
     } completion:^(BOOL finished) {
-        navigationBar.labelToTitle.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
+        navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
         navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
     }];
     [self navigationAnimateTransition:transitionContext fromViewController:fromViewController toViewController:toViewController fromView:fromView toView:toView];

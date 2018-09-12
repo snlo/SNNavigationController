@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SNNavigationItem.h"
+
 @interface UIViewController (SNNavigationTransition)
 
 /**
@@ -15,16 +17,16 @@
  */
 @property (nonatomic, strong) UINavigationController * sn_navigationController;
 
-//手势
+/**
+ 手势，默认只开启左边缘手势
+ */
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer * sn_leftScreenEdgePanGesture;
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer * sn_rightScreenEdgePanGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer * sn_pullScreenBackPanGesture;
 
-//导航栏背景色，默认白色
-@property (nonatomic, strong) UIColor * sn_navigationBarBackgroudColor;
-//导航栏高度，默认
-@property (nonatomic, assign) CGFloat sn_navigationBarHeight;
-//导航栏大标题，默认不是
-@property (nonatomic, assign) BOOL sn_prefersLargeTitles;
+/**
+ 导航栏相关设置
+ */
+@property (nonatomic, readonly, strong) SNNavigationItem * sn_navigationItem;
 
 @end
