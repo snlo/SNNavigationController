@@ -13,9 +13,14 @@
 @interface SNTransitionAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
 
 /**
- 动画的方向
+ 动画的逆转（push、pop）
  */
 @property (nonatomic, assign) BOOL reverse;
+
+/**
+ 动画方向
+ */
+@property (nonatomic, assign) UIRectEdge rectEdge;
 
 /**
  动画时间

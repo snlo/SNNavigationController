@@ -31,14 +31,14 @@
 }
 #pragma mark -- getter / setter
 - (void)setSn_navigationBar:(SNNavigationBar *)sn_navigationBar {
-    objc_setAssociatedObject(self, @selector(sn_navigationBar), sn_navigationBar, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(sn_navigationBar), sn_navigationBar, OBJC_ASSOCIATION_RETAIN);
 }
 - (SNNavigationBar *)sn_navigationBar {
     SNNavigationBar * view = objc_getAssociatedObject(self, _cmd);
     if (!view) {
         view = [[SNNavigationBar alloc] init];
         [self.view addSubview:view];
-        objc_setAssociatedObject(self, @selector(sn_navigationBar), view, OBJC_ASSOCIATION_ASSIGN);
+        objc_setAssociatedObject(self, @selector(sn_navigationBar), view, OBJC_ASSOCIATION_RETAIN);
     } return view;
 }
 

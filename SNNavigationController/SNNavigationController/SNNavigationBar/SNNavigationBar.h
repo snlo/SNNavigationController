@@ -11,6 +11,7 @@
 @interface SNNavigationBar : UIView
 //标题视图
 @property (nonatomic, strong) UIView * viewTitle;
+@property (nonatomic, strong) UIView * viewMaskTitleView;
 //标题
 @property (nonatomic, strong) UILabel * labelTitle;
 @property (nonatomic, strong) UILabel * labelFromTile;
@@ -21,16 +22,25 @@
 //分割线
 @property (nonatomic, strong) UIView * separatorLine;
 
-
-
+//
 @property (nonatomic, strong) UIView * viewLeftBarButtonStack;
 @property (nonatomic, strong) UIView * viewFromLeftBarButtonStack;
 @property (nonatomic, strong) UIView * viewRightBarButtonStack;
 @property (nonatomic, strong) UIView * viewFromRightBarButtonStack;
 
+//
 @property (nonatomic, strong) NSArray <UIButton *> *leftBarButtonItems;
+@property (nonatomic, strong) NSArray <UIButton *> *leftFromBarButtonItems;
 @property (nonatomic, strong) NSArray <UIButton *> *rightBarButtonItems;
+@property (nonatomic, strong) NSArray <UIButton *> *rightFromBarButtonItems;
 
+//大标题
+@property (nonatomic, strong) UIView * viewLargeTitle;
+@property (nonatomic, strong) UILabel * labelLargeTitle;
 
+/**
+ 设置首页强制大标题
+ */
+- (void)setForcePrefersLargeTitles;
 
 @end

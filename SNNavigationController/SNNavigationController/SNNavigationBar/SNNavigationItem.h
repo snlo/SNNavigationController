@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SNNavigationItem : NSObject <NSCoding>
+@interface SNNavigationItem : NSObject
 
 //导航栏背景色，默认白色
 @property (nonatomic, strong) UIColor * barBackgroudColor;
@@ -19,7 +19,12 @@
 //导航栏大标题，默认不是
 @property (nonatomic, assign) BOOL prefersLargeTitles;
 
-@property (nonatomic, strong) NSArray <UIBarButtonItem *> *leftBarButtonItems;
-@property (nonatomic, strong) NSArray <UIBarButtonItem *> *rightBarButtonItems;
+//首页强制大标题
+@property (nonatomic, assign) BOOL forcePrefersLargeTitles;
+
+@property (nonatomic, strong) NSArray <UIButton *> *leftBarButtonItems;
+@property (nonatomic, strong) NSArray <UIButton *> *rightBarButtonItems;
+
+@property (nonatomic, assign) CGPoint centerLabelTitle;
 
 @end

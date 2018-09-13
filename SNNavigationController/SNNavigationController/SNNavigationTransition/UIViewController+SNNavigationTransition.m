@@ -52,7 +52,10 @@
     //基本属性交接
     self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
     self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
-//	self.navigationController.sn_navigationBar.labelMoveTile.
+    self.sn_navigationController.sn_navigationBar.labelTitle.center = self.sn_navigationItem.centerLabelTitle;
+    if (self.sn_navigationItem.forcePrefersLargeTitles) {
+        [self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles];
+    }
     
     //处理滑动视图偏移
 //    __block UIScrollView * scrollview;

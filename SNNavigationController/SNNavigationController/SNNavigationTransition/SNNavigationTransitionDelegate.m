@@ -34,22 +34,25 @@ static const NSString * kPopViewController = @"ihgiqwefba234665:<>:>:&&jklsdbjkl
 - (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
     
     if (operation == UINavigationControllerOperationPop) {
+        
         switch (_gestureEdge) {
             case UIRectEdgeLeft: {
-                _gestureEdge = UIRectEdgeNone;
                 self.popLeftAnimation.reverse = YES;
+                self.popLeftAnimation.rectEdge = UIRectEdgeLeft;
                 return self.popLeftAnimation;
             } break;
             case UIRectEdgeRight: {
-                _gestureEdge = UIRectEdgeNone;
                 self.popRightAnimation.reverse = YES;
+                self.popRightAnimation.rectEdge = UIRectEdgeRight;
                 return self.popRightAnimation;
             } break;
             default: {
                 self.popLeftAnimation.reverse = YES;
+                self.popLeftAnimation.rectEdge = UIRectEdgeLeft;
                 return self.popLeftAnimation;
             } break;
         }
+        _gestureEdge = UIRectEdgeNone;
     }
     if (operation == UINavigationControllerOperationPush) {
         
@@ -85,32 +88,31 @@ static const NSString * kPopViewController = @"ihgiqwefba234665:<>:>:&&jklsdbjkl
     _gestureEdge = gesture.edges;
 	
 	_viewController = objc_getAssociatedObject(gesture, &kPopViewController);
-    CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width / 2;
+    CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width * 0.432;
     [self updateState:gesture.state progress:fabs(progress) forViewController:_viewController];
 }
 - (void)handlePullScreenGesture:(UIPanGestureRecognizer *)gesture {
 	_viewController = objc_getAssociatedObject(gesture, &kPopViewController);
-	CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width / 2;
+	CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width * 0.432;
 	
-	if (progress < 0) {
-		if (_gestureEdge == UIRectEdgeNone) {
-			_gestureEdge = UIRectEdgeRight;
-		}
-	} else if (progress > 0) {
-		if (_gestureEdge == UIRectEdgeNone) {
-			_gestureEdge = UIRectEdgeLeft;
-		}
-	}
+    if (_gestureEdge == UIRectEdgeNone || !_gestureEdge) {
+        if (progress < 0.00) {
+            _gestureEdge = UIRectEdgeRight;
+        } else {
+            _gestureEdge = UIRectEdgeLeft;
+        }
+    }
+    
 	if (_gestureEdge == UIRectEdgeLeft) {
 		if (progress < 0) {
 			progress = 0;
 		}
-	} else {
+	} else if (_gestureEdge == UIRectEdgeRight) {
 		if (progress > 0) {
 			progress = 0;
 		}
 	}
-	
+    
 	[self updateState:gesture.state progress:fabs(progress) forViewController:_viewController];
 }
 - (void)updateState:(UIGestureRecognizerState)state progress:(CGFloat)progress forViewController:(UIViewController *)viewController {

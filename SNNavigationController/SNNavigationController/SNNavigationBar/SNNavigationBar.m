@@ -8,6 +8,10 @@
 
 #import "SNNavigationBar.h"
 
+@interface SNNavigationBar ()
+
+@end
+
 @implementation SNNavigationBar
 
 - (instancetype)init
@@ -31,7 +35,7 @@
     
 	[self labelTitle];
     [self separatorLine];
-    
+
     [RACObserve(self.labelTitle, text) subscribeNext:^(NSString * _Nullable x) {
         [self updateTitleLabel:self.labelTitle];
     }];
@@ -41,6 +45,10 @@
     [RACObserve(self, frame) subscribeNext:^(id  _Nullable x) {
         self.separatorLine.frame = CGRectMake(0, self.bounds.size.height, SCREEN_WIDTH, 0.5);
     }];
+    [RACObserve(self, backgroundColor) subscribeNext:^(id  _Nullable x) {
+        self.viewMaskTitleView.backgroundColor = self.backgroundColor;
+    }];
+
 }
 
 - (void)updateTitleLabel:(UILabel *)label {
@@ -49,21 +57,29 @@
     label.frame = CGRectMake(0, 0, width, size.height +1);
     label.center = CGPointMake(self.viewTitle.bounds.size.width/2, self.viewTitle.bounds.size.height/2);
 }
-- (void)updateBarButtonItems:(NSArray <UIButton *> *)buttonItems from:(UIView *)barButtonItemsView {
+- (void)clearAlloc:(id)object {
+    object = nil;
+}
+- (void)updateBarButtonItems:(NSArray <UIButton *> *)buttonItems from:(UIView *)barButtonItemsView atLeft:(BOOL)left {
     __block CGFloat width = 0;
+    [barButtonItemsView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [barButtonItemsView.subviews makeObjectsPerformSelector:@selector(clearAlloc:)];
     [buttonItems enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGSize size = [obj.titleLabel sizeThatFits:CGSizeMake(SCREEN_WIDTH, MAXFLOAT)];
         CGFloat X = width;
         CGFloat WIDTH = size.width + obj.imageView.image.size.width;
-        if (obj.frame.size.width > 0) {
-            WIDTH = obj.frame.size.width;
-        }
+        WIDTH = obj.frame.size.width > 0 ? obj.frame.size.width : WIDTH + 1;
         width += WIDTH + 8;
         [barButtonItemsView addSubview:obj];
-        obj.frame = CGRectMake(8+X, 0, WIDTH+1, 44);
+        obj.frame = CGRectMake(8+X, 0, WIDTH, 44);
         [obj setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }];
-    barButtonItemsView.frame = CGRectMake(8, kIs_iPhoneX?44:20, width+8, 44);
+    barButtonItemsView.frame = CGRectMake(left?8:SCREEN_WIDTH-(width+8), kIs_iPhoneX?44:20, width+8, 44);
+}
+
+- (void)setForcePrefersLargeTitles {
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, kNavigationBarHeight + 52);
+    self.labelTitle.center = CGPointMake(16 + self.labelTitle.bounds.size.width/2, 44 + 52/2);
 }
 
 #pragma mark -- getter / setter
@@ -73,6 +89,10 @@
 		_viewTitle.frame = CGRectMake(0, kIs_iPhoneX?44:20, SCREEN_WIDTH, 44);
 		_viewTitle.backgroundColor = [UIColor clearColor];
 		[self addSubview:_viewTitle];
+        self.viewMaskTitleView = [[UIView alloc] init];
+        self.viewMaskTitleView.frame = _viewTitle.bounds;
+        self.viewMaskTitleView.backgroundColor = self.backgroundColor;
+//        [_viewTitle insertSubview:self.viewMaskTitleView atIndex:0];
         
 	} return _viewTitle;
 }
@@ -121,8 +141,7 @@
 }
 - (UIView *)viewFromLeftBarButtonStack {
     if (!_viewFromLeftBarButtonStack) {
-        NSData * archiveData = [NSKeyedArchiver archivedDataWithRootObject:self.viewLeftBarButtonStack];
-        _viewFromLeftBarButtonStack = [NSKeyedUnarchiver unarchiveObjectWithData:archiveData];
+        _viewFromLeftBarButtonStack = [[UIView alloc] init];
         [self addSubview:_viewFromLeftBarButtonStack];
     } return _viewFromLeftBarButtonStack;
 }
@@ -140,11 +159,18 @@
 }
 - (void)setLeftBarButtonItems:(NSArray<UIButton *> *)leftBarButtonItems {
     _leftBarButtonItems = leftBarButtonItems;
-    [self updateBarButtonItems:_leftBarButtonItems from:self.viewLeftBarButtonStack];
+    [self updateBarButtonItems:_leftBarButtonItems from:self.viewLeftBarButtonStack atLeft:YES];
+}
+- (void)setLeftFromBarButtonItems:(NSArray<UIButton *> *)leftFromBarButtonItems {
+    _leftFromBarButtonItems = leftFromBarButtonItems;
+    [self updateBarButtonItems:_leftFromBarButtonItems from:self.viewFromLeftBarButtonStack atLeft:YES];
 }
 - (void)setRightBarButtonItems:(NSArray<UIButton *> *)rightBarButtonItems {
     _rightBarButtonItems = rightBarButtonItems;
-    [self updateBarButtonItems:_rightBarButtonItems from:self.viewRightBarButtonStack];
+    [self updateBarButtonItems:_rightBarButtonItems from:self.viewRightBarButtonStack atLeft:NO];
 }
-
+- (void)setRightFromBarButtonItems:(NSArray<UIButton *> *)rightFromBarButtonItems {
+    _rightFromBarButtonItems = rightFromBarButtonItems;
+    [self updateBarButtonItems:_rightFromBarButtonItems from:self.viewFromRightBarButtonStack atLeft:NO];
+}
 @end

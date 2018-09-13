@@ -49,21 +49,23 @@
 	
 	self.title = @"详情页";
     
-    self.sn_navigationItem.barBackgroudColor = [UIColor whiteColor];
-    self.sn_navigationItem.prefersLargeTitles = YES;
+    self.sn_navigationItem.barBackgroudColor = [UIColor colorWithWhite:0 alpha:0.5];
+//    self.sn_navigationItem.prefersLargeTitles = YES;
     self.sn_rightScreenEdgePanGesture.enabled = YES;
+    self.sn_pullScreenBackPanGesture.enabled = YES;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:@"sssssss" forState:UIControlStateNormal];
     
-    UIButton * button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton * button1 = [UIButton buttonWithType:UIButtonTypeSystem];
     [button1 setTitle:@"ddddd" forState:UIControlStateNormal];
     
-    self.sn_navigationController.sn_navigationBar.leftBarButtonItems = @[button,button1];
+//    self.sn_navigationController.sn_navigationBar.leftBarButtonItems = @[button,button1];
     
-    
+    self.sn_navigationItem.leftBarButtonItems = @[button];
+    self.sn_navigationItem.rightBarButtonItems = @[button1];
     
 	self.viewTest.layer.shadowColor = [UIColor redColor].CGColor;
 	self.viewTest.layer.shadowOpacity = 0.2f;
@@ -108,9 +110,19 @@
     UIViewController * VC = [[UIViewController alloc] init];
     VC.view.backgroundColor = [UIColor greenColor];
 	VC.title = @"什么👻";
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button setTitle:@"asd" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(handleASDbutton:) forControlEvents:UIControlEventTouchUpInside];
+    VC.sn_navigationItem.leftBarButtonItems = @[button];
+    VC.sn_pullScreenBackPanGesture.enabled = YES;
+    VC.sn_navigationItem.prefersLargeTitles = YES;
     [self.navigationController pushViewController:VC animated:YES];
 }
 
-
+- (void)handleASDbutton:(UIButton *)sender {
+    NSLog(@"sdjandgjnalg");
+    [self.sn_navigationController popViewControllerAnimated:YES];
+}
 
 @end

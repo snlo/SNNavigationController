@@ -10,12 +10,10 @@
 
 @implementation SNNavigationItem
 
-
-
 #pragma mark -- getter / setter
 - (UIColor *)barBackgroudColor {
     if (!_barBackgroudColor) {
-        _barBackgroudColor = [UIColor whiteColor];
+        _barBackgroudColor = [UIColor colorWithWhite:1.0f alpha:1.0f];
     } return _barBackgroudColor;
 }
 - (void)setPrefersLargeTitles:(BOOL)prefersLargeTitles {
@@ -27,6 +25,11 @@
     }
 }
 
+- (CGPoint)centerLabelTitle {
+    if (_centerLabelTitle.x < 1) {
+        _centerLabelTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);
+    } return _centerLabelTitle;
+}
 
 
 @end

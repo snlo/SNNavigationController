@@ -38,27 +38,8 @@
 	self.sn_navigationItem.barBackgroudColor = [UIColor yellowColor];
     
     
-//    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"左标题";
-    label.textColor = [UIColor blackColor];
-    [self.sn_navigationController.sn_navigationBar addSubview:label];
-    [label mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.sn_navigationController.sn_navigationBar.mas_top).offset(0);
-        make.left.equalTo(self.sn_navigationController.sn_navigationBar.mas_left).offset(20);
-        make.bottom.equalTo(self.sn_navigationController.sn_navigationBar.mas_bottom).offset(-20);
-        make.right.equalTo(self.sn_navigationController.sn_navigationBar.mas_right).offset(0);
-    }];
-    [RACObserve(self.tableView, contentOffset) subscribeNext:^(id  _Nullable x) {
-        CGFloat X = self.tableView.contentOffset.y;
-        if (X > SCREEN_WIDTH/2) {
-            X = SCREEN_WIDTH/2;
-        }
-        if (X < 0) {
-            X = 0;
-        }
-        label.transform = CGAffineTransformMakeTranslation(X, -self.tableView.contentOffset.y);
-    }];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
