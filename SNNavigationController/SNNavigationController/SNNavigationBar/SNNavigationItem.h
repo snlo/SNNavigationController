@@ -26,5 +26,6 @@
 @property (nonatomic, strong) NSArray <UIButton *> *rightBarButtonItems;
 
 @property (nonatomic, assign) CGPoint centerLabelTitle;
+@property (nonatomic, assign) CGPoint centerLabelFromTitle;
 
 @end

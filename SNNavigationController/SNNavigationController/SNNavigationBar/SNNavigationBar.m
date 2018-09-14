@@ -54,8 +54,8 @@
 - (void)updateTitleLabel:(UILabel *)label {
     CGSize size = [label sizeThatFits:CGSizeMake(SCREEN_WIDTH, MAXFLOAT)];
     CGFloat width = (size.width + 1) > (self.viewTitle.bounds.size.width-20) ? (self.viewTitle.bounds.size.width-20) : (size.width + 1);
-    label.frame = CGRectMake(0, 0, width, size.height +1);
-    label.center = CGPointMake(self.viewTitle.bounds.size.width/2, self.viewTitle.bounds.size.height/2);
+    label.frame = CGRectMake(label.center.x-width/2, label.center.y-(size.height+1)/2, width, size.height +1);
+//    label.center = CGPointMake(label.center.x, self.viewTitle.bounds.size.height/2);
 }
 - (void)clearAlloc:(id)object {
     object = nil;
@@ -103,7 +103,6 @@
 		_labelTitle.textColor = [UIColor blackColor];
 		_labelTitle.textAlignment = NSTextAlignmentCenter;
 		[self.viewTitle addSubview:_labelTitle];
-        
 	} return _labelTitle;
 }
 - (UILabel *)labelFromTile {
@@ -125,8 +124,11 @@
 - (UIView *)separatorLine {
     if (!_separatorLine) {
         _separatorLine = [[UIView alloc] init];
-        _separatorLine.backgroundColor = [UIColor colorWithWhite:0.766 alpha:1.0f];
-        _separatorLine.frame = CGRectMake(0, self.bounds.size.height, SCREEN_WIDTH, 1.000f/3);
+        _separatorLine.frame = CGRectMake(0, self.bounds.size.height, SCREEN_WIDTH, 0.5f);
+        UIImageView * imageView = [[UIImageView alloc] init];
+        imageView.frame = _separatorLine.bounds;
+        imageView.backgroundColor = [UIColor colorWithRed:0.00f green:0.00f blue:0.00f alpha:0.30f];
+        [_separatorLine addSubview:imageView];
         [self addSubview:_separatorLine];
     } return _separatorLine;
 }

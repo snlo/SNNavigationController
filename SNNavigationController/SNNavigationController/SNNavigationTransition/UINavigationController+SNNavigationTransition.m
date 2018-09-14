@@ -26,7 +26,7 @@
 
 - (void)sn_viewDidLoad {
     self.navigationBar.hidden = YES;
-	[self sn_navigationBar];
+    [self sn_navigationBar];
     self.delegate = self.sn_navigationDelegate;
 }
 #pragma mark -- getter / setter

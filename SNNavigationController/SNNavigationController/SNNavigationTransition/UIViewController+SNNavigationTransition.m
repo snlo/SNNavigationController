@@ -16,6 +16,9 @@
 
 @property (nonatomic, weak) UIScrollView * sn_currentScrollView;
 
+@property (nonatomic, assign) BOOL isWillDisappear;
+@property (nonatomic, assign) BOOL isScrollViewSignalMark;
+
 @end
 
 @implementation UIViewController (SNNavigationTransition)
@@ -50,9 +53,27 @@
     }
     
     //基本属性交接
+    
     self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
+    if (self.sn_navigationItem.prefersLargeTitles) {
+        if (self.sn_navigationItem.centerLabelTitle.x > 0) {
+            
+        } else {
+            self.sn_navigationItem.centerLabelFromTitle = CGPointMake(16+self.sn_navigationController.sn_navigationBar.labelFromTile.bounds.size.width/2, 44+52/2);
+            self.sn_navigationItem.centerLabelTitle = CGPointMake(16+self.sn_navigationController.sn_navigationBar.labelTitle.bounds.size.width/2, 44+52/2);
+        }
+    } else {
+        if (self.sn_navigationItem.centerLabelTitle.x > 0) {
+            
+        } else {
+            self.sn_navigationItem.centerLabelFromTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);
+            self.sn_navigationItem.centerLabelTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);
+        }
+        
+    }
     self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
     self.sn_navigationController.sn_navigationBar.labelTitle.center = self.sn_navigationItem.centerLabelTitle;
+    self.sn_navigationController.sn_navigationBar.labelFromTile.center = self.sn_navigationItem.centerLabelFromTitle;
     if (self.sn_navigationItem.forcePrefersLargeTitles) {
         [self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles];
     }
@@ -64,7 +85,7 @@
             self.sn_currentScrollView = obj;
         }
     }];
-    if (self.sn_currentScrollView ) {
+    if (self.sn_currentScrollView && !self.isScrollViewSignalMark) {
         [NSLayoutConstraint constraintWithItem:self.sn_currentScrollView
                                      attribute:NSLayoutAttributeTop
                                      relatedBy:NSLayoutRelationEqual
@@ -74,26 +95,61 @@
                                       constant:kNavigationBarHeight].active = YES;
         self.sn_currentScrollView.contentInset = UIEdgeInsetsMake(self.sn_navigationItem.barHeight-kNavigationBarHeight, 0, 0, 0);
     }
+    self.isWillDisappear = NO;
     
     [self sn_viewWillAppear:animated];
 }
 - (void)sn_viewDidAppear:(BOOL)animated {
-    
-    if (self.sn_navigationItem.prefersLargeTitles) {
+    if (self.sn_currentScrollView && self.sn_navigationItem.prefersLargeTitles && !self.isScrollViewSignalMark) {
+        __block CGFloat center_Y = self.sn_navigationItem.centerLabelTitle.y;
+        __block CGFloat center_X = self.sn_navigationItem.centerLabelTitle.x;
+        __block CGFloat barHeight = self.sn_navigationItem.barHeight;
         [RACObserve(self.sn_currentScrollView, contentOffset) subscribeNext:^(id  _Nullable x) {
+            if (!self.sn_navigationItem.prefersLargeTitles) return ;
+            if (self.isWillDisappear) return;
             CGFloat offset_y = self.sn_currentScrollView.contentOffset.y + self.sn_currentScrollView.contentInset.top;
             if (offset_y != 0) {
-                CGFloat height = self.sn_navigationItem.barHeight - offset_y;
-                if (height > kNavigationBarHeight) {
-                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+                CGFloat height = barHeight - offset_y;
+                
+                CGFloat center_y = center_Y + (-self.sn_currentScrollView.contentOffset.y - 52.000f);
+                CGFloat center_x = center_X;
+                
+                if (center_y < center_Y) {
+                    
+                    center_x = center_X + ((self.sn_currentScrollView.contentOffset.y+52.000f)/(48.000f))*(SCREEN_WIDTH/2 - center_X);
+                }
+                
+                height = height > kNavigationBarHeight ? height :kNavigationBarHeight;
+                center_x = center_x < SCREEN_WIDTH/2 ? center_x :SCREEN_WIDTH/2;
+                center_y = center_y > 22 ? center_y : 22;
+                
+                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+                self.sn_navigationController.sn_navigationBar.labelTitle.center = CGPointMake(center_x, center_y);
+                self.sn_navigationController.sn_navigationBar.labelFromTile.center = CGPointMake(center_x, center_y);
+                
+                self.sn_navigationItem.centerLabelTitle = CGPointMake(center_x, center_y);
+                self.sn_navigationItem.centerLabelFromTitle = CGPointMake(center_x, center_y);
+                self.sn_navigationItem.barHeight = height;
+                
+            }
+        }];
+        
+        
+        [self.sn_currentScrollView.panGestureRecognizer.rac_gestureSignal subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) {
+            if (self.isWillDisappear) return;
+            if (x.state == UIGestureRecognizerStateEnded) {
+                if ((self.sn_navigationController.sn_navigationBar.labelTitle.center.y < center_Y && self.sn_navigationController.sn_navigationBar.labelTitle.center.y > 22) || (self.sn_navigationController.sn_navigationBar.labelFromTile.center.y < center_Y && self.sn_navigationController.sn_navigationBar.labelFromTile.center.y > 22)) {
+                    [self.sn_currentScrollView setContentOffset:CGPointMake(0, -52) animated:YES];
                 }
             }
         }];
     }
+    
     [self sn_viewDidAppear:animated];
 }
 - (void)sn_viewWillDisappear:(BOOL)animated {
-    
+    self.isWillDisappear = YES;
+    self.isScrollViewSignalMark = YES;
     [self sn_viewWillDisappear:animated];
 }
 - (void)sn_viewDidDisappear:(BOOL)animated {
@@ -101,11 +157,29 @@
     [self sn_viewDidDisappear:animated];
 }
 - (void)sn_viewDidLoad {
-    
+
     [self sn_viewDidLoad];
 }
 
 #pragma mark -- getter / setter
+
+- (void)setIsWillDisappear:(BOOL)isWillDisappear {
+    NSNumber * number = [NSNumber numberWithBool:isWillDisappear];
+    objc_setAssociatedObject(self, @selector(isWillDisappear), number, OBJC_ASSOCIATION_ASSIGN);
+}
+- (BOOL)isWillDisappear {
+    NSNumber * number = objc_getAssociatedObject(self, _cmd);
+    return [number boolValue];
+}
+
+- (void)setIsScrollViewSignalMark:(BOOL)isScrollViewSignalMark {
+    NSNumber * number = [NSNumber numberWithBool:isScrollViewSignalMark];
+    objc_setAssociatedObject(self, @selector(isScrollViewSignalMark), number, OBJC_ASSOCIATION_ASSIGN);
+}
+- (BOOL)isScrollViewSignalMark {
+    NSNumber * number = objc_getAssociatedObject(self, _cmd);
+    return [number boolValue];
+}
 
 #pragma mark -- 多导航栏
 - (void)setSn_navigationController:(UINavigationController *)sn_navigationController {

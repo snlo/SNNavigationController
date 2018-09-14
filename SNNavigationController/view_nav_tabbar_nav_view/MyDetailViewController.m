@@ -8,8 +8,9 @@
 
 #import "MyDetailViewController.h"
 
+#import "ViewControllerCell.h"
 
-@interface MyDetailViewController () <UINavigationControllerDelegate>
+@interface MyDetailViewController () <UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *viewTest;
@@ -49,8 +50,8 @@
 	
 	self.title = @"详情页";
     
-    self.sn_navigationItem.barBackgroudColor = [UIColor colorWithWhite:0 alpha:0.5];
-//    self.sn_navigationItem.prefersLargeTitles = YES;
+    self.sn_navigationItem.barBackgroudColor = [UIColor whiteColor];
+    self.sn_navigationItem.prefersLargeTitles = YES;
     self.sn_rightScreenEdgePanGesture.enabled = YES;
     self.sn_pullScreenBackPanGesture.enabled = YES;
     
@@ -73,6 +74,14 @@
 	self.viewTest.layer.shadowRadius = 8;
 	
 	self.navigationController.sn_navigationBar.backgroundColor = [UIColor clearColor];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.showsVerticalScrollIndicator = NO; //隐藏滚动条
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 14, 0, 0); //设置分割线缩颈
+    self.tableView.separatorColor = [UIColor redColor]; //分割线颜色
+    self.tableView.allowsSelection = NO; //cell交互
+    self.tableView.delaysContentTouches = NO; //延迟（能让cell上的事件响应灵敏，但也会带来交互误触的弊端）
 }
 - (void)test:(UIBarButtonItem *)sender {
     
@@ -116,13 +125,52 @@
     [button addTarget:self action:@selector(handleASDbutton:) forControlEvents:UIControlEventTouchUpInside];
     VC.sn_navigationItem.leftBarButtonItems = @[button];
     VC.sn_pullScreenBackPanGesture.enabled = YES;
-    VC.sn_navigationItem.prefersLargeTitles = YES;
+    VC.sn_navigationItem.prefersLargeTitles = NO;
     [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (void)handleASDbutton:(UIButton *)sender {
     NSLog(@"sdjandgjnalg");
     [self.sn_navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark -- <UITableViewDelegate, UITableViewDataSource>
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 30;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString * identifier = @"ViewControllerCell";
+    [tableView registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellReuseIdentifier:identifier];
+    ViewControllerCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.backgroundColor = [UIColor whiteColor];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 48;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 10;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.0001;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [UIView new];
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [UIView new];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

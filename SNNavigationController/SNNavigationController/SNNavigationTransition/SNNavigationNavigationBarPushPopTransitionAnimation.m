@@ -15,6 +15,7 @@
 	
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     SNNavigationBar * navigationBar = toViewController.sn_navigationController.sn_navigationBar;
+    
     //处理视图控制器为标签栏视图控制器的情况
     if ([toViewController isKindOfClass:[UITabBarController class]]) {
         UITabBarController * tabbarController = (UITabBarController *)toViewController;
@@ -27,13 +28,9 @@
     SNNavigationItem * navigationItemFrom = fromViewController.sn_navigationItem;
     SNNavigationItem * navigationItemTo = toViewController.sn_navigationItem;
     
-    
-    navigationBar.labelTitle.text = toViewController.title;
-    navigationBar.labelFromTile.text = fromViewController.title;
-    
     navigationBar.leftBarButtonItems = navigationItemTo.leftBarButtonItems;
     navigationBar.leftFromBarButtonItems = navigationItemFrom.leftBarButtonItems;
-    
+
     navigationBar.rightBarButtonItems = navigationItemTo.rightBarButtonItems;
     navigationBar.rightFromBarButtonItems = navigationItemFrom.rightBarButtonItems;
     
@@ -46,9 +43,14 @@
     navigationBar.viewFromLeftBarButtonStack.hidden = NO;
     navigationBar.viewFromRightBarButtonStack.hidden = NO;
     
-    navigationBar.backgroundColor = navigationItemFrom.barBackgroudColor;
-
     
+    navigationBar.backgroundColor = navigationItemFrom.barBackgroudColor;
+    
+    
+    [self handleTitleLabelAnimateTransition:transitionContext to:navigationItemTo from:navigationItemFrom with:navigationBar and:duration and:toViewController and:fromViewController];
+    
+    toViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = YES;
+    fromViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = YES;
     [UIView animateWithDuration:duration delay:0.0f usingSpringWithDamping:1.0f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
         
         navigationBar.viewLeftBarButtonStack.alpha = 1;
@@ -73,15 +75,20 @@
             navigationBar.viewFromLeftBarButtonStack.hidden = YES;
             navigationBar.viewFromRightBarButtonStack.hidden = YES;
         }
+        toViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = NO;
+        fromViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = NO;
     }];
     
-    [self handleTitleLabelAnimateTransition:transitionContext to:navigationItemTo from:navigationItemFrom with:navigationBar and:duration];
+    
     
     [self navigationAnimateTransition:transitionContext fromViewController:fromViewController toViewController:toViewController fromView:fromView toView:toView];
 }
 
 #pragma mark -- 标题动画
-- (void)handleTitleLabelAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext to:(SNNavigationItem *)navigationItemTo from:(SNNavigationItem *)navigationItemFrom with:(SNNavigationBar *)navigationBar and:(NSTimeInterval)duration {
+- (void)handleTitleLabelAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext to:(SNNavigationItem *)navigationItemTo from:(SNNavigationItem *)navigationItemFrom with:(SNNavigationBar *)navigationBar and:(NSTimeInterval)duration and:(UIViewController *)toViewController and:(UIViewController *)fromViewController {
+    
+    navigationBar.labelTitle.text = toViewController.title;
+    navigationBar.labelFromTile.text = fromViewController.title;
     
     navigationItemFrom.forcePrefersLargeTitles = NO;
     navigationItemTo.forcePrefersLargeTitles = NO;
@@ -98,8 +105,20 @@
         
         if (navigationItemFrom.prefersLargeTitles) {
             if (navigationItemTo.prefersLargeTitles) {
-                navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 44+52/2);
-                navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2, 44+52/2);
+                NSLog(@" ----  : %f : %f",navigationItemFrom.centerLabelTitle.x,navigationItemTo.centerLabelFromTitle.x);
+                if (navigationItemFrom.centerLabelTitle.x < SCREEN_WIDTH/2) {
+                    navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 44+52/2);
+                } else {
+                    navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 22);
+                }
+                navigationBar.labelFromTile.center = navigationItemFrom.centerLabelTitle;
+                
+                if (navigationItemTo.centerLabelFromTitle.x < SCREEN_WIDTH/2) {
+                    
+                } else {
+                    navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH/2, 22);
+                }
+                
             } else {
                 navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2, 44+52/2);
                 navigationBar.labelTitle.layer.zPosition = 2;
@@ -109,6 +128,7 @@
         } else {
             if (navigationItemTo.prefersLargeTitles) {
                 navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 44/2);
+                navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH/2, 22);
             } else {
                 navigationBar.labelFromTile.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelFromTile.center.y);
             }
@@ -117,8 +137,15 @@
 #pragma mark -- 兼容大小标题模式
         if (navigationItemFrom.prefersLargeTitles) {
             if (navigationItemTo.prefersLargeTitles) {
-                navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2 + SCREEN_WIDTH/2, 44+52/2);
-                navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2, 44+52/2);
+                
+                if (navigationItemFrom.centerLabelTitle.x < SCREEN_WIDTH/2) { // 大
+                    navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2 + SCREEN_WIDTH/2, 44+52/2);
+                    navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2 + SCREEN_WIDTH/2, 44+52/2);
+                } else {
+                    navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 22);
+                }
+                navigationBar.labelFromTile.center = navigationItemFrom.centerLabelTitle;
+                
             } else {
                 navigationBar.labelTitle.center = CGPointMake(SCREEN_WIDTH/2, navigationBar.labelTitle.center.y);
                 navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2, 44+52/2);
@@ -137,6 +164,7 @@
         }
     }
     
+    
     [UIView animateWithDuration:duration delay:0.0f usingSpringWithDamping:1.0f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
         
         navigationBar.labelTitle.alpha = 1;
@@ -146,7 +174,17 @@
             
             if (navigationItemFrom.prefersLargeTitles) {
                 if (navigationItemTo.prefersLargeTitles) {
-                    navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2 + SCREEN_WIDTH/2, 44 + 52/2);
+                    if (navigationItemFrom.centerLabelTitle.x < SCREEN_WIDTH/2) {
+                        navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2 + SCREEN_WIDTH/2, 44 + 52/2);
+                    } else {
+                        navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 44 + 52/2);
+                    }
+                    if (navigationItemTo.centerLabelTitle.x < SCREEN_WIDTH/2) {
+                        
+                    } else {
+                        navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 22);
+                    }
+                    
                 } else {
                     navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2, 44/2);
                 }
@@ -170,6 +208,11 @@
             
             if (navigationItemFrom.prefersLargeTitles) {
                 if (navigationItemTo.prefersLargeTitles) {
+                    if (navigationItemFrom.centerLabelTitle.x < SCREEN_WIDTH/2) { // 大
+                        
+                    } else {
+                        
+                    }
                     navigationBar.labelTitle.center = CGPointMake(16 + navigationBar.labelTitle.bounds.size.width/2, 44+52/2);
                 } else {
                     navigationBar.labelFromTile.center = CGPointMake(16 + navigationBar.labelFromTile.bounds.size.width/2, 44/2);
@@ -185,10 +228,46 @@
         
     } completion:^(BOOL finished) {
         if ([transitionContext transitionWasCancelled]) {
+            if (self.reverse) { // pop
+                
+                if (navigationItemFrom.prefersLargeTitles) {
+                    if (navigationItemTo.prefersLargeTitles) {
+                        navigationBar.labelFromTile.center = navigationItemFrom.centerLabelFromTitle;
+                        navigationBar.labelTitle.center = navigationItemFrom.centerLabelTitle;
+                    } else {
+                        
+                    }
+                    
+                } else {
+                    if (navigationItemTo.prefersLargeTitles) {
+                        
+                    } else {
+                        
+                    }
+                }
+            } else { // push
+                
+                if (navigationItemFrom.prefersLargeTitles) {
+                    if (navigationItemTo.prefersLargeTitles) {
+                        
+                    } else {
+                        
+                    }
+                } else {
+                    if (navigationItemTo.prefersLargeTitles) {
+                        
+                    } else {
+                        
+                    }
+                }
+            }
             
         } else {
             navigationBar.labelFromTile.hidden = YES;
             navigationItemTo.centerLabelTitle = navigationBar.labelTitle.center;
+            navigationItemTo.centerLabelFromTitle = navigationBar.labelFromTile.center;
+            navigationItemFrom.centerLabelTitle = navigationBar.labelFromTile.center;
+            navigationItemFrom.centerLabelFromTitle = navigationBar.labelFromTile.center;
         }
     }];
 }
