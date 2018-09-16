@@ -88,12 +88,13 @@ static const NSString * kPopViewController = @"ihgiqwefba234665:<>:>:&&jklsdbjkl
     _gestureEdge = gesture.edges;
 	
 	_viewController = objc_getAssociatedObject(gesture, &kPopViewController);
-    CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width * 0.432;
+    CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width * 1.0;
+	NSLog(@" --- - - -- - -%f",progress);
     [self updateState:gesture.state progress:fabs(progress) forViewController:_viewController];
 }
 - (void)handlePullScreenGesture:(UIPanGestureRecognizer *)gesture {
 	_viewController = objc_getAssociatedObject(gesture, &kPopViewController);
-	CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width * 0.432;
+	CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width * 1.0;
 	
     if (_gestureEdge == UIRectEdgeNone || !_gestureEdge) {
         if (progress < 0.00) {
@@ -128,7 +129,7 @@ static const NSString * kPopViewController = @"ihgiqwefba234665:<>:>:&&jklsdbjkl
         } break;
         case UIGestureRecognizerStateCancelled: case UIGestureRecognizerStateEnded: {
             self.percentDrivenTransition.interactionInProgress = NO;
-            if(progress > 0.2){
+            if(progress > 0.5){
                 [self.percentDrivenTransition finishInteractiveTransition];
             }else{
                 [self.percentDrivenTransition cancelInteractiveTransition];

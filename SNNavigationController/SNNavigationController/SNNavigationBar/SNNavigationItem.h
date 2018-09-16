@@ -22,6 +22,8 @@
 //首页强制大标题
 @property (nonatomic, assign) BOOL forcePrefersLargeTitles;
 
+@property (nonatomic, strong) NSString * title;
+
 @property (nonatomic, strong) NSArray <UIButton *> *leftBarButtonItems;
 @property (nonatomic, strong) NSArray <UIButton *> *rightBarButtonItems;
 

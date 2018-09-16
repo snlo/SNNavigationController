@@ -11,10 +11,14 @@
 @interface SNNavigationBar : UIView
 //标题视图
 @property (nonatomic, strong) UIView * viewTitle;
-@property (nonatomic, strong) UIView * viewMaskTitleView;
 //标题
 @property (nonatomic, strong) UILabel * labelTitle;
 @property (nonatomic, strong) UILabel * labelFromTile;
+
+//大标题
+@property (nonatomic, strong) UIView * viewLargeTitle;
+@property (nonatomic, strong) UILabel * labelLargeTitle;
+@property (nonatomic, strong) UILabel * labelLargeFromTitle;
 
 //背景透明度
 @property (nonatomic, assign) CGFloat alhpaBackgroud;
@@ -34,9 +38,7 @@
 @property (nonatomic, strong) NSArray <UIButton *> *rightBarButtonItems;
 @property (nonatomic, strong) NSArray <UIButton *> *rightFromBarButtonItems;
 
-//大标题
-@property (nonatomic, strong) UIView * viewLargeTitle;
-@property (nonatomic, strong) UILabel * labelLargeTitle;
+
 
 /**
  设置首页强制大标题

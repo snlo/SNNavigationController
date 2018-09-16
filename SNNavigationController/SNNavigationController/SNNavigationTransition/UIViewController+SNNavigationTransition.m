@@ -54,29 +54,13 @@
     
     //基本属性交接
     
-    self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
-    if (self.sn_navigationItem.prefersLargeTitles) {
-        if (self.sn_navigationItem.centerLabelTitle.x > 0) {
-            
-        } else {
-            self.sn_navigationItem.centerLabelFromTitle = CGPointMake(16+self.sn_navigationController.sn_navigationBar.labelFromTile.bounds.size.width/2, 44+52/2);
-            self.sn_navigationItem.centerLabelTitle = CGPointMake(16+self.sn_navigationController.sn_navigationBar.labelTitle.bounds.size.width/2, 44+52/2);
-        }
-    } else {
-        if (self.sn_navigationItem.centerLabelTitle.x > 0) {
-            
-        } else {
-            self.sn_navigationItem.centerLabelFromTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);
-            self.sn_navigationItem.centerLabelTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);
-        }
-        
-    }
-    self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
-    self.sn_navigationController.sn_navigationBar.labelTitle.center = self.sn_navigationItem.centerLabelTitle;
-    self.sn_navigationController.sn_navigationBar.labelFromTile.center = self.sn_navigationItem.centerLabelFromTitle;
-    if (self.sn_navigationItem.forcePrefersLargeTitles) {
-        [self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles];
-    }
+	self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
+	self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
+	self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
+
+	if (self.sn_navigationItem.forcePrefersLargeTitles) {
+		[self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles];
+	}
     
     //处理滑动视图偏移
 //    __block UIScrollView * scrollview;
@@ -111,26 +95,27 @@
             if (offset_y != 0) {
                 CGFloat height = barHeight - offset_y;
                 
-                CGFloat center_y = center_Y + (-self.sn_currentScrollView.contentOffset.y - 52.000f);
+				CGFloat center_y = center_Y + (-self.sn_currentScrollView.contentOffset.y - 52.000f);
                 CGFloat center_x = center_X;
                 
                 if (center_y < center_Y) {
                     
                     center_x = center_X + ((self.sn_currentScrollView.contentOffset.y+52.000f)/(48.000f))*(SCREEN_WIDTH/2 - center_X);
-                }
-                
+				}
+ 
                 height = height > kNavigationBarHeight ? height :kNavigationBarHeight;
                 center_x = center_x < SCREEN_WIDTH/2 ? center_x :SCREEN_WIDTH/2;
                 center_y = center_y > 22 ? center_y : 22;
+				
                 
-                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
-                self.sn_navigationController.sn_navigationBar.labelTitle.center = CGPointMake(center_x, center_y);
-                self.sn_navigationController.sn_navigationBar.labelFromTile.center = CGPointMake(center_x, center_y);
-                
-                self.sn_navigationItem.centerLabelTitle = CGPointMake(center_x, center_y);
-                self.sn_navigationItem.centerLabelFromTitle = CGPointMake(center_x, center_y);
-                self.sn_navigationItem.barHeight = height;
-                
+//                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+//                self.sn_navigationController.sn_navigationBar.labelTitle.center = CGPointMake(center_x, center_y);
+//                self.sn_navigationController.sn_navigationBar.labelFromTile.center = CGPointMake(center_x, center_y);
+//
+//                self.sn_navigationItem.centerLabelTitle = CGPointMake(center_x, center_y);
+//                self.sn_navigationItem.centerLabelFromTitle = CGPointMake(center_x, center_y);
+//                self.sn_navigationItem.barHeight = height;
+				
             }
         }];
         

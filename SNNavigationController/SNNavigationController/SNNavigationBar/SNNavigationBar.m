@@ -35,6 +35,7 @@
     
 	[self labelTitle];
     [self separatorLine];
+	[self viewLargeTitle];
 
     [RACObserve(self.labelTitle, text) subscribeNext:^(NSString * _Nullable x) {
         [self updateTitleLabel:self.labelTitle];
@@ -45,17 +46,13 @@
     [RACObserve(self, frame) subscribeNext:^(id  _Nullable x) {
         self.separatorLine.frame = CGRectMake(0, self.bounds.size.height, SCREEN_WIDTH, 0.5);
     }];
-    [RACObserve(self, backgroundColor) subscribeNext:^(id  _Nullable x) {
-        self.viewMaskTitleView.backgroundColor = self.backgroundColor;
-    }];
-
+	
 }
 
 - (void)updateTitleLabel:(UILabel *)label {
     CGSize size = [label sizeThatFits:CGSizeMake(SCREEN_WIDTH, MAXFLOAT)];
     CGFloat width = (size.width + 1) > (self.viewTitle.bounds.size.width-20) ? (self.viewTitle.bounds.size.width-20) : (size.width + 1);
     label.frame = CGRectMake(label.center.x-width/2, label.center.y-(size.height+1)/2, width, size.height +1);
-//    label.center = CGPointMake(label.center.x, self.viewTitle.bounds.size.height/2);
 }
 - (void)clearAlloc:(id)object {
     object = nil;
@@ -74,25 +71,27 @@
         obj.frame = CGRectMake(8+X, 0, WIDTH, 44);
         [obj setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }];
-    barButtonItemsView.frame = CGRectMake(left?8:SCREEN_WIDTH-(width+8), kIs_iPhoneX?44:20, width+8, 44);
+	if (buttonItems.count < 1) {
+		width = 0;
+	} else {
+		width += 8;
+	}
+    barButtonItemsView.frame = CGRectMake(left?8:(SCREEN_WIDTH-(width+8)), kIs_iPhoneX?44:20, width, 44);
 }
 
 - (void)setForcePrefersLargeTitles {
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, kNavigationBarHeight + 52);
-    self.labelTitle.center = CGPointMake(16 + self.labelTitle.bounds.size.width/2, 44 + 52/2);
+	self.viewLargeTitle.hidden = NO;
+	self.viewTitle.hidden = YES;
 }
 
 #pragma mark -- getter / setter
 - (UIView *)viewTitle {
 	if (!_viewTitle) {
 		_viewTitle = [[UIView alloc] init];
-		_viewTitle.frame = CGRectMake(0, kIs_iPhoneX?44:20, SCREEN_WIDTH, 44);
+		_viewTitle.frame = CGRectMake(16, kIs_iPhoneX?44:20, SCREEN_WIDTH-32, 44);
 		_viewTitle.backgroundColor = [UIColor clearColor];
 		[self addSubview:_viewTitle];
-        self.viewMaskTitleView = [[UIView alloc] init];
-        self.viewMaskTitleView.frame = _viewTitle.bounds;
-        self.viewMaskTitleView.backgroundColor = self.backgroundColor;
-//        [_viewTitle insertSubview:self.viewMaskTitleView atIndex:0];
         
 	} return _viewTitle;
 }
@@ -102,7 +101,7 @@
 		_labelTitle.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
 		_labelTitle.textColor = [UIColor blackColor];
 		_labelTitle.textAlignment = NSTextAlignmentCenter;
-		[self.viewTitle addSubview:_labelTitle];
+		[self insertSubview:_labelTitle aboveSubview:self.viewTitle];
 	} return _labelTitle;
 }
 - (UILabel *)labelFromTile {
@@ -111,7 +110,8 @@
 		_labelFromTile.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
 		_labelFromTile.textColor = [UIColor blackColor];
 		_labelFromTile.textAlignment = NSTextAlignmentCenter;
-		[self.viewTitle addSubview:_labelFromTile];
+		
+		[self insertSubview:_labelFromTile aboveSubview:self.viewTitle];
         
 	} return _labelFromTile;
 }
@@ -175,4 +175,30 @@
     _rightFromBarButtonItems = rightFromBarButtonItems;
     [self updateBarButtonItems:_rightFromBarButtonItems from:self.viewFromRightBarButtonStack atLeft:NO];
 }
+
+//大标题
+- (UIView *)viewLargeTitle {
+	if (!_viewLargeTitle) {
+		_viewLargeTitle = [[UIView alloc] init];
+		_viewLargeTitle.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 52);
+		_viewLargeTitle.backgroundColor = [UIColor blueColor];
+		_viewLargeTitle.hidden = YES;
+		[self addSubview:_viewLargeTitle];
+	} return _viewLargeTitle;
+}
+- (UILabel *)labelLargeTitle {
+	if (!_labelLargeTitle) {
+		_labelLargeTitle = [[UILabel alloc] init];
+		_labelLargeTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
+		[self.viewLargeTitle addSubview:_labelLargeTitle];
+	} return _labelLargeTitle;
+}
+- (UILabel *)labelLargeFromTitle {
+	if (!_labelLargeFromTitle) {
+		_labelLargeFromTitle = [[UILabel alloc] init];
+		_labelLargeFromTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
+		[self.viewLargeTitle addSubview:_labelLargeFromTitle];
+	} return _labelLargeFromTitle;
+}
+
 @end

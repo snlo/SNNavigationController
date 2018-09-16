@@ -54,6 +54,7 @@
     self.sn_navigationItem.prefersLargeTitles = YES;
     self.sn_rightScreenEdgePanGesture.enabled = YES;
     self.sn_pullScreenBackPanGesture.enabled = YES;
+	self.sn_navigationItem.barHeight = 200;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -62,7 +63,13 @@
     
     UIButton * button1 = [UIButton buttonWithType:UIButtonTypeSystem];
     [button1 setTitle:@"ddddd" forState:UIControlStateNormal];
-    
+	
+	UIView * viewsss = [[UIView alloc] init];
+	viewsss.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
+	viewsss.backgroundColor= [UIColor yellowColor];
+//	[self.sn_navigationController.sn_navigationBar.viewTitle addSubview:viewsss];
+	self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor yellowColor];
+	
 //    self.sn_navigationController.sn_navigationBar.leftBarButtonItems = @[button,button1];
     
     self.sn_navigationItem.leftBarButtonItems = @[button];
@@ -118,7 +125,7 @@
 - (IBAction)handlePushButton:(id)sender {
     UIViewController * VC = [[UIViewController alloc] init];
     VC.view.backgroundColor = [UIColor greenColor];
-	VC.title = @"什么👻";
+	VC.title = @"什么aisdi我哦啊还是地府号时代和覅收到货覅夢爱仕达和覅阿萨德发爱德华覅水电费";
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:@"asd" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
