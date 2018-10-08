@@ -39,6 +39,9 @@
 @property (nonatomic, strong) NSArray <UIButton *> *rightFromBarButtonItems;
 
 
+//搜索视图
+@property (nonatomic, strong) UIView * viewSearch;
+
 
 /**
  设置首页强制大标题

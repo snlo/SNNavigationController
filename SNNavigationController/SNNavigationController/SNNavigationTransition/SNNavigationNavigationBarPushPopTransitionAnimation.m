@@ -51,31 +51,18 @@
     
     toViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = YES;
     fromViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = YES;
-	[UIView animateKeyframesWithDuration:duration
-								   delay:0.0
-								 options:0
-							  animations:^{
-        
-//        navigationBar.viewLeftBarButtonStack.alpha = 1;
-//        navigationBar.viewFromLeftBarButtonStack.alpha = 0;
-//
-//        navigationBar.viewRightBarButtonStack.alpha = 1;
-//        navigationBar.viewFromRightBarButtonStack.alpha = 0;
-								  
-								  [UIView addKeyframeWithRelativeStartTime:0.0
-														  relativeDuration:0.5
-																animations:^{
-																	// rotate the from view
-																	navigationBar.viewFromLeftBarButtonStack.alpha = 0;
-																	navigationBar.viewFromRightBarButtonStack.alpha = 0;
-																}];
-								  [UIView addKeyframeWithRelativeStartTime:0.5
-														  relativeDuration:0.5
-																animations:^{
-																	// rotate the to view
-																	navigationBar.viewLeftBarButtonStack.alpha = 1;
-																	navigationBar.viewRightBarButtonStack.alpha = 1;
-																}];
+	[UIView animateKeyframesWithDuration:duration delay:0.0 options:0 animations:^{
+		
+		[UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
+			// rotate the from view
+			navigationBar.viewFromLeftBarButtonStack.alpha = 0;
+			navigationBar.viewFromRightBarButtonStack.alpha = 0;
+		}];
+		[UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
+			// rotate the to view
+			navigationBar.viewLeftBarButtonStack.alpha = 1;
+			navigationBar.viewRightBarButtonStack.alpha = 1;
+		}];
 		
 		CGFloat leftWidth = navigationBar.viewLeftBarButtonStack.bounds.size.width;
 		CGFloat rightWidth = navigationBar.viewRightBarButtonStack.bounds.size.width;
@@ -112,6 +99,14 @@
     
     navigationBar.labelTitle.text = toViewController.title;
     navigationBar.labelFromTile.text = fromViewController.title;
+	
+	navigationBar.labelLargeTitle.text = toViewController.title;
+	navigationBar.labelLargeFromTitle.text = fromViewController.title;
+	
+	navigationBar.labelLargeTitle.alpha = 0;
+	navigationBar.labelLargeFromTitle.alpha = 1;
+	
+	navigationBar.labelLargeFromTitle.hidden = NO;
     
     navigationItemFrom.forcePrefersLargeTitles = NO;
     navigationItemTo.forcePrefersLargeTitles = NO;
@@ -137,37 +132,32 @@
 		navigationBar.labelTitle.center = CGPointMake(moveCenterX, centerY);
     }
 	navigationBar.viewTitle.alpha = 1;
-	[UIView animateKeyframesWithDuration:duration
-								   delay:0.0
-								 options:0
-							  animations:^{
-		
-//		navigationBar.viewTitle.transform = CGAffineTransformScale(CGAffineTransformMakeRotation([self randomFloatBetween:-10.0 and:10.0]), 0.01, 0.01);
-		[UIView addKeyframeWithRelativeStartTime:0.0
-								relativeDuration:0.5
-									  animations:^{
-										  // rotate the from view
-										  navigationBar.viewTitle.alpha = 0;
-									  }];
-		[UIView addKeyframeWithRelativeStartTime:0.5
-								relativeDuration:0.5
-									  animations:^{
-										  // rotate the to view
-										  navigationBar.viewTitle.alpha = 1;
-									  }];
+	
+	navigationBar.viewSearch.alpha = 1;
+	
+	[UIView animateKeyframesWithDuration:duration delay:0.0 options:0 animations:^{
+
+		[UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
+			// rotate the from view
+			navigationBar.viewTitle.alpha = 0;
+			navigationBar.labelLargeTitle.alpha = 0;
+			navigationBar.labelLargeFromTitle.alpha = 0;
+		}];
+		[UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
+			// rotate the to view
+			navigationBar.viewTitle.alpha = 1;
+			navigationBar.labelLargeTitle.alpha = 1;
+		}];
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:![transitionContext transitionWasCancelled]];
 	}];
 	
     
-	[UIView animateKeyframesWithDuration:duration
-								   delay:0.0
-								 options:0
-							  animations:^{
+	[UIView animateKeyframesWithDuration:duration delay:0.0 options:0 animations:^{
         
         navigationBar.labelTitle.alpha = 1;
         navigationBar.labelFromTile.alpha = 0;
-		
+		navigationBar.viewSearch.alpha = 0;
 		
         if (self.reverse) { // pop
             
@@ -192,6 +182,7 @@
 
         } else {
             navigationBar.labelFromTile.hidden = YES;
+			navigationBar.labelLargeFromTitle.hidden = YES;
         }
     }];
 }

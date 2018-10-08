@@ -32,10 +32,11 @@
 
 - (void)loadInterFace {
 	
-    
+	
 	[self labelTitle];
     [self separatorLine];
 	[self viewLargeTitle];
+	[self viewSearch];
 
     [RACObserve(self.labelTitle, text) subscribeNext:^(NSString * _Nullable x) {
         [self updateTitleLabel:self.labelTitle];
@@ -199,6 +200,15 @@
 		_labelLargeFromTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
 		[self.viewLargeTitle addSubview:_labelLargeFromTitle];
 	} return _labelLargeFromTitle;
+}
+
+- (UIView *)viewSearch {
+	if (!_viewSearch) {
+		_viewSearch = [[UIView alloc] init];
+		_viewSearch.frame = CGRectMake(0, kNavigationBarHeight + 52, SCREEN_WIDTH, 52);
+		_viewSearch.backgroundColor = [UIColor blackColor];
+		[self addSubview:_viewSearch];
+	} return _viewSearch;
 }
 
 @end

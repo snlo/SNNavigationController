@@ -21,6 +21,9 @@
     self.sn_navigationController.sn_navigationBar.hidden = YES;
     self.navigationController.navigationBar.hidden = NO;
     self.title = @"xxxxxxxxxxxxxxxxxxxxxxxxAxxxxxxxxxxxxxxxxxxxxxxxxxx";
+	
+	UISearchController * search = [[UISearchController alloc] initWithSearchResultsController:[UIViewController new]];
+	self.navigationItem.searchController = search;
     
     self.navigationController.navigationBar.prefersLargeTitles = YES;
     self.navigationItem.leftBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:@"xxxxxxxx" style:UIBarButtonItemStyleDone target:self action:@selector(test:)], [[UIBarButtonItem alloc] initWithTitle:@"sssssssddddddddd" style:UIBarButtonItemStyleDone target:self action:@selector(test:)]];
@@ -45,5 +48,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)handlebutton:(UIButton *)sender {
+	UIViewController * VC = [[UIViewController alloc] init];
+	VC.view.backgroundColor = [UIColor whiteColor];
+	
+	[self.navigationController pushViewController:VC animated:YES];
+}
 
 @end

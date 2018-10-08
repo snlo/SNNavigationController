@@ -55,6 +55,8 @@
     self.sn_rightScreenEdgePanGesture.enabled = YES;
     self.sn_pullScreenBackPanGesture.enabled = YES;
 	self.sn_navigationItem.barHeight = 200;
+	
+	self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor redColor];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
