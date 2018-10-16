@@ -32,11 +32,9 @@
 
 - (void)loadInterFace {
 	
-	
+    self.layer.masksToBounds = YES;
 	[self labelTitle];
     [self separatorLine];
-	[self viewLargeTitle];
-	[self viewSearch];
 
     [RACObserve(self.labelTitle, text) subscribeNext:^(NSString * _Nullable x) {
         [self updateTitleLabel:self.labelTitle];
@@ -52,7 +50,7 @@
 
 - (void)updateTitleLabel:(UILabel *)label {
     CGSize size = [label sizeThatFits:CGSizeMake(SCREEN_WIDTH, MAXFLOAT)];
-    CGFloat width = (size.width + 1) > (self.viewTitle.bounds.size.width-20) ? (self.viewTitle.bounds.size.width-20) : (size.width + 1);
+    CGFloat width = (size.width + 1) > (self.viewTitle.bounds.size.width) ? (self.viewTitle.bounds.size.width) : (size.width + 1);
     label.frame = CGRectMake(label.center.x-width/2, label.center.y-(size.height+1)/2, width, size.height +1);
 }
 - (void)clearAlloc:(id)object {
@@ -111,9 +109,7 @@
 		_labelFromTile.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
 		_labelFromTile.textColor = [UIColor blackColor];
 		_labelFromTile.textAlignment = NSTextAlignmentCenter;
-		
 		[self insertSubview:_labelFromTile aboveSubview:self.viewTitle];
-        
 	} return _labelFromTile;
 }
 
@@ -183,7 +179,6 @@
 		_viewLargeTitle = [[UIView alloc] init];
 		_viewLargeTitle.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 52);
 		_viewLargeTitle.backgroundColor = [UIColor blueColor];
-		_viewLargeTitle.hidden = YES;
 		[self addSubview:_viewLargeTitle];
 	} return _viewLargeTitle;
 }
@@ -207,7 +202,7 @@
 		_viewSearch = [[UIView alloc] init];
 		_viewSearch.frame = CGRectMake(0, kNavigationBarHeight + 52, SCREEN_WIDTH, 52);
 		_viewSearch.backgroundColor = [UIColor blackColor];
-		[self addSubview:_viewSearch];
+        [self addSubview:_viewSearch];
 	} return _viewSearch;
 }
 

@@ -43,9 +43,7 @@
     navigationBar.viewFromLeftBarButtonStack.hidden = NO;
     navigationBar.viewFromRightBarButtonStack.hidden = NO;
     
-    
     navigationBar.backgroundColor = navigationItemFrom.barBackgroudColor;
-    
     
     [self handleTitleLabelAnimateTransition:transitionContext to:navigationItemTo from:navigationItemFrom with:navigationBar and:duration and:toViewController and:fromViewController];
     
@@ -66,8 +64,10 @@
 		
 		CGFloat leftWidth = navigationBar.viewLeftBarButtonStack.bounds.size.width;
 		CGFloat rightWidth = navigationBar.viewRightBarButtonStack.bounds.size.width;
-		navigationBar.viewTitle.frame = CGRectMake(16+leftWidth, navigationBar.viewTitle.frame.origin.y, SCREEN_WIDTH-16-16-leftWidth-rightWidth, navigationBar.viewTitle.frame.size.height);
-		
+        if (leftWidth < rightWidth) {
+            leftWidth = rightWidth;
+        }
+		navigationBar.viewTitle.frame = CGRectMake(16+leftWidth, navigationBar.viewTitle.frame.origin.y, SCREEN_WIDTH-16-16-leftWidth-leftWidth, navigationBar.viewTitle.frame.size.height);
 		
         if (self.reverse) { // pop
             navigationBar.backgroundColor = navigationItemTo.barBackgroudColor;
@@ -116,20 +116,40 @@
     
     navigationBar.labelFromTile.hidden = NO;
 	
-	CGFloat leftWidth = navigationBar.viewLeftBarButtonStack.bounds.size.width + 16;
-	CGFloat rightWidth = navigationBar.viewRightBarButtonStack.bounds.size.width;
 	CGFloat centerX = SCREEN_WIDTH/2;
 	CGFloat centerY = (kIs_iPhoneX?44:20) + 22;
 	
-
-	
+    
+    
     if (self.reverse) { // pop
         
         navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
+        navigationBar.labelLargeFromTitle.frame = CGRectMake(16 , 0, SCREEN_WIDTH-32, 52);
+        
+        if (navigationItemFrom.prefersLargeTitles) {
+            navigationBar.labelFromTile.hidden = YES;
+            navigationBar.labelTitle.hidden = NO;
+        } else {
+            navigationBar.labelFromTile.hidden = NO;
+            navigationBar.labelTitle.hidden = NO;
+        }
+//        navigationBar.labelFromTile.hidden = YES;
+//        navigationBar.labelTitle.hidden = NO;
+        
     } else { //push
 		CGFloat moveCenterX = navigationBar.viewFromRightBarButtonStack.frame.origin.x;
 		moveCenterX = moveCenterX < centerX ? centerX : moveCenterX;
 		navigationBar.labelTitle.center = CGPointMake(moveCenterX, centerY);
+        navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
+        
+        navigationBar.labelLargeTitle.frame = CGRectMake(16 + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-32, 52);
+        navigationBar.labelLargeFromTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
+        
+        if (navigationItemTo.prefersLargeTitles) {
+            navigationBar.labelTitle.hidden = YES;
+        } else {
+            navigationBar.labelTitle.hidden = NO;
+        }
     }
 	navigationBar.viewTitle.alpha = 1;
 	
@@ -140,29 +160,35 @@
 		[UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
 			// rotate the from view
 			navigationBar.viewTitle.alpha = 0;
+            navigationBar.labelTitle.alpha = 0;
+            navigationBar.labelFromTile.alpha = 0;
 			navigationBar.labelLargeTitle.alpha = 0;
 			navigationBar.labelLargeFromTitle.alpha = 0;
 		}];
 		[UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
 			// rotate the to view
 			navigationBar.viewTitle.alpha = 1;
+            navigationBar.labelTitle.alpha = 1;
 			navigationBar.labelLargeTitle.alpha = 1;
 		}];
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:![transitionContext transitionWasCancelled]];
 	}];
 	
+    CGRect labelTitleFrame = CGRectMake(navigationBar.labelTitle.frame.origin.x, navigationBar.labelTitle.frame.origin.y, navigationBar.labelTitle.frame.size.width, navigationBar.labelTitle.frame.size.height);
     
 	[UIView animateKeyframesWithDuration:duration delay:0.0 options:0 animations:^{
         
-        navigationBar.labelTitle.alpha = 1;
-        navigationBar.labelFromTile.alpha = 0;
-		navigationBar.viewSearch.alpha = 0;
-		
+        CGFloat leftWidth = navigationBar.viewLeftBarButtonStack.bounds.size.width;
+        CGFloat rightWidth = navigationBar.viewRightBarButtonStack.bounds.size.width;
+        if (leftWidth < rightWidth) {
+            leftWidth = rightWidth;
+        }
+        navigationBar.labelTitle.frame = CGRectMake(navigationBar.labelTitle.frame.origin.x, navigationBar.labelTitle.frame.origin.y, SCREEN_WIDTH-32-leftWidth*2, navigationBar.labelTitle.frame.size.height);
+        navigationBar.labelTitle.center = CGPointMake(centerX, centerY);
+
         if (self.reverse) { // pop
-            
 			CGFloat moveCenterX = SCREEN_WIDTH-16;
-			
 #pragma mark -- 判断动画方向
 			if (self.rectEdge == UIRectEdgeLeft) {
 				moveCenterX = navigationBar.viewRightBarButtonStack.frame.origin.x;
@@ -171,15 +197,20 @@
 				moveCenterX = navigationBar.viewLeftBarButtonStack.frame.origin.x + navigationBar.viewLeftBarButtonStack.frame.size.width;
 				moveCenterX = moveCenterX > centerX ? centerX : moveCenterX;
 			}
+            
 			navigationBar.labelFromTile.center = CGPointMake(moveCenterX, centerY);
+            
+            navigationBar.labelLargeFromTitle.frame = CGRectMake(16 + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-32, 52);
         } else { // push
             
-            navigationBar.labelTitle.center = CGPointMake(centerX, centerY);
+            navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
+            
+            navigationBar.labelLargeTitle.frame = CGRectMake(16 , 0, SCREEN_WIDTH-32, 52);
         }
         
     } completion:^(BOOL finished) {
         if ([transitionContext transitionWasCancelled]) {
-
+            navigationBar.labelTitle.frame = labelTitleFrame;
         } else {
             navigationBar.labelFromTile.hidden = YES;
 			navigationBar.labelLargeFromTitle.hidden = YES;

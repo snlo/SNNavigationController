@@ -54,9 +54,12 @@
     
     //基本属性交接
     
-	self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
+    [RACObserve(self, title) subscribeNext:^(id  _Nullable x) {
+        self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
+        self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
+    }];
+    
 	self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
-	self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
 
 	if (self.sn_navigationItem.forcePrefersLargeTitles) {
 		[self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles];

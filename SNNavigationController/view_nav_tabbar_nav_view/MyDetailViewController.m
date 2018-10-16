@@ -48,13 +48,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-	self.title = @"详情页";
+	
+    self.title = @"爱好过nininienfinwefiunwefniwenfIE博我表情微博发起微博废弃物额分别为全备份";
     
     self.sn_navigationItem.barBackgroudColor = [UIColor whiteColor];
-    self.sn_navigationItem.prefersLargeTitles = YES;
+    self.sn_navigationItem.prefersLargeTitles = NO;
     self.sn_rightScreenEdgePanGesture.enabled = YES;
     self.sn_pullScreenBackPanGesture.enabled = YES;
-	self.sn_navigationItem.barHeight = 200;
 	
 	self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor redColor];
     
@@ -62,6 +62,9 @@
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:@"sssssss" forState:UIControlStateNormal];
+    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
     
     UIButton * button1 = [UIButton buttonWithType:UIButtonTypeSystem];
     [button1 setTitle:@"ddddd" forState:UIControlStateNormal];
@@ -127,14 +130,14 @@
 - (IBAction)handlePushButton:(id)sender {
     UIViewController * VC = [[UIViewController alloc] init];
     VC.view.backgroundColor = [UIColor greenColor];
-	VC.title = @"什么aisdi我哦啊还是地府号时代和覅收到货覅夢爱仕达和覅阿萨德发爱德华覅水电费";
+	VC.title = @"什么asdjfnasjndfjasndfjkajsdjnaksjndfjnnjnsdjnf";
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button setTitle:@"asd" forState:UIControlStateNormal];
+    [button setTitle:@"asdasdasdfasd" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(handleASDbutton:) forControlEvents:UIControlEventTouchUpInside];
     VC.sn_navigationItem.leftBarButtonItems = @[button];
     VC.sn_pullScreenBackPanGesture.enabled = YES;
-    VC.sn_navigationItem.prefersLargeTitles = NO;
+    VC.sn_navigationItem.prefersLargeTitles = YES;
     [self.navigationController pushViewController:VC animated:YES];
 }
 

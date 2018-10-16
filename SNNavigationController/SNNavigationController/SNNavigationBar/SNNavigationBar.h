@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface SNNavigationBar : UIView
+
 //标题视图
 @property (nonatomic, strong) UIView * viewTitle;
-//标题
 @property (nonatomic, strong) UILabel * labelTitle;
 @property (nonatomic, strong) UILabel * labelFromTile;
 
-//大标题
+//大标题视图
 @property (nonatomic, strong) UIView * viewLargeTitle;
 @property (nonatomic, strong) UILabel * labelLargeTitle;
 @property (nonatomic, strong) UILabel * labelLargeFromTitle;
