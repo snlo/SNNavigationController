@@ -35,7 +35,7 @@
     // Do any additional setup after loading the view.
 	
 	self.title = @"我的";
-	self.sn_navigationItem.barBackgroudColor = [UIColor yellowColor];
+//    self.sn_navigationItem.barBackgroudColor = [UIColor yellowColor];
     
     
 

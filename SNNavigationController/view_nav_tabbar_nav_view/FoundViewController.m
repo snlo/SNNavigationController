@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"发现了";
-    self.sn_navigationItem.barBackgroudColor = [UIColor redColor];
+//    self.sn_navigationItem.barBackgroudColor = [UIColor redColor];
     self.sn_navigationItem.prefersLargeTitles = YES;
     self.sn_navigationItem.forcePrefersLargeTitles = YES;
 
@@ -69,7 +69,7 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 30;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * identifier = @"ViewControllerCell";

@@ -43,7 +43,8 @@
         [self updateTitleLabel:self.labelFromTile];
     }];
     [RACObserve(self, frame) subscribeNext:^(id  _Nullable x) {
-        self.separatorLine.frame = CGRectMake(0, self.bounds.size.height, SCREEN_WIDTH, 0.5);
+        self.separatorLine.frame = CGRectMake(0, self.bounds.size.height-0.5, SCREEN_WIDTH, 0.5);
+        [self insertSubview:self.separatorLine atIndex:self.subviews.count];
     }];
 	
 }
@@ -178,7 +179,7 @@
 	if (!_viewLargeTitle) {
 		_viewLargeTitle = [[UIView alloc] init];
 		_viewLargeTitle.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 52);
-		_viewLargeTitle.backgroundColor = [UIColor blueColor];
+		_viewLargeTitle.backgroundColor = [UIColor whiteColor];
 		[self addSubview:_viewLargeTitle];
 	} return _viewLargeTitle;
 }
@@ -201,7 +202,7 @@
 	if (!_viewSearch) {
 		_viewSearch = [[UIView alloc] init];
 		_viewSearch.frame = CGRectMake(0, kNavigationBarHeight + 52, SCREEN_WIDTH, 52);
-		_viewSearch.backgroundColor = [UIColor blackColor];
+		_viewSearch.backgroundColor = [UIColor orangeColor];
         [self addSubview:_viewSearch];
 	} return _viewSearch;
 }

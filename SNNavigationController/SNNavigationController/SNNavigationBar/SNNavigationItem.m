@@ -25,6 +25,10 @@
     }
 }
 
+- (void)setShowSearchBar:(BOOL)showSearchBar {
+    _showSearchBar = showSearchBar;
+}
+
 //- (CGPoint)centerLabelTitle {
 //    if (_centerLabelTitle.x < 1) {
 //        _centerLabelTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);

@@ -88,7 +88,8 @@
 }
 - (void)sn_viewDidAppear:(BOOL)animated {
     if (self.sn_currentScrollView && self.sn_navigationItem.prefersLargeTitles && !self.isScrollViewSignalMark) {
-        __block CGFloat center_Y = self.sn_navigationItem.centerLabelTitle.y;
+//        __block CGFloat center_Y = self.sn_navigationItem.centerLabelTitle.y;
+        __block CGFloat center_Y = self.sn_navigationController.sn_navigationBar.viewLargeTitle.center.y;
         __block CGFloat center_X = self.sn_navigationItem.centerLabelTitle.x;
         __block CGFloat barHeight = self.sn_navigationItem.barHeight;
         [RACObserve(self.sn_currentScrollView, contentOffset) subscribeNext:^(id  _Nullable x) {
@@ -108,16 +109,12 @@
  
                 height = height > kNavigationBarHeight ? height :kNavigationBarHeight;
                 center_x = center_x < SCREEN_WIDTH/2 ? center_x :SCREEN_WIDTH/2;
-                center_y = center_y > 22 ? center_y : 22;
+                center_y = center_y > kNavigationBarHeight+26 ? center_y : kNavigationBarHeight+26;
 				
                 
-//                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
-//                self.sn_navigationController.sn_navigationBar.labelTitle.center = CGPointMake(center_x, center_y);
-//                self.sn_navigationController.sn_navigationBar.labelFromTile.center = CGPointMake(center_x, center_y);
-//
-//                self.sn_navigationItem.centerLabelTitle = CGPointMake(center_x, center_y);
-//                self.sn_navigationItem.centerLabelFromTitle = CGPointMake(center_x, center_y);
-//                self.sn_navigationItem.barHeight = height;
+                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+                self.sn_navigationController.sn_navigationBar.viewLargeTitle.center = CGPointMake(SCREEN_WIDTH/2, center_y);
+                self.sn_navigationItem.barHeight = height;
 				
             }
         }];
@@ -127,7 +124,7 @@
             if (self.isWillDisappear) return;
             if (x.state == UIGestureRecognizerStateEnded) {
                 if ((self.sn_navigationController.sn_navigationBar.labelTitle.center.y < center_Y && self.sn_navigationController.sn_navigationBar.labelTitle.center.y > 22) || (self.sn_navigationController.sn_navigationBar.labelFromTile.center.y < center_Y && self.sn_navigationController.sn_navigationBar.labelFromTile.center.y > 22)) {
-                    [self.sn_currentScrollView setContentOffset:CGPointMake(0, -52) animated:YES];
+//                    [self.sn_currentScrollView setContentOffset:CGPointMake(0, -52) animated:YES];
                 }
             }
         }];

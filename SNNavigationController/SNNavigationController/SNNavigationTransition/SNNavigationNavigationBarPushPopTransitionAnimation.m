@@ -120,21 +120,20 @@
 	CGFloat centerY = (kIs_iPhoneX?44:20) + 22;
 	
     
-    
     if (self.reverse) { // pop
         
         navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
         navigationBar.labelLargeFromTitle.frame = CGRectMake(16 , 0, SCREEN_WIDTH-32, 52);
         
-        if (navigationItemFrom.prefersLargeTitles) {
-            navigationBar.labelFromTile.hidden = YES;
-            navigationBar.labelTitle.hidden = NO;
+        
+        if (navigationItemFrom.prefersLargeTitles == navigationItemTo.prefersLargeTitles) {
+            navigationBar.labelFromTile.hidden = navigationItemFrom.prefersLargeTitles;
+            navigationBar.labelTitle.hidden = navigationItemFrom.prefersLargeTitles;
         } else {
-            navigationBar.labelFromTile.hidden = NO;
-            navigationBar.labelTitle.hidden = NO;
+            navigationBar.labelFromTile.hidden = navigationItemFrom.prefersLargeTitles;
+            navigationBar.labelTitle.hidden = navigationItemTo.prefersLargeTitles;
+            navigationBar.labelLargeFromTitle.hidden = !navigationItemFrom.prefersLargeTitles;
         }
-//        navigationBar.labelFromTile.hidden = YES;
-//        navigationBar.labelTitle.hidden = NO;
         
     } else { //push
 		CGFloat moveCenterX = navigationBar.viewFromRightBarButtonStack.frame.origin.x;
@@ -145,16 +144,34 @@
         navigationBar.labelLargeTitle.frame = CGRectMake(16 + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-32, 52);
         navigationBar.labelLargeFromTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
         
-        if (navigationItemTo.prefersLargeTitles) {
-            navigationBar.labelTitle.hidden = YES;
+        
+        if (navigationItemTo.prefersLargeTitles == navigationItemFrom.prefersLargeTitles) {
+            navigationBar.labelFromTile.hidden = navigationItemTo.prefersLargeTitles;
+            navigationBar.labelTitle.hidden = navigationItemTo.prefersLargeTitles;
         } else {
-            navigationBar.labelTitle.hidden = NO;
+            navigationBar.labelFromTile.hidden = navigationItemFrom.prefersLargeTitles;
+            navigationBar.labelTitle.hidden = navigationItemTo.prefersLargeTitles;
+            navigationBar.labelLargeFromTitle.hidden = !navigationItemFrom.prefersLargeTitles;
         }
     }
 	navigationBar.viewTitle.alpha = 1;
 	
-	navigationBar.viewSearch.alpha = 1;
-	
+    if (navigationItemFrom.showSearchBar) {
+        navigationBar.viewSearch.alpha = 1;
+        if (!navigationItemFrom.prefersLargeTitles) {
+            navigationBar.labelLargeFromTitle.alpha = 0;
+            navigationBar.labelLargeTitle.alpha = 0;
+        }
+    } else {
+        navigationBar.viewSearch.alpha = 0;
+        if (!navigationItemTo.showSearchBar) {
+            navigationBar.viewSearch.alpha = 1;
+        }
+        if (navigationItemTo.showSearchBar && !navigationItemFrom.prefersLargeTitles) {
+            navigationBar.labelLargeFromTitle.alpha = 0;
+            navigationBar.labelLargeTitle.alpha = 0;
+        }
+    }
 	[UIView animateKeyframesWithDuration:duration delay:0.0 options:0 animations:^{
 
 		[UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
@@ -164,12 +181,22 @@
             navigationBar.labelFromTile.alpha = 0;
 			navigationBar.labelLargeTitle.alpha = 0;
 			navigationBar.labelLargeFromTitle.alpha = 0;
+            navigationBar.viewSearch.alpha = 0;
+            if (!navigationItemTo.showSearchBar) {
+                navigationBar.viewSearch.alpha = 1;
+            }
 		}];
 		[UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
 			// rotate the to view
 			navigationBar.viewTitle.alpha = 1;
             navigationBar.labelTitle.alpha = 1;
 			navigationBar.labelLargeTitle.alpha = 1;
+            if (navigationItemTo.showSearchBar) {
+                navigationBar.viewSearch.alpha = 1;
+            }
+            if (!navigationItemTo.prefersLargeTitles) {
+                navigationBar.labelLargeTitle.alpha = 0;
+            }
 		}];
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:![transitionContext transitionWasCancelled]];
@@ -201,11 +228,14 @@
 			navigationBar.labelFromTile.center = CGPointMake(moveCenterX, centerY);
             
             navigationBar.labelLargeFromTitle.frame = CGRectMake(16 + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-32, 52);
+            
+            
         } else { // push
             
             navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
             
             navigationBar.labelLargeTitle.frame = CGRectMake(16 , 0, SCREEN_WIDTH-32, 52);
+            
         }
         
     } completion:^(BOOL finished) {

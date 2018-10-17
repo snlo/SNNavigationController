@@ -32,7 +32,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    
+//    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, kNavigationBarHeight+55, SCREEN_WIDTH, 100);
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -49,19 +49,28 @@
     // Do any additional setup after loading the view.
 	
 	
-    self.title = @"爱好过nininienfinwefiunwefniwenfIE博我表情微博发起微博废弃物额分别为全备份";
+    self.title = @"xxxx";
     
     self.sn_navigationItem.barBackgroudColor = [UIColor whiteColor];
-    self.sn_navigationItem.prefersLargeTitles = NO;
+    self.sn_navigationItem.prefersLargeTitles = YES;
     self.sn_rightScreenEdgePanGesture.enabled = YES;
     self.sn_pullScreenBackPanGesture.enabled = YES;
+    self.sn_navigationItem.barHeight = kNavigationBarHeight + 104;
+    
+//    UIView * views = [[UIView alloc] init];
+//    views.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 100);
+//    views.backgroundColor = [UIColor redColor];
+//    [self.sn_navigationController.sn_navigationBar addSubview:views];
+    self.sn_navigationItem.showSearchBar = YES;
+//    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 100);
+//    self.sn_navigationController.sn_navigationBar.viewSearch.backgroundColor = [UIColor redColor];
 	
-	self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor redColor];
+//    self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor redColor];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button setTitle:@"sssssss" forState:UIControlStateNormal];
+    [button setTitle:@"我的" forState:UIControlStateNormal];
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -73,7 +82,7 @@
 	viewsss.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
 	viewsss.backgroundColor= [UIColor yellowColor];
 //	[self.sn_navigationController.sn_navigationBar.viewTitle addSubview:viewsss];
-	self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor yellowColor];
+//    self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor yellowColor];
 	
 //    self.sn_navigationController.sn_navigationBar.leftBarButtonItems = @[button,button1];
     
@@ -129,7 +138,7 @@
 }
 - (IBAction)handlePushButton:(id)sender {
     UIViewController * VC = [[UIViewController alloc] init];
-    VC.view.backgroundColor = [UIColor greenColor];
+    VC.view.backgroundColor = [UIColor whiteColor];
 	VC.title = @"什么asdjfnasjndfjasndfjkajsdjnaksjndfjnnjnsdjnf";
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:@"asdasdasdfasd" forState:UIControlStateNormal];
