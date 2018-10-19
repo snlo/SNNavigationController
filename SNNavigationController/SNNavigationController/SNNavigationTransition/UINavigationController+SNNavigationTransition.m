@@ -18,7 +18,7 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
+        snna_replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
     });
 }
 

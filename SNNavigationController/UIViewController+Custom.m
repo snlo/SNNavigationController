@@ -13,7 +13,7 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replaceMethod(self, @selector(viewWillAppear:), self, @selector(cu_viewWillAppear:));
+        snna_replaceMethod(self, @selector(viewWillAppear:), self, @selector(cu_viewWillAppear:));
     });
 }
 - (void)cu_viewWillAppear:(BOOL)animated {

@@ -10,6 +10,8 @@
 
 #import "ViewControllerCell.h"
 
+#import "MyDetailTestViewController.h"
+
 @interface MyDetailViewController () <UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -32,7 +34,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-//    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, kNavigationBarHeight+55, SCREEN_WIDTH, 100);
+//    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+55, SCREEN_WIDTH, 100);
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -55,14 +57,27 @@
     self.sn_navigationItem.prefersLargeTitles = YES;
     self.sn_rightScreenEdgePanGesture.enabled = YES;
     self.sn_pullScreenBackPanGesture.enabled = YES;
-    self.sn_navigationItem.barHeight = kNavigationBarHeight + 104;
+//    self.sn_navigationItem.barHeight = ksNavigationBarHeight  +52 + 52 + 30;
     
 //    UIView * views = [[UIView alloc] init];
-//    views.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 100);
+//    views.frame = CGRectMake(0, ksNavigationBarHeight, SCREEN_WIDTH, 100);
 //    views.backgroundColor = [UIColor redColor];
 //    [self.sn_navigationController.sn_navigationBar addSubview:views];
-    self.sn_navigationItem.showSearchBar = YES;
-//    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 100);
+//    self.sn_navigationItem.showSearchBar = YES;
+//    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+52, SCREEN_WIDTH, 52 + 30);
+    UIView * viewLarge = [self setSearchBarWith:82.00f];
+    UILabel * labelSS = [[UILabel alloc] init];
+    labelSS.text = @"asdghabsdgkba";
+    labelSS.font = [UIFont systemFontOfSize:18];
+    labelSS.textColor = [UIColor blackColor];
+    [viewLarge addSubview:labelSS];
+    [labelSS mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(viewLarge.mas_top).offset(0);
+        make.left.equalTo(viewLarge.mas_left).offset(0);
+        make.bottom.equalTo(viewLarge.mas_bottom).offset(0);
+        make.right.equalTo(viewLarge.mas_right).offset(0);
+    }];
+    
 //    self.sn_navigationController.sn_navigationBar.viewSearch.backgroundColor = [UIColor redColor];
 	
 //    self.sn_navigationController.sn_navigationBar.viewTitle.backgroundColor = [UIColor redColor];
@@ -137,7 +152,7 @@
 	}];
 }
 - (IBAction)handlePushButton:(id)sender {
-    UIViewController * VC = [[UIViewController alloc] init];
+    MyDetailTestViewController * VC = [[MyDetailTestViewController alloc] init];
     VC.view.backgroundColor = [UIColor whiteColor];
 	VC.title = @"什么asdjfnasjndfjasndfjkajsdjnaksjndfjnnjnsdjnf";
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];

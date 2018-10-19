@@ -1,5 +1,5 @@
 //
-//  Singletion.h
+//  SNNa_Singletion.h
 //  SNNetworking
 //
 //  Created by snlo on 16/6/30.
@@ -7,13 +7,13 @@
 //
 
 
-#define singletonInterface(classname) \
+#define snna_singletonInterface(classname) \
 __attribute__((objc_subclassing_restricted)) \
 @interface classname : NSObject \
 +(instancetype)sharedManager;
 
 #if __has_feature(objc_arc)
-#define singletonImplemention(classname) \
+#define snna_singletonImplemention(classname) \
 @implementation classname \
 static id instanse;\
 + (instancetype)allocWithZone:(struct _NSZone *)zone\
@@ -37,7 +37,7 @@ return instanse;\
 return instanse;\
 };
 #else
-#define singletonImplemention(class)  \
+#define snna_singletonImplemention(class)  \
 static id instanse;\
 + (instancetype)allocWithZone:(struct _NSZone *)zone\
 {\

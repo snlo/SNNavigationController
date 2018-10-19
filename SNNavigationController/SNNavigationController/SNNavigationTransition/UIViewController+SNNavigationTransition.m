@@ -26,11 +26,11 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replaceMethod(self, @selector(viewWillAppear:), self, @selector(sn_viewWillAppear:));
-        replaceMethod(self, @selector(viewDidAppear:), self, @selector(sn_viewDidAppear:));
-        replaceMethod(self, @selector(viewWillDisappear:), self, @selector(sn_viewWillDisappear:));
-        replaceMethod(self, @selector(viewDidDisappear:), self, @selector(sn_viewDidDisappear:));
-        replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
+        snna_replaceMethod(self, @selector(viewWillAppear:), self, @selector(sn_viewWillAppear:));
+        snna_replaceMethod(self, @selector(viewDidAppear:), self, @selector(sn_viewDidAppear:));
+        snna_replaceMethod(self, @selector(viewWillDisappear:), self, @selector(sn_viewWillDisappear:));
+        snna_replaceMethod(self, @selector(viewDidDisappear:), self, @selector(sn_viewDidDisappear:));
+        snna_replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
         
     });
 }
@@ -53,11 +53,15 @@
     }
     
     //基本属性交接
-    
     [RACObserve(self, title) subscribeNext:^(id  _Nullable x) {
         self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
         self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
     }];
+    if (self.sn_navigationController.sn_navigationItem.showSearchBar) {
+        
+    }
+    self.sn_navigationController.sn_navigationBar.viewSearch.alpha = self.sn_navigationController.sn_navigationItem.showSearchBar?1:0;
+    self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
     
 	self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
 
@@ -79,52 +83,105 @@
                                         toItem:self.view
                                      attribute:NSLayoutAttributeTop
                                     multiplier:1.0f
-                                      constant:kNavigationBarHeight].active = YES;
-        self.sn_currentScrollView.contentInset = UIEdgeInsetsMake(self.sn_navigationItem.barHeight-kNavigationBarHeight, 0, 0, 0);
+                                      constant:ksNavigationBarHeight].active = YES;
+        self.sn_currentScrollView.contentInset = UIEdgeInsetsMake(self.sn_navigationItem.barHeight-ksNavigationBarHeight, 0, 0, 0);
     }
     self.isWillDisappear = NO;
     
     [self sn_viewWillAppear:animated];
 }
 - (void)sn_viewDidAppear:(BOOL)animated {
-    if (self.sn_currentScrollView && self.sn_navigationItem.prefersLargeTitles && !self.isScrollViewSignalMark) {
-//        __block CGFloat center_Y = self.sn_navigationItem.centerLabelTitle.y;
-        __block CGFloat center_Y = self.sn_navigationController.sn_navigationBar.viewLargeTitle.center.y;
-        __block CGFloat center_X = self.sn_navigationItem.centerLabelTitle.x;
-        __block CGFloat barHeight = self.sn_navigationItem.barHeight;
+    
+    //常量记录
+    BOOL isShowSearchBar = self.sn_navigationItem.showSearchBar;
+    BOOL isPrefersLargeTitles = self.sn_navigationItem.prefersLargeTitles;
+    __block CGFloat center_Y = self.sn_navigationController.sn_navigationBar.viewLargeTitle.center.y;
+    __block CGFloat barHeight = self.sn_navigationItem.barHeight;
+    __block CGFloat center_search_Y = self.sn_navigationController.sn_navigationBar.viewSearch.center.y;
+    __block CGFloat center_label_y = self.sn_navigationController.sn_navigationBar.labelLargeTitle.center.y;
+    //记录当前监听到的偏移
+    __block CGFloat end = 0;
+    __block CGFloat center_sreach_y = self.sn_navigationController.sn_navigationBar.viewSearch.center.y;
+    __block CGFloat height_sreach = isShowSearchBar ? self.sn_navigationController.sn_navigationBar.viewSearch.bounds.size.height : 0;
+    __block CGFloat height_Large = isPrefersLargeTitles ? ksLargeHeight : 0.00f;
+    
+    if (self.sn_currentScrollView && (isPrefersLargeTitles || isShowSearchBar) && !self.isScrollViewSignalMark) {
+        @weakify(self);
         [RACObserve(self.sn_currentScrollView, contentOffset) subscribeNext:^(id  _Nullable x) {
-            if (!self.sn_navigationItem.prefersLargeTitles) return ;
+            @strongify(self);
             if (self.isWillDisappear) return;
             CGFloat offset_y = self.sn_currentScrollView.contentOffset.y + self.sn_currentScrollView.contentInset.top;
-            if (offset_y != 0) {
-                CGFloat height = barHeight - offset_y;
-                
-				CGFloat center_y = center_Y + (-self.sn_currentScrollView.contentOffset.y - 52.000f);
-                CGFloat center_x = center_X;
-                
-                if (center_y < center_Y) {
+            
+            if (offset_y == end || offset_y == height_Large) {
+                return; //当不是当前偏移监听时
+            }
+            
+            if (offset_y != 0) { //排除首次偏移
+                self.sn_navigationController.sn_navigationBar.viewLargeTitle.center = CGPointMake(SCREEN_WIDTH/2, center_Y-(offset_y<0?offset_y:0));
+                if (isShowSearchBar) {
                     
-                    center_x = center_X + ((self.sn_currentScrollView.contentOffset.y+52.000f)/(48.000f))*(SCREEN_WIDTH/2 - center_X);
-				}
- 
-                height = height > kNavigationBarHeight ? height :kNavigationBarHeight;
-                center_x = center_x < SCREEN_WIDTH/2 ? center_x :SCREEN_WIDTH/2;
-                center_y = center_y > kNavigationBarHeight+26 ? center_y : kNavigationBarHeight+26;
-				
+                    self.sn_navigationController.sn_navigationBar.viewSearch.center = CGPointMake(SCREEN_WIDTH/2, center_search_Y-(offset_y<height_Large?offset_y:height_Large));
+                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, barHeight-((offset_y)<(height_Large+height_sreach)?(offset_y):(height_Large+height_sreach)));
+                    
+                } else {
+
+                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, barHeight-(offset_y<height_Large?offset_y:height_Large));
+                }
                 
-                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
-                self.sn_navigationController.sn_navigationBar.viewLargeTitle.center = CGPointMake(SCREEN_WIDTH/2, center_y);
-                self.sn_navigationItem.barHeight = height;
-				
+                self.sn_navigationController.sn_navigationBar.labelLargeTitle.alpha = 1;
+                self.sn_navigationController.sn_navigationBar.labelLargeTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
+                self.sn_navigationController.sn_navigationBar.labelLargeFromTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
+                
+                if (isPrefersLargeTitles) {
+                    self.sn_navigationController.sn_navigationBar.labelTitle.hidden = NO;
+                    self.sn_navigationController.sn_navigationBar.labelTitle.alpha = (offset_y - 40.00f) / 12.00f;
+                    self.sn_navigationController.sn_navigationBar.labelFromTile.alpha =  (offset_y - 40.00f) / 12.00f;
+                }
+                
             }
         }];
         
-        
-        [self.sn_currentScrollView.panGestureRecognizer.rac_gestureSignal subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) {
+        [self.sn_currentScrollView.panGestureRecognizer.rac_gestureSignal subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) { //手势结束时处理
             if (self.isWillDisappear) return;
             if (x.state == UIGestureRecognizerStateEnded) {
-                if ((self.sn_navigationController.sn_navigationBar.labelTitle.center.y < center_Y && self.sn_navigationController.sn_navigationBar.labelTitle.center.y > 22) || (self.sn_navigationController.sn_navigationBar.labelFromTile.center.y < center_Y && self.sn_navigationController.sn_navigationBar.labelFromTile.center.y > 22)) {
-//                    [self.sn_currentScrollView setContentOffset:CGPointMake(0, -52) animated:YES];
+                end = self.sn_currentScrollView.contentOffset.y + self.sn_currentScrollView.contentInset.top;
+                
+                CGFloat sreach_height = height_sreach;
+                
+                if (isShowSearchBar) {
+                    if (center_sreach_y - self.sn_navigationController.sn_navigationBar.viewSearch.center.y == height_Large && self.sn_navigationController.sn_navigationBar.frame.size.height - ksNavigationBarHeight < height_sreach && self.sn_navigationController.sn_navigationBar.frame.size.height - ksNavigationBarHeight > 0) {
+                        
+                        [self.sn_currentScrollView setContentOffset:CGPointMake(0, -height_sreach) animated:YES];
+                        self.sn_navigationItem.showSearchBar = YES;
+                        self.sn_navigationItem.showSearchBarMark = YES;
+                        sreach_height = height_sreach;
+                        
+                    } else if (center_sreach_y - self.sn_navigationController.sn_navigationBar.viewSearch.center.y == height_Large && self.sn_navigationController.sn_navigationBar.frame.size.height - ksNavigationBarHeight <= 0) {
+                        
+                        self.sn_navigationItem.showSearchBar = NO;
+                        self.sn_navigationItem.showSearchBarMark = YES;
+                        sreach_height = 0;
+                        
+                    } else {
+                        
+                        self.sn_navigationItem.showSearchBar = YES;
+                        self.sn_navigationItem.showSearchBarMark = YES;
+                        sreach_height = height_sreach;
+                    }
+                }
+                if (center_label_y - self.sn_navigationController.sn_navigationBar.labelLargeTitle.center.y < height_Large) {
+                    if (isShowSearchBar) {
+                        [self.sn_currentScrollView setContentOffset:CGPointMake(0, -height_Large-height_sreach) animated:YES];
+                    } else {
+                        [self.sn_currentScrollView setContentOffset:CGPointMake(0, -height_Large) animated:YES];
+                    }
+                    
+                    self.sn_navigationItem.prefersLargeTitles = YES;
+                    self.sn_navigationItem.barHeight = ksNavigationBarHeight + height_Large + sreach_height;
+                } else {
+                    self.sn_navigationItem.prefersLargeTitles = NO;
+                    self.sn_navigationItem.barHeight = ksNavigationBarHeight + sreach_height;
+                    self.sn_navigationController.sn_navigationBar.labelLargeTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y);
                 }
             }
         }];
@@ -144,6 +201,18 @@
 - (void)sn_viewDidLoad {
 
     [self sn_viewDidLoad];
+}
+
+#pragma mark -- public methods
+- (UIView *)setSearchBarWith:(CGFloat)height {
+    CGFloat height_Large = 0.00f;
+    if (self.sn_navigationItem.prefersLargeTitles) {
+        height_Large = ksLargeHeight;
+    }
+    self.sn_navigationItem.barHeight = ksNavigationBarHeight + height_Large + height;
+    self.sn_navigationItem.showSearchBar = YES;
+    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+height_Large, SCREEN_WIDTH, height);
+    return self.sn_navigationController.sn_navigationBar.viewSearch;
 }
 
 #pragma mark -- getter / setter

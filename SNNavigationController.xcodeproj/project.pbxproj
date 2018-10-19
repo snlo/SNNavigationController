@@ -11,6 +11,8 @@
 		5EB3477421411729007482B3 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB3477321411729007482B3 /* OneViewController.m */; };
 		5EB3477721411736007482B3 /* TowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB3477621411736007482B3 /* TowViewController.m */; };
 		6D125B4243D69E10E372C9BF /* libPods-SNNavigationController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */; };
+		9819AE5F2179D02900188D40 /* MyDetailTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9819AE5D2179D02900188D40 /* MyDetailTestViewController.m */; };
+		9819AE602179D02900188D40 /* MyDetailTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9819AE5E2179D02900188D40 /* MyDetailTestViewController.xib */; };
 		98242512212ECB0D0006876D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242511212ECB0D0006876D /* AppDelegate.m */; };
 		98242515212ECB0D0006876D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242514212ECB0D0006876D /* ViewController.m */; };
 		98242518212ECB0D0006876D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98242516212ECB0D0006876D /* Main.storyboard */; };
@@ -77,6 +79,9 @@
 		5EB3477521411736007482B3 /* TowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TowViewController.h; sourceTree = "<group>"; };
 		5EB3477621411736007482B3 /* TowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TowViewController.m; sourceTree = "<group>"; };
 		70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9819AE5C2179D02900188D40 /* MyDetailTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyDetailTestViewController.h; sourceTree = "<group>"; };
+		9819AE5D2179D02900188D40 /* MyDetailTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDetailTestViewController.m; sourceTree = "<group>"; };
+		9819AE5E2179D02900188D40 /* MyDetailTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDetailTestViewController.xib; sourceTree = "<group>"; };
 		9824250D212ECB0D0006876D /* SNNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242510212ECB0D0006876D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98242511212ECB0D0006876D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,7 +121,7 @@
 		982425AC213517040006876D /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		982425AD213517040006876D /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		982425AF213517EF0006876D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		982425B021352D0F0006876D /* Singletion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singletion.h; sourceTree = "<group>"; };
+		982425B021352D0F0006876D /* SNNa_Singletion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNa_Singletion.h; sourceTree = "<group>"; };
 		982425B421354A740006876D /* SNNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationBar.h; sourceTree = "<group>"; };
 		982425B521354A740006876D /* SNNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationBar.m; sourceTree = "<group>"; };
 		982425B721354A8C0006876D /* SNTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTabBar.h; sourceTree = "<group>"; };
@@ -209,6 +214,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9819AE612179E23000188D40 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
+				98242556212EDCD40006876D /* SNNavigationControllerTool.m */,
+				982425B021352D0F0006876D /* SNNa_Singletion.h */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		98242504212ECB0C0006876D = {
 			isa = PBXGroup;
 			children = (
@@ -284,9 +299,7 @@
 			children = (
 				982425D32137A8BD0006876D /* SNNavigationTransition */,
 				982425D22137A87B0006876D /* SNNavigationBar */,
-				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
-				98242556212EDCD40006876D /* SNNavigationControllerTool.m */,
-				982425B021352D0F0006876D /* Singletion.h */,
+				9819AE612179E23000188D40 /* Tools */,
 				98242549212ECE250006876D /* UINavigationBar+SNNavigationBar.h */,
 				9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */,
 				9824254C212ECE440006876D /* UINavigationItem+SNNavigationItem.h */,
@@ -319,6 +332,9 @@
 				982425A221341D870006876D /* MyDetailViewController.h */,
 				982425A321341D870006876D /* MyDetailViewController.m */,
 				982425AA213420610006876D /* MyDetailViewController.xib */,
+				9819AE5C2179D02900188D40 /* MyDetailTestViewController.h */,
+				9819AE5D2179D02900188D40 /* MyDetailTestViewController.m */,
+				9819AE5E2179D02900188D40 /* MyDetailTestViewController.xib */,
 			);
 			path = view_nav_tabbar_nav_view;
 			sourceTree = "<group>";
@@ -470,6 +486,7 @@
 				9824251A212ECB0F0006876D /* Assets.xcassets in Resources */,
 				98242595213411170006876D /* ViewControllerCell.xib in Resources */,
 				98242518212ECB0D0006876D /* Main.storyboard in Resources */,
+				9819AE602179D02900188D40 /* MyDetailTestViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +599,7 @@
 				982425E82137C1730006876D /* UIViewController+SNNavigationTransition.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
 				982425EE2137C3900006876D /* SNTransitionInteractionController.m in Sources */,
+				9819AE5F2179D02900188D40 /* MyDetailTestViewController.m in Sources */,
 				98242512212ECB0D0006876D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

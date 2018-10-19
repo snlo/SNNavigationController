@@ -18,7 +18,7 @@
 {
     self = [super init];
     if (self) {
-		self.frame = CGRectMake(0, 0, SCREEN_WIDTH, (kIs_iPhoneX?44:20)+44);
+		self.frame = CGRectMake(0, 0, SCREEN_WIDTH, (ksIs_iPhoneX?44:20)+44);
         self.backgroundColor = [UIColor whiteColor];
 		[self loadInterFace];
     }
@@ -76,11 +76,11 @@
 	} else {
 		width += 8;
 	}
-    barButtonItemsView.frame = CGRectMake(left?8:(SCREEN_WIDTH-(width+8)), kIs_iPhoneX?44:20, width, 44);
+    barButtonItemsView.frame = CGRectMake(left?8:(SCREEN_WIDTH-(width+8)), ksIs_iPhoneX?44:20, width, 44);
 }
 
 - (void)setForcePrefersLargeTitles {
-    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, kNavigationBarHeight + 52);
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, ksNavigationBarHeight + ksLargeHeight);
 	self.viewLargeTitle.hidden = NO;
 	self.viewTitle.hidden = YES;
 }
@@ -89,7 +89,7 @@
 - (UIView *)viewTitle {
 	if (!_viewTitle) {
 		_viewTitle = [[UIView alloc] init];
-		_viewTitle.frame = CGRectMake(16, kIs_iPhoneX?44:20, SCREEN_WIDTH-32, 44);
+		_viewTitle.frame = CGRectMake(ksMargin, ksIs_iPhoneX?44:20, SCREEN_WIDTH-ksMargin*2, 44);
 		_viewTitle.backgroundColor = [UIColor clearColor];
 		[self addSubview:_viewTitle];
         
@@ -98,6 +98,7 @@
 - (UILabel *)labelTitle {
 	if (!_labelTitle) {
 		_labelTitle = [[UILabel alloc] init];
+        _labelTitle.center = CGPointMake(SCREEN_WIDTH/2, (ksIs_iPhoneX?44:20) + 22);
 		_labelTitle.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
 		_labelTitle.textColor = [UIColor blackColor];
 		_labelTitle.textAlignment = NSTextAlignmentCenter;
@@ -178,22 +179,25 @@
 - (UIView *)viewLargeTitle {
 	if (!_viewLargeTitle) {
 		_viewLargeTitle = [[UIView alloc] init];
-		_viewLargeTitle.frame = CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, 52);
+		_viewLargeTitle.frame = CGRectMake(0, ksNavigationBarHeight, SCREEN_WIDTH, ksLargeHeight);
 		_viewLargeTitle.backgroundColor = [UIColor whiteColor];
+        _viewLargeTitle.layer.masksToBounds = YES;
 		[self addSubview:_viewLargeTitle];
 	} return _viewLargeTitle;
 }
 - (UILabel *)labelLargeTitle {
 	if (!_labelLargeTitle) {
 		_labelLargeTitle = [[UILabel alloc] init];
-		_labelLargeTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
+		_labelLargeTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        _labelLargeTitle.font = [UIFont systemFontOfSize:24 weight:UIFontWeightMedium];
 		[self.viewLargeTitle addSubview:_labelLargeTitle];
 	} return _labelLargeTitle;
 }
 - (UILabel *)labelLargeFromTitle {
 	if (!_labelLargeFromTitle) {
 		_labelLargeFromTitle = [[UILabel alloc] init];
-		_labelLargeFromTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
+		_labelLargeFromTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        _labelLargeFromTitle.font = [UIFont systemFontOfSize:24 weight:UIFontWeightMedium];
 		[self.viewLargeTitle addSubview:_labelLargeFromTitle];
 	} return _labelLargeFromTitle;
 }
@@ -201,7 +205,7 @@
 - (UIView *)viewSearch {
 	if (!_viewSearch) {
 		_viewSearch = [[UIView alloc] init];
-		_viewSearch.frame = CGRectMake(0, kNavigationBarHeight + 52, SCREEN_WIDTH, 52);
+		_viewSearch.frame = CGRectMake(0, ksNavigationBarHeight + ksLargeHeight, SCREEN_WIDTH, ksLargeHeight);
 		_viewSearch.backgroundColor = [UIColor orangeColor];
         [self addSubview:_viewSearch];
 	} return _viewSearch;

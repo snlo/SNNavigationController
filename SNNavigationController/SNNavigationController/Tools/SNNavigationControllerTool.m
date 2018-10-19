@@ -11,11 +11,9 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-//@implementation SNNavigationControllerTool
+snna_singletonImplemention(SNNavigationControllerTool)
 
-singletonImplemention(SNNavigationControllerTool)
-
-void replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod) {
+void snna_replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod) {
     Method aMethods = class_getInstanceMethod(aClass, aMethod);
     Method newMethods = class_getInstanceMethod(newClass, newMethod);
 
@@ -27,18 +25,5 @@ void replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod) {
     }
 }
 
-@synthesize navigationBar = _navigationBar;
-- (void)setNavigationBar:(UIView *)navigationBar {
-    _navigationBar.frame = navigationBar.frame;
-    _navigationBar.backgroundColor = navigationBar.backgroundColor;
-}
-- (UIView *)navigationBar {
-    if (!_navigationBar) {
-        _navigationBar = [[UIView alloc] init];
-        _navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
-        _navigationBar.backgroundColor = [UIColor yellowColor];
-    }
-    return _navigationBar;
-}
 
 @end

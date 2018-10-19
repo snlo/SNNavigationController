@@ -13,8 +13,14 @@
 
 @interface UINavigationController (SNNavigationTransition)
 
+/**
+ 导航栏
+ */
 @property (nonatomic, strong) SNNavigationBar * sn_navigationBar;
 
+/**
+ 导航视图控制器间的转场代理
+ */
 @property (nonatomic, weak) SNNavigationTransitionDelegate * sn_navigationDelegate;
 
 @end

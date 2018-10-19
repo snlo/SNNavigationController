@@ -29,4 +29,12 @@
  */
 @property (nonatomic, readonly, strong) SNNavigationItem * sn_navigationItem;
 
+/**
+ 先设置大小标题如果需要
+
+ @param height 搜索栏高度
+ @return 搜索栏视图
+ */
+- (UIView *)setSearchBarWith:(CGFloat)height;
+
 @end

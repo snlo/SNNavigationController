@@ -19,9 +19,9 @@
 - (void)setPrefersLargeTitles:(BOOL)prefersLargeTitles {
     _prefersLargeTitles = prefersLargeTitles;
     if (_prefersLargeTitles) {
-        self.barHeight = kNavigationBarHeight + 52;
+        self.barHeight = ksNavigationBarHeight + 52;
     } else {
-        self.barHeight = kNavigationBarHeight;
+        self.barHeight = ksNavigationBarHeight;
     }
 }
 
@@ -29,16 +29,7 @@
     _showSearchBar = showSearchBar;
 }
 
-//- (CGPoint)centerLabelTitle {
-//    if (_centerLabelTitle.x < 1) {
-//        _centerLabelTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);
-//    } return _centerLabelTitle;
-//}
-//- (CGPoint)centerLabelFromTitle {
-//    if (_centerLabelFromTitle.x < 1) {
-//        _centerLabelFromTitle = CGPointMake(SCREEN_WIDTH / 2, 44/2);
-//    } return _centerLabelFromTitle;
-//}
+
 
 
 

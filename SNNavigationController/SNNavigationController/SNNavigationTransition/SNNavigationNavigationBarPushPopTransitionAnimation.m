@@ -67,7 +67,7 @@
         if (leftWidth < rightWidth) {
             leftWidth = rightWidth;
         }
-		navigationBar.viewTitle.frame = CGRectMake(16+leftWidth, navigationBar.viewTitle.frame.origin.y, SCREEN_WIDTH-16-16-leftWidth-leftWidth, navigationBar.viewTitle.frame.size.height);
+		navigationBar.viewTitle.frame = CGRectMake(ksMargin+leftWidth, navigationBar.viewTitle.frame.origin.y, SCREEN_WIDTH-ksMargin*2-leftWidth-leftWidth, navigationBar.viewTitle.frame.size.height);
 		
         if (self.reverse) { // pop
             navigationBar.backgroundColor = navigationItemTo.barBackgroudColor;
@@ -103,28 +103,27 @@
 	navigationBar.labelLargeTitle.text = toViewController.title;
 	navigationBar.labelLargeFromTitle.text = fromViewController.title;
 	
-	navigationBar.labelLargeTitle.alpha = 0;
-	navigationBar.labelLargeFromTitle.alpha = 1;
-	
-	navigationBar.labelLargeFromTitle.hidden = NO;
     
     navigationItemFrom.forcePrefersLargeTitles = NO;
     navigationItemTo.forcePrefersLargeTitles = NO;
     
+    
+	navigationBar.labelLargeTitle.alpha = 0;
+	navigationBar.labelLargeFromTitle.alpha = 1;
+	navigationBar.labelLargeFromTitle.hidden = NO;
+    
     navigationBar.labelTitle.alpha = 0;
     navigationBar.labelFromTile.alpha = 1;
-    
     navigationBar.labelFromTile.hidden = NO;
 	
 	CGFloat centerX = SCREEN_WIDTH/2;
-	CGFloat centerY = (kIs_iPhoneX?44:20) + 22;
-	
+	CGFloat centerY = (ksIs_iPhoneX?44:20) + 22;
     
     if (self.reverse) { // pop
         
         navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
-        navigationBar.labelLargeFromTitle.frame = CGRectMake(16 , 0, SCREEN_WIDTH-32, 52);
-        
+        navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin , 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
         
         if (navigationItemFrom.prefersLargeTitles == navigationItemTo.prefersLargeTitles) {
             navigationBar.labelFromTile.hidden = navigationItemFrom.prefersLargeTitles;
@@ -141,8 +140,8 @@
 		navigationBar.labelTitle.center = CGPointMake(moveCenterX, centerY);
         navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
         
-        navigationBar.labelLargeTitle.frame = CGRectMake(16 + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-32, 52);
-        navigationBar.labelLargeFromTitle.frame = CGRectMake(16, 0, SCREEN_WIDTH-32, 52);
+        navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
         
         
         if (navigationItemTo.prefersLargeTitles == navigationItemFrom.prefersLargeTitles) {
@@ -155,7 +154,7 @@
         }
     }
 	navigationBar.viewTitle.alpha = 1;
-	
+	navigationBar.viewSearch.alpha = navigationItemFrom.showSearchBar? 0 : 1;
     if (navigationItemFrom.showSearchBar) {
         navigationBar.viewSearch.alpha = 1;
         if (!navigationItemFrom.prefersLargeTitles) {
@@ -165,13 +164,14 @@
     } else {
         navigationBar.viewSearch.alpha = 0;
         if (!navigationItemTo.showSearchBar) {
-            navigationBar.viewSearch.alpha = 1;
+//            navigationBar.viewSearch.alpha = 1;
         }
         if (navigationItemTo.showSearchBar && !navigationItemFrom.prefersLargeTitles) {
             navigationBar.labelLargeFromTitle.alpha = 0;
             navigationBar.labelLargeTitle.alpha = 0;
         }
     }
+    
 	[UIView animateKeyframesWithDuration:duration delay:0.0 options:0 animations:^{
 
 		[UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
@@ -185,6 +185,7 @@
             if (!navigationItemTo.showSearchBar) {
                 navigationBar.viewSearch.alpha = 1;
             }
+            navigationBar.viewSearch.alpha = navigationItemTo.showSearchBar? 1 : 0;
 		}];
 		[UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
 			// rotate the to view
@@ -197,6 +198,7 @@
             if (!navigationItemTo.prefersLargeTitles) {
                 navigationBar.labelLargeTitle.alpha = 0;
             }
+            
 		}];
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:![transitionContext transitionWasCancelled]];
@@ -211,11 +213,11 @@
         if (leftWidth < rightWidth) {
             leftWidth = rightWidth;
         }
-        navigationBar.labelTitle.frame = CGRectMake(navigationBar.labelTitle.frame.origin.x, navigationBar.labelTitle.frame.origin.y, SCREEN_WIDTH-32-leftWidth*2, navigationBar.labelTitle.frame.size.height);
+        navigationBar.labelTitle.frame = CGRectMake(navigationBar.labelTitle.frame.origin.x, navigationBar.labelTitle.frame.origin.y, SCREEN_WIDTH-ksMargin*2-leftWidth*2, navigationBar.labelTitle.frame.size.height);
         navigationBar.labelTitle.center = CGPointMake(centerX, centerY);
 
         if (self.reverse) { // pop
-			CGFloat moveCenterX = SCREEN_WIDTH-16;
+			CGFloat moveCenterX = SCREEN_WIDTH-ksMargin;
 #pragma mark -- 判断动画方向
 			if (self.rectEdge == UIRectEdgeLeft) {
 				moveCenterX = navigationBar.viewRightBarButtonStack.frame.origin.x;
@@ -227,14 +229,14 @@
             
 			navigationBar.labelFromTile.center = CGPointMake(moveCenterX, centerY);
             
-            navigationBar.labelLargeFromTitle.frame = CGRectMake(16 + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-32, 52);
+            navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
             
             
         } else { // push
             
             navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
             
-            navigationBar.labelLargeTitle.frame = CGRectMake(16 , 0, SCREEN_WIDTH-32, 52);
+            navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-2*ksMargin, ksLargeHeight);
             
         }
         
@@ -244,6 +246,11 @@
         } else {
             navigationBar.labelFromTile.hidden = YES;
 			navigationBar.labelLargeFromTitle.hidden = YES;
+            if (self.reverse && !navigationItemTo.prefersLargeTitles) {
+                if (navigationItemTo.showSearchBarMark) {
+                    navigationBar.viewSearch.alpha = 1;
+                }
+            }
         }
     }];
 }

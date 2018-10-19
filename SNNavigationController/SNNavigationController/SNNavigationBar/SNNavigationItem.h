@@ -10,13 +10,21 @@
 
 @interface SNNavigationItem : NSObject
 
-//导航栏背景色，默认白色
-@property (nonatomic, strong) UIColor * barBackgroudColor;
-//标题色
 
-//导航栏高度，默认
+/**
+ 导航栏背景色，默认白色
+ */
+@property (nonatomic, strong) UIColor * barBackgroudColor;
+
+
+/**
+ 导航栏高度，默认
+ */
 @property (nonatomic, assign) CGFloat barHeight;
-//导航栏大标题，默认NO
+
+/**
+ 导航栏大标题，默认NO
+ */
 @property (nonatomic, assign) BOOL prefersLargeTitles;
 
 /**
@@ -24,15 +32,24 @@
  */
 @property (nonatomic, assign) BOOL showSearchBar;
 
+/**
+ 区别记录‘showSearchBar’
+ */
+@property (nonatomic, assign) BOOL showSearchBarMark;
+
 //首页强制大标题
 @property (nonatomic, assign) BOOL forcePrefersLargeTitles;
 
-@property (nonatomic, strong) NSString * title;
 
+/**
+ 导航栏左边按钮集
+ */
 @property (nonatomic, strong) NSArray <UIButton *> *leftBarButtonItems;
+
+/**
+ 导航栏右边按钮集
+ */
 @property (nonatomic, strong) NSArray <UIButton *> *rightBarButtonItems;
 
-@property (nonatomic, assign) CGPoint centerLabelTitle;
-@property (nonatomic, assign) CGPoint centerLabelFromTitle;
 
 @end
