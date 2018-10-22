@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		5E0D175E31784927B1D943CB /* libPods-SNNavigationControllerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 219201320588B573DF8655E1 /* libPods-SNNavigationControllerUITests.a */; };
-		5EB3477421411729007482B3 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB3477321411729007482B3 /* OneViewController.m */; };
-		5EB3477721411736007482B3 /* TowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB3477621411736007482B3 /* TowViewController.m */; };
 		6D125B4243D69E10E372C9BF /* libPods-SNNavigationController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */; };
-		9819AE5F2179D02900188D40 /* MyDetailTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9819AE5D2179D02900188D40 /* MyDetailTestViewController.m */; };
-		9819AE602179D02900188D40 /* MyDetailTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9819AE5E2179D02900188D40 /* MyDetailTestViewController.xib */; };
+		9817CCE2217DAE5500A3C307 /* ViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCE0217DAE5500A3C307 /* ViewControllerCell.m */; };
+		9817CCE3217DAE5500A3C307 /* ViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9817CCE1217DAE5500A3C307 /* ViewControllerCell.xib */; };
+		9817CCE8217DBA8700A3C307 /* kNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCE7217DBA8700A3C307 /* kNavigationController.m */; };
+		9817CCEB217DBB3600A3C307 /* kTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCEA217DBB3600A3C307 /* kTabBarController.m */; };
+		9817CCEE217DBC0000A3C307 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCED217DBC0000A3C307 /* FirstViewController.m */; };
+		9817CCF1217DBC1000A3C307 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCF0217DBC1000A3C307 /* SecondViewController.m */; };
+		9817CCF5217DBCA400A3C307 /* InterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCF3217DBCA400A3C307 /* InterViewController.m */; };
+		9817CCF6217DBCA400A3C307 /* InterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9817CCF4217DBCA400A3C307 /* InterViewController.xib */; };
+		9817CCF9217DC10B00A3C307 /* ChangeToTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCF8217DC10B00A3C307 /* ChangeToTabBarViewController.m */; };
 		98242512212ECB0D0006876D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242511212ECB0D0006876D /* AppDelegate.m */; };
 		98242515212ECB0D0006876D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242514212ECB0D0006876D /* ViewController.m */; };
 		98242518212ECB0D0006876D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98242516212ECB0D0006876D /* Main.storyboard */; };
@@ -24,15 +29,6 @@
 		9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254A212ECE250006876D /* UINavigationBar+SNNavigationBar.m */; };
 		9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */; };
 		98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242556212EDCD40006876D /* SNNavigationControllerTool.m */; };
-		98242594213411170006876D /* ViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242592213411170006876D /* ViewControllerCell.m */; };
-		98242595213411170006876D /* ViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98242593213411170006876D /* ViewControllerCell.xib */; };
-		982425982134140A0006876D /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425972134140A0006876D /* TabBarController.m */; };
-		9824259B213416550006876D /* RespectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824259A213416550006876D /* RespectedViewController.m */; };
-		9824259E213416EA0006876D /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9824259D213416EA0006876D /* FoundViewController.m */; };
-		982425A1213416F80006876D /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425A0213416F80006876D /* MyViewController.m */; };
-		982425A421341D870006876D /* MyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425A321341D870006876D /* MyDetailViewController.m */; };
-		982425AB213420610006876D /* MyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982425AA213420610006876D /* MyDetailViewController.xib */; };
-		982425AE213517040006876D /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425AD213517040006876D /* NavigationController.m */; };
 		982425B621354A740006876D /* SNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425B521354A740006876D /* SNNavigationBar.m */; };
 		982425B921354A8C0006876D /* SNTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425B821354A8C0006876D /* SNTabBar.m */; };
 		982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425BB21354AB00006876D /* UITabBarController+SNController.m */; };
@@ -43,12 +39,9 @@
 		982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */; };
 		982425E82137C1730006876D /* UIViewController+SNNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */; };
 		982425EE2137C3900006876D /* SNTransitionInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425ED2137C3900006876D /* SNTransitionInteractionController.m */; };
-		982425F12137F0030006876D /* RespectedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F02137F0030006876D /* RespectedDetailViewController.m */; };
 		982425F4213912410006876D /* SNNavigationPopRightTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F3213912410006876D /* SNNavigationPopRightTransitionAnimation.m */; };
 		982425F7213922480006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F6213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m */; };
 		982425FA213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 982425F9213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m */; };
-		98F7A844214770AF00C7624F /* UIViewController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F7A843214770AF00C7624F /* UIViewController+Custom.m */; };
-		98F7A847214797D500C7624F /* OtherTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F7A846214797D500C7624F /* OtherTestViewController.m */; };
 		98F7A84A2148BA4700C7624F /* SNNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F7A8492148BA4700C7624F /* SNNavigationItem.m */; };
 		EB2EEB04E728CBCDB29B007E /* libPods-SNNavigationControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEBC00C1AE673E7CDFC8404 /* libPods-SNNavigationControllerTests.a */; };
 /* End PBXBuildFile section */
@@ -74,14 +67,23 @@
 		219201320588B573DF8655E1 /* libPods-SNNavigationControllerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationControllerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37259AB3C37730B3C134F9B8 /* Pods-SNNavigationControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerTests/Pods-SNNavigationControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BBC231FF5D02FE5AAF4B4D6 /* Pods-SNNavigationControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationControllerTests/Pods-SNNavigationControllerTests.release.xcconfig"; sourceTree = "<group>"; };
-		5EB3477221411729007482B3 /* OneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneViewController.h; sourceTree = "<group>"; };
-		5EB3477321411729007482B3 /* OneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneViewController.m; sourceTree = "<group>"; };
-		5EB3477521411736007482B3 /* TowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TowViewController.h; sourceTree = "<group>"; };
-		5EB3477621411736007482B3 /* TowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TowViewController.m; sourceTree = "<group>"; };
 		70E99FE9EB3413750E76D80D /* libPods-SNNavigationController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNNavigationController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9819AE5C2179D02900188D40 /* MyDetailTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyDetailTestViewController.h; sourceTree = "<group>"; };
-		9819AE5D2179D02900188D40 /* MyDetailTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDetailTestViewController.m; sourceTree = "<group>"; };
-		9819AE5E2179D02900188D40 /* MyDetailTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDetailTestViewController.xib; sourceTree = "<group>"; };
+		9817CCDF217DAE5500A3C307 /* ViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerCell.h; sourceTree = "<group>"; };
+		9817CCE0217DAE5500A3C307 /* ViewControllerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerCell.m; sourceTree = "<group>"; };
+		9817CCE1217DAE5500A3C307 /* ViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewControllerCell.xib; sourceTree = "<group>"; };
+		9817CCE6217DBA8700A3C307 /* kNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kNavigationController.h; sourceTree = "<group>"; };
+		9817CCE7217DBA8700A3C307 /* kNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kNavigationController.m; sourceTree = "<group>"; };
+		9817CCE9217DBB3600A3C307 /* kTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kTabBarController.h; sourceTree = "<group>"; };
+		9817CCEA217DBB3600A3C307 /* kTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kTabBarController.m; sourceTree = "<group>"; };
+		9817CCEC217DBC0000A3C307 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		9817CCED217DBC0000A3C307 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		9817CCEF217DBC1000A3C307 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		9817CCF0217DBC1000A3C307 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		9817CCF2217DBCA400A3C307 /* InterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterViewController.h; sourceTree = "<group>"; };
+		9817CCF3217DBCA400A3C307 /* InterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterViewController.m; sourceTree = "<group>"; };
+		9817CCF4217DBCA400A3C307 /* InterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterViewController.xib; sourceTree = "<group>"; };
+		9817CCF7217DC10B00A3C307 /* ChangeToTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeToTabBarViewController.h; sourceTree = "<group>"; };
+		9817CCF8217DC10B00A3C307 /* ChangeToTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeToTabBarViewController.m; sourceTree = "<group>"; };
 		9824250D212ECB0D0006876D /* SNNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242510212ECB0D0006876D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98242511212ECB0D0006876D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,22 +106,6 @@
 		9824254D212ECE440006876D /* UINavigationItem+SNNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SNNavigationItem.m"; sourceTree = "<group>"; };
 		98242555212EDCD40006876D /* SNNavigationControllerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationControllerTool.h; sourceTree = "<group>"; };
 		98242556212EDCD40006876D /* SNNavigationControllerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationControllerTool.m; sourceTree = "<group>"; };
-		98242591213411170006876D /* ViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerCell.h; sourceTree = "<group>"; };
-		98242592213411170006876D /* ViewControllerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerCell.m; sourceTree = "<group>"; };
-		98242593213411170006876D /* ViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewControllerCell.xib; sourceTree = "<group>"; };
-		982425962134140A0006876D /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		982425972134140A0006876D /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
-		98242599213416550006876D /* RespectedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespectedViewController.h; sourceTree = "<group>"; };
-		9824259A213416550006876D /* RespectedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespectedViewController.m; sourceTree = "<group>"; };
-		9824259C213416EA0006876D /* FoundViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = "<group>"; };
-		9824259D213416EA0006876D /* FoundViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = "<group>"; };
-		9824259F213416F80006876D /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
-		982425A0213416F80006876D /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
-		982425A221341D870006876D /* MyDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyDetailViewController.h; sourceTree = "<group>"; };
-		982425A321341D870006876D /* MyDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDetailViewController.m; sourceTree = "<group>"; };
-		982425AA213420610006876D /* MyDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDetailViewController.xib; sourceTree = "<group>"; };
-		982425AC213517040006876D /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
-		982425AD213517040006876D /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		982425AF213517EF0006876D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		982425B021352D0F0006876D /* SNNa_Singletion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNa_Singletion.h; sourceTree = "<group>"; };
 		982425B421354A740006876D /* SNNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationBar.h; sourceTree = "<group>"; };
@@ -142,18 +128,12 @@
 		982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNNavigationTransition.m"; sourceTree = "<group>"; };
 		982425EC2137C3900006876D /* SNTransitionInteractionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTransitionInteractionController.h; sourceTree = "<group>"; };
 		982425ED2137C3900006876D /* SNTransitionInteractionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTransitionInteractionController.m; sourceTree = "<group>"; };
-		982425EF2137F0030006876D /* RespectedDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespectedDetailViewController.h; sourceTree = "<group>"; };
-		982425F02137F0030006876D /* RespectedDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespectedDetailViewController.m; sourceTree = "<group>"; };
 		982425F2213912410006876D /* SNNavigationPopRightTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPopRightTransitionAnimation.h; sourceTree = "<group>"; };
 		982425F3213912410006876D /* SNNavigationPopRightTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPopRightTransitionAnimation.m; sourceTree = "<group>"; };
 		982425F5213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationNavigationBarPushPopTransitionAnimation.h; sourceTree = "<group>"; };
 		982425F6213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationNavigationBarPushPopTransitionAnimation.m; sourceTree = "<group>"; };
 		982425F8213934F00006876D /* SNNavigationPopLeftTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationPopLeftTransitionAnimation.h; sourceTree = "<group>"; };
 		982425F9213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationPopLeftTransitionAnimation.m; sourceTree = "<group>"; };
-		98F7A842214770AF00C7624F /* UIViewController+Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Custom.h"; sourceTree = "<group>"; };
-		98F7A843214770AF00C7624F /* UIViewController+Custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Custom.m"; sourceTree = "<group>"; };
-		98F7A845214797D500C7624F /* OtherTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherTestViewController.h; sourceTree = "<group>"; };
-		98F7A846214797D500C7624F /* OtherTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherTestViewController.m; sourceTree = "<group>"; };
 		98F7A8482148BA4700C7624F /* SNNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationItem.h; sourceTree = "<group>"; };
 		98F7A8492148BA4700C7624F /* SNNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNNavigationItem.m; sourceTree = "<group>"; };
 		C6532BFB38D370291198AECB /* Pods-SNNavigationController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNNavigationController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNNavigationController/Pods-SNNavigationController.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +194,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9817CCE4217DB51600A3C307 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9817CCDF217DAE5500A3C307 /* ViewControllerCell.h */,
+				9817CCE0217DAE5500A3C307 /* ViewControllerCell.m */,
+				9817CCE1217DAE5500A3C307 /* ViewControllerCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9817CCE5217DB52000A3C307 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				98242513212ECB0D0006876D /* ViewController.h */,
+				98242514212ECB0D0006876D /* ViewController.m */,
+				9817CCE6217DBA8700A3C307 /* kNavigationController.h */,
+				9817CCE7217DBA8700A3C307 /* kNavigationController.m */,
+				9817CCE9217DBB3600A3C307 /* kTabBarController.h */,
+				9817CCEA217DBB3600A3C307 /* kTabBarController.m */,
+				9817CCF7217DC10B00A3C307 /* ChangeToTabBarViewController.h */,
+				9817CCF8217DC10B00A3C307 /* ChangeToTabBarViewController.m */,
+				9817CCEC217DBC0000A3C307 /* FirstViewController.h */,
+				9817CCED217DBC0000A3C307 /* FirstViewController.m */,
+				9817CCEF217DBC1000A3C307 /* SecondViewController.h */,
+				9817CCF0217DBC1000A3C307 /* SecondViewController.m */,
+				9817CCF2217DBCA400A3C307 /* InterViewController.h */,
+				9817CCF3217DBCA400A3C307 /* InterViewController.m */,
+				9817CCF4217DBCA400A3C307 /* InterViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		9819AE612179E23000188D40 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,20 +263,8 @@
 			children = (
 				98242510212ECB0D0006876D /* AppDelegate.h */,
 				98242511212ECB0D0006876D /* AppDelegate.m */,
-				98F7A842214770AF00C7624F /* UIViewController+Custom.h */,
-				98F7A843214770AF00C7624F /* UIViewController+Custom.m */,
-				98242513212ECB0D0006876D /* ViewController.h */,
-				98242514212ECB0D0006876D /* ViewController.m */,
-				98F7A845214797D500C7624F /* OtherTestViewController.h */,
-				98F7A846214797D500C7624F /* OtherTestViewController.m */,
-				5EB3477221411729007482B3 /* OneViewController.h */,
-				5EB3477321411729007482B3 /* OneViewController.m */,
-				5EB3477521411736007482B3 /* TowViewController.h */,
-				5EB3477621411736007482B3 /* TowViewController.m */,
-				98242591213411170006876D /* ViewControllerCell.h */,
-				98242592213411170006876D /* ViewControllerCell.m */,
-				98242593213411170006876D /* ViewControllerCell.xib */,
-				9824258E21340C8E0006876D /* view_nav_tabbar_nav_view */,
+				9817CCE5217DB52000A3C307 /* Controllers */,
+				9817CCE4217DB51600A3C307 /* Views */,
 				98242545212ECBB90006876D /* SNNavigationController */,
 				98242516212ECB0D0006876D /* Main.storyboard */,
 				98242519212ECB0F0006876D /* Assets.xcassets */,
@@ -312,31 +312,6 @@
 				982425BE21354B470006876D /* UITabBar+SNTabBar.m */,
 			);
 			path = SNNavigationController;
-			sourceTree = "<group>";
-		};
-		9824258E21340C8E0006876D /* view_nav_tabbar_nav_view */ = {
-			isa = PBXGroup;
-			children = (
-				982425AC213517040006876D /* NavigationController.h */,
-				982425AD213517040006876D /* NavigationController.m */,
-				982425962134140A0006876D /* TabBarController.h */,
-				982425972134140A0006876D /* TabBarController.m */,
-				98242599213416550006876D /* RespectedViewController.h */,
-				9824259A213416550006876D /* RespectedViewController.m */,
-				982425EF2137F0030006876D /* RespectedDetailViewController.h */,
-				982425F02137F0030006876D /* RespectedDetailViewController.m */,
-				9824259C213416EA0006876D /* FoundViewController.h */,
-				9824259D213416EA0006876D /* FoundViewController.m */,
-				9824259F213416F80006876D /* MyViewController.h */,
-				982425A0213416F80006876D /* MyViewController.m */,
-				982425A221341D870006876D /* MyDetailViewController.h */,
-				982425A321341D870006876D /* MyDetailViewController.m */,
-				982425AA213420610006876D /* MyDetailViewController.xib */,
-				9819AE5C2179D02900188D40 /* MyDetailTestViewController.h */,
-				9819AE5D2179D02900188D40 /* MyDetailTestViewController.m */,
-				9819AE5E2179D02900188D40 /* MyDetailTestViewController.xib */,
-			);
-			path = view_nav_tabbar_nav_view;
 			sourceTree = "<group>";
 		};
 		982425D22137A87B0006876D /* SNNavigationBar */ = {
@@ -482,11 +457,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9824251D212ECB0F0006876D /* LaunchScreen.storyboard in Resources */,
-				982425AB213420610006876D /* MyDetailViewController.xib in Resources */,
+				9817CCF6217DBCA400A3C307 /* InterViewController.xib in Resources */,
 				9824251A212ECB0F0006876D /* Assets.xcassets in Resources */,
-				98242595213411170006876D /* ViewControllerCell.xib in Resources */,
+				9817CCE3217DAE5500A3C307 /* ViewControllerCell.xib in Resources */,
 				98242518212ECB0D0006876D /* Main.storyboard in Resources */,
-				9819AE602179D02900188D40 /* MyDetailTestViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,38 +542,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				982425F12137F0030006876D /* RespectedDetailViewController.m in Sources */,
+				9817CCF1217DBC1000A3C307 /* SecondViewController.m in Sources */,
+				9817CCE2217DAE5500A3C307 /* ViewControllerCell.m in Sources */,
 				982425BC21354AB00006876D /* UITabBarController+SNController.m in Sources */,
-				98242594213411170006876D /* ViewControllerCell.m in Sources */,
-				98F7A844214770AF00C7624F /* UIViewController+Custom.m in Sources */,
-				9824259B213416550006876D /* RespectedViewController.m in Sources */,
 				982425DC2137BB100006876D /* SNTransitionAnimationController.m in Sources */,
 				982425B921354A8C0006876D /* SNTabBar.m in Sources */,
 				982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */,
-				5EB3477721411736007482B3 /* TowViewController.m in Sources */,
-				982425AE213517040006876D /* NavigationController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
 				982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */,
+				9817CCEE217DBC0000A3C307 /* FirstViewController.m in Sources */,
+				9817CCF5217DBCA400A3C307 /* InterViewController.m in Sources */,
+				9817CCEB217DBB3600A3C307 /* kTabBarController.m in Sources */,
 				982425F7213922480006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.m in Sources */,
 				98F7A84A2148BA4700C7624F /* SNNavigationItem.m in Sources */,
-				98F7A847214797D500C7624F /* OtherTestViewController.m in Sources */,
-				982425A1213416F80006876D /* MyViewController.m in Sources */,
 				982425F4213912410006876D /* SNNavigationPopRightTransitionAnimation.m in Sources */,
-				982425982134140A0006876D /* TabBarController.m in Sources */,
+				9817CCF9217DC10B00A3C307 /* ChangeToTabBarViewController.m in Sources */,
 				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
 				982425B621354A740006876D /* SNNavigationBar.m in Sources */,
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,
-				9824259E213416EA0006876D /* FoundViewController.m in Sources */,
 				982425DF2137BD9F0006876D /* SNNavigationPushTransitionAnimation.m in Sources */,
-				5EB3477421411729007482B3 /* OneViewController.m in Sources */,
-				982425A421341D870006876D /* MyDetailViewController.m in Sources */,
 				982425FA213934F00006876D /* SNNavigationPopLeftTransitionAnimation.m in Sources */,
 				982425BF21354B470006876D /* UITabBar+SNTabBar.m in Sources */,
 				98242515212ECB0D0006876D /* ViewController.m in Sources */,
 				982425E82137C1730006876D /* UIViewController+SNNavigationTransition.m in Sources */,
 				98242520212ECB0F0006876D /* main.m in Sources */,
+				9817CCE8217DBA8700A3C307 /* kNavigationController.m in Sources */,
 				982425EE2137C3900006876D /* SNTransitionInteractionController.m in Sources */,
-				9819AE5F2179D02900188D40 /* MyDetailTestViewController.m in Sources */,
 				98242512212ECB0D0006876D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

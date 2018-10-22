@@ -89,7 +89,6 @@ static const NSString * kPopViewController = @"ihgiqwefba234665:<>:>:&&jklsdbjkl
 	
 	_viewController = objc_getAssociatedObject(gesture, &kPopViewController);
     CGFloat progress = [gesture translationInView:gesture.view].x / gesture.view.bounds.size.width * 1.0;
-	NSLog(@" --- - - -- - -%f",progress);
     [self updateState:gesture.state progress:fabs(progress) forViewController:_viewController];
 }
 - (void)handlePullScreenGesture:(UIPanGestureRecognizer *)gesture {

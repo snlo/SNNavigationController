@@ -9,8 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyDetailTestViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InterViewController">
             <connections>
+                <outlet property="tableView" destination="uuW-sY-3fN" id="zp5-Uw-SPw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,18 +20,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-fX-veg">
-                    <rect key="frame" x="160" y="318.5" width="55" height="30"/>
-                    <state key="normal" title="POP TO"/>
-                    <connections>
-                        <action selector="handlePoptoButton:" destination="-1" eventType="touchUpInside" id="ygM-pV-KZM"/>
-                    </connections>
-                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uuW-sY-3fN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="8AU-fX-veg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="YJy-iy-Cc5"/>
-                <constraint firstItem="8AU-fX-veg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vQy-pU-bN0"/>
+                <constraint firstItem="uuW-sY-3fN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4nK-N9-YlS"/>
+                <constraint firstAttribute="trailing" secondItem="uuW-sY-3fN" secondAttribute="trailing" id="N7J-Ej-mn2"/>
+                <constraint firstItem="uuW-sY-3fN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hVK-Eo-qdY"/>
+                <constraint firstAttribute="bottom" secondItem="uuW-sY-3fN" secondAttribute="bottom" id="oEO-Sw-73s"/>
             </constraints>
         </view>
     </objects>

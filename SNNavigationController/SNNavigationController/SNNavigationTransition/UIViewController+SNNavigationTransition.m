@@ -110,9 +110,10 @@
         [RACObserve(self.sn_currentScrollView, contentOffset) subscribeNext:^(id  _Nullable x) {
             @strongify(self);
             if (self.isWillDisappear) return;
+            NSLog(@" - -：%f- - ：%f",self.sn_currentScrollView.contentOffset.y,self.sn_currentScrollView.contentInset.top);
             CGFloat offset_y = self.sn_currentScrollView.contentOffset.y + self.sn_currentScrollView.contentInset.top;
-            
-            if (offset_y == end || offset_y == height_Large) {
+#warning 偏移量计算错误
+            if (offset_y == end || offset_y == height_Large || end - offset_y == 20) {
                 return; //当不是当前偏移监听时
             }
             
@@ -125,7 +126,7 @@
                     
                 } else {
 
-                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, barHeight-(offset_y<height_Large?offset_y:height_Large));
+                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, barHeight-(offset_y<height_Large? offset_y : height_Large));
                 }
                 
                 self.sn_navigationController.sn_navigationBar.labelLargeTitle.alpha = 1;

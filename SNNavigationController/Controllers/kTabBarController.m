@@ -1,18 +1,18 @@
 //
-//  MyDetailTestViewController.m
+//  kTabBarController.m
 //  SNNavigationController
 //
-//  Created by snlo on 2018/10/19.
+//  Created by snlo on 2018/10/22.
 //  Copyright © 2018 snlo. All rights reserved.
 //
 
-#import "MyDetailTestViewController.h"
+#import "kTabBarController.h"
 
-@interface MyDetailTestViewController ()
+@interface kTabBarController ()
 
 @end
 
-@implementation MyDetailTestViewController
+@implementation kTabBarController
 
 #pragma mark -- life cycle
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,9 +60,6 @@
 
 #pragma mark -- event response
 
-- (IBAction)handlePoptoButton:(UIButton *)sender {
-    [self.sn_navigationController popToRootViewControllerAnimated:YES];
-}
 #pragma mark -- ___VARIABLE_moduleName___ methods
 
 #pragma mark -- private methods
@@ -79,5 +76,6 @@
 }
 
 #pragma mark -- getter setter
+
 
 @end
