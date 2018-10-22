@@ -60,7 +60,7 @@
     if (self.sn_navigationController.sn_navigationItem.showSearchBar) {
         
     }
-    self.sn_navigationController.sn_navigationBar.viewSearch.alpha = self.sn_navigationController.sn_navigationItem.showSearchBar?1:0;
+    self.sn_navigationController.sn_navigationBar.viewSearch.alpha = self.sn_navigationItem.showSearchBar?1:0;
     self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
     
 	self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;

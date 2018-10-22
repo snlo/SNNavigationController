@@ -202,6 +202,13 @@
 		}];
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        if ([transitionContext transitionWasCancelled]) {
+            if (self.reverse) {
+                if (navigationItemFrom.showSearchBar || navigationItemFrom.showSearchBarMark) {
+                    navigationBar.viewSearch.alpha = 1;
+                }
+            }
+        }
 	}];
 	
     CGRect labelTitleFrame = CGRectMake(navigationBar.labelTitle.frame.origin.x, navigationBar.labelTitle.frame.origin.y, navigationBar.labelTitle.frame.size.width, navigationBar.labelTitle.frame.size.height);
