@@ -28,10 +28,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiZ-HD-AYA">
                                 <rect key="frame" x="24" y="360.5" width="327" height="30"/>
                                 <state key="normal" title="navigation--viewController"/>
+                                <connections>
+                                    <segue destination="LT3-99-hwu" kind="show" id="q8C-FJ-Dgi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0S-qA-7lX">
                                 <rect key="frame" x="24" y="318.5" width="327" height="30"/>
                                 <state key="normal" title="navigation--tabBar--viewCntrollers"/>
+                                <connections>
+                                    <segue destination="2Y4-59-LCw" kind="show" id="oud-nw-Fpt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -21,7 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.backgroundColor = [UIColor blueColor];
+//    self.backgroundColor = [UIColor blueColor];
 }
 #pragma clang diagnostic pop
 

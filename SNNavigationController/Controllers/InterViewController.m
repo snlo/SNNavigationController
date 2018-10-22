@@ -119,7 +119,6 @@
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"root" forState:UIControlStateNormal];
     self.sn_navigationItem.rightBarButtonItems = @[button];
-    self.sn_navigationItem.rightBarButtonItems = @[button];
     
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [self dismissViewControllerAnimated:YES completion:^{
