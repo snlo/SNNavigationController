@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SNNavigationItem.h"
+
 static CGFloat const ksLargeHeight = 52.00f;
 static CGFloat const ksMargin = 16.00f;
 
@@ -31,12 +33,6 @@ static CGFloat const ksMargin = 16.00f;
 
 
 /**
- 背景透明度
- */
-@property (nonatomic, assign) CGFloat alhpaBackgroud;
-
-
-/**
  分割线
  */
 @property (nonatomic, strong) UIView * separatorLine;
@@ -50,7 +46,7 @@ static CGFloat const ksMargin = 16.00f;
 /**
  设置首页强制大标题
  */
-- (void)setForcePrefersLargeTitles;
+- (void)setForcePrefersLargeTitles:(BOOL)isPrefersLargeTitles;
 
 
 /**
@@ -68,5 +64,7 @@ static CGFloat const ksMargin = 16.00f;
 @property (nonatomic, strong) NSArray <UIButton *> *leftFromBarButtonItems;
 @property (nonatomic, strong) NSArray <UIButton *> *rightBarButtonItems;
 @property (nonatomic, strong) NSArray <UIButton *> *rightFromBarButtonItems;
+
+@property (nonatomic, strong) SNNavigationItem * sn_navigationItem;
 
 @end

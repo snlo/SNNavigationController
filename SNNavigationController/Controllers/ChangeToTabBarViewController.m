@@ -67,12 +67,11 @@
 - (void)configureUserInterface {
     self.title = @"选择跳转";
     
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"root" forState:UIControlStateNormal];
-    self.sn_navigationItem.rightBarButtonItems = @[button];
-    self.sn_navigationItem.rightBarButtonItems = @[button];
+    UIButton * buttonRoot = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonRoot setTitle:@"首页" forState:UIControlStateNormal];
+    self.sn_navigationItem.rightBarButtonItems = @[buttonRoot];
     
-    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+    [[buttonRoot rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [self dismissViewControllerAnimated:YES completion:^{
             
         }];

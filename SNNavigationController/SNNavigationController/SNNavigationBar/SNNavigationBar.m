@@ -67,9 +67,9 @@
         CGFloat WIDTH = size.width + obj.imageView.image.size.width;
         WIDTH = obj.frame.size.width > 0 ? obj.frame.size.width : WIDTH + 1;
         width += WIDTH + 8;
-        [barButtonItemsView addSubview:obj];
         obj.frame = CGRectMake(8+X, 0, WIDTH, 44);
         [obj setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [barButtonItemsView addSubview:obj];
     }];
 	if (buttonItems.count < 1) {
 		width = 0;
@@ -79,7 +79,7 @@
     barButtonItemsView.frame = CGRectMake(left?8:(SCREEN_WIDTH-(width+8)), ksIs_iPhoneX?44:20, width, 44);
 }
 
-- (void)setForcePrefersLargeTitles {
+- (void)setForcePrefersLargeTitles:(BOOL)isPrefersLargeTitles {
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, ksNavigationBarHeight + ksLargeHeight);
 	self.viewLargeTitle.hidden = NO;
 	self.viewTitle.hidden = YES;
@@ -115,10 +115,6 @@
 	} return _labelFromTile;
 }
 
-- (void)setalhpaBackgroud:(CGFloat)alhpaBackgroud {
-    _alhpaBackgroud = alhpaBackgroud;
-    self.backgroundColor = [self.backgroundColor colorWithAlphaComponent:_alhpaBackgroud];
-}
 
 - (UIView *)separatorLine {
     if (!_separatorLine) {
@@ -180,7 +176,7 @@
 	if (!_viewLargeTitle) {
 		_viewLargeTitle = [[UIView alloc] init];
 		_viewLargeTitle.frame = CGRectMake(0, ksNavigationBarHeight, SCREEN_WIDTH, ksLargeHeight);
-		_viewLargeTitle.backgroundColor = [UIColor whiteColor];
+		_viewLargeTitle.backgroundColor = [UIColor clearColor];
         _viewLargeTitle.layer.masksToBounds = YES;
 		[self addSubview:_viewLargeTitle];
 	} return _viewLargeTitle;
@@ -206,8 +202,8 @@
 	if (!_viewSearch) {
 		_viewSearch = [[UIView alloc] init];
 		_viewSearch.frame = CGRectMake(0, ksNavigationBarHeight + ksLargeHeight, SCREEN_WIDTH, ksLargeHeight);
-		_viewSearch.backgroundColor = [UIColor orangeColor];
-        [self addSubview:_viewSearch];
+		_viewSearch.backgroundColor = [UIColor whiteColor];
+        [self insertSubview:_viewSearch aboveSubview:self.viewLargeTitle];
 	} return _viewSearch;
 }
 

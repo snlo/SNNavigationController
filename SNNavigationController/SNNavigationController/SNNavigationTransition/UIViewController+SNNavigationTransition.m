@@ -52,23 +52,82 @@
         self.sn_navigationController.sn_navigationBar.hidden = NO;
     }
     
+    if ([self.tabBarController.viewControllers containsObject:self]) { //标签栏首次进入配置
+        if (self.tabBarController) {
+            @weakify(self);
+            self.tabBarController.selectedItemBlock = ^{
+                @strongify(self);
+                //高度
+                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.sn_navigationItem.barHeight);
+                
+                //大标题视图展示
+                if (self.sn_navigationItem.prefersLargeTitles) {
+                    self.sn_navigationController.sn_navigationBar.labelLargeTitle.hidden = NO;
+                } else {
+                    self.sn_navigationController.sn_navigationBar.labelLargeTitle.hidden = YES;
+                }
+            };
+            if ([self.sn_navigationController.viewControllers.firstObject isEqual:self.tabBarController]) {
+                
+                //导航栏按钮
+                self.sn_navigationController.sn_navigationBar.leftBarButtonItems = self.sn_navigationItem.leftBarButtonItems;
+                self.sn_navigationController.sn_navigationBar.rightBarButtonItems = self.sn_navigationItem.rightBarButtonItems;
+            }
+            //搜索视图
+            self.sn_navigationController.sn_navigationBar.viewSearch.alpha = self.sn_navigationItem.showSearchBar?1:0;
+            
+            //小标题展示
+            self.sn_navigationController.sn_navigationBar.labelTitle.alpha = 1.0;
+            self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
+            
+            if (!self.sn_navigationController.sn_navigationBar.labelFromTile.hidden) {
+                self.sn_navigationController.sn_navigationBar.labelTitle.hidden = YES;
+                self.sn_navigationController.sn_navigationBar.labelFromTile.hidden = self.sn_navigationItem.prefersLargeTitles;
+            }
+            
+            //强制大小标题式样
+            if (self.sn_navigationItem.forcePrefersLargeTitles) {
+                [self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles:self.sn_navigationItem.forcePrefersLargeTitles];
+            }
+        }
+    } else {
+        if (!self.isWillDisappear) {
+            
+            //大标题视图展示
+            if (self.sn_navigationItem.prefersLargeTitles) {
+                self.sn_navigationController.sn_navigationBar.labelLargeTitle.hidden = NO;
+            } else {
+                self.sn_navigationController.sn_navigationBar.labelLargeTitle.hidden = YES;
+            }
+            
+            //搜索视图
+            self.sn_navigationController.sn_navigationBar.viewSearch.alpha = self.sn_navigationItem.showSearchBar?1:0;
+            
+            //小标题展示
+//            self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
+            self.sn_navigationController.sn_navigationBar.labelTitle.alpha = 1.0;
+            self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
+            
+            if (!self.sn_navigationController.sn_navigationBar.labelFromTile.hidden) {
+                self.sn_navigationController.sn_navigationBar.labelTitle.hidden = YES;
+                self.sn_navigationController.sn_navigationBar.labelFromTile.hidden = self.sn_navigationItem.prefersLargeTitles;
+            }
+            
+            //强制大小标题式样
+            if (self.sn_navigationItem.forcePrefersLargeTitles) {
+                [self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles:self.sn_navigationItem.forcePrefersLargeTitles];
+            }
+        }
+    }
+    
     //基本属性交接
     [RACObserve(self, title) subscribeNext:^(id  _Nullable x) {
         self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
         self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
     }];
-    if (self.sn_navigationController.sn_navigationItem.showSearchBar) {
-        
-    }
-    self.sn_navigationController.sn_navigationBar.viewSearch.alpha = self.sn_navigationItem.showSearchBar?1:0;
-    self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
-    
+
 	self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
 
-	if (self.sn_navigationItem.forcePrefersLargeTitles) {
-		[self.sn_navigationController.sn_navigationBar setForcePrefersLargeTitles];
-	}
-    
     //处理滑动视图偏移
 //    __block UIScrollView * scrollview;
     [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -92,28 +151,29 @@
 }
 - (void)sn_viewDidAppear:(BOOL)animated {
     
-    //常量记录
     BOOL isShowSearchBar = self.sn_navigationItem.showSearchBar;
     BOOL isPrefersLargeTitles = self.sn_navigationItem.prefersLargeTitles;
-    __block CGFloat center_Y = self.sn_navigationController.sn_navigationBar.viewLargeTitle.center.y;
-    __block CGFloat barHeight = self.sn_navigationItem.barHeight;
-    __block CGFloat center_search_Y = self.sn_navigationController.sn_navigationBar.viewSearch.center.y;
-    __block CGFloat center_label_y = self.sn_navigationController.sn_navigationBar.labelLargeTitle.center.y;
-    //记录当前监听到的偏移
-    __block CGFloat end = 0;
-    __block CGFloat center_sreach_y = self.sn_navigationController.sn_navigationBar.viewSearch.center.y;
-    __block CGFloat height_sreach = isShowSearchBar ? self.sn_navigationController.sn_navigationBar.viewSearch.bounds.size.height : 0;
-    __block CGFloat height_Large = isPrefersLargeTitles ? ksLargeHeight : 0.00f;
     
     if (self.sn_currentScrollView && (isPrefersLargeTitles || isShowSearchBar) && !self.isScrollViewSignalMark) {
+        
+        //常量记录
+        
+        __block CGFloat center_Y = self.sn_navigationController.sn_navigationBar.viewLargeTitle.center.y;
+        __block CGFloat barHeight = self.sn_navigationItem.barHeight;
+        __block CGFloat center_search_Y = self.sn_navigationController.sn_navigationBar.viewSearch.center.y;
+        __block CGFloat center_label_y = self.sn_navigationController.sn_navigationBar.labelLargeTitle.center.y;
+        //记录当前监听到的偏移
+        __block CGFloat end = 0;
+        __block CGFloat center_sreach_y = self.sn_navigationController.sn_navigationBar.viewSearch.center.y;
+        __block CGFloat height_sreach = isShowSearchBar ? self.sn_navigationController.sn_navigationBar.viewSearch.bounds.size.height : 0;
+        __block CGFloat height_Large = isPrefersLargeTitles ? ksLargeHeight : 0.00f;
+        
         @weakify(self);
         [RACObserve(self.sn_currentScrollView, contentOffset) subscribeNext:^(id  _Nullable x) {
             @strongify(self);
             if (self.isWillDisappear) return;
-            NSLog(@" - -：%f- - ：%f",self.sn_currentScrollView.contentOffset.y,self.sn_currentScrollView.contentInset.top);
             CGFloat offset_y = self.sn_currentScrollView.contentOffset.y + self.sn_currentScrollView.contentInset.top;
-#warning 偏移量计算错误
-            if (offset_y == end || offset_y == height_Large || end - offset_y == 20) {
+            if (offset_y == end || offset_y == height_Large) {
                 return; //当不是当前偏移监听时
             }
             
@@ -201,6 +261,26 @@
 }
 - (void)sn_viewDidLoad {
 
+    [RACObserve(self.sn_navigationItem, leftBarButtonItems) subscribeNext:^(id  _Nullable x) {
+        if (self.sn_navigationController.sn_navigationBar.viewLeftBarButtonStack.alpha < 1) {
+            self.sn_navigationController.sn_navigationBar.leftFromBarButtonItems = self.sn_navigationItem.leftBarButtonItems;
+        } else {
+            self.sn_navigationController.sn_navigationBar.leftBarButtonItems = self.sn_navigationItem.leftBarButtonItems;
+        }
+    }];
+    [RACObserve(self.sn_navigationItem, rightBarButtonItems) subscribeNext:^(id  _Nullable x) {
+        if (self.sn_navigationController.sn_navigationBar.viewRightBarButtonStack.alpha < 1) {
+            self.sn_navigationController.sn_navigationBar.rightFromBarButtonItems = self.sn_navigationItem.rightBarButtonItems;
+        } else {
+            self.sn_navigationController.sn_navigationBar.rightBarButtonItems = self.sn_navigationItem.rightBarButtonItems;
+        }
+    }];
+    [RACObserve(self.sn_navigationItem, barBackgroudColor) subscribeNext:^(id  _Nullable x) {
+        self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
+    }];
+    
+    
+    
     [self sn_viewDidLoad];
 }
 
@@ -213,6 +293,9 @@
     self.sn_navigationItem.barHeight = ksNavigationBarHeight + height_Large + height;
     self.sn_navigationItem.showSearchBar = YES;
     self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+height_Large, SCREEN_WIDTH, height);
+    [self.sn_navigationController.sn_navigationBar.viewSearch layoutIfNeeded];
+
+    self.sn_navigationController.sn_navigationBar.viewSearch.backgroundColor = [UIColor redColor];
     return self.sn_navigationController.sn_navigationBar.viewSearch;
 }
 
@@ -321,6 +404,7 @@
         navigationItem = [[SNNavigationItem alloc] init];
         navigationItem.barBackgroudColor = [UIColor whiteColor];
         navigationItem.prefersLargeTitles = NO;
+        navigationItem.barHeight = ksNavigationBarHeight;
         objc_setAssociatedObject(self, @selector(sn_navigationItem), navigationItem, OBJC_ASSOCIATION_RETAIN);
     } return navigationItem;
 }

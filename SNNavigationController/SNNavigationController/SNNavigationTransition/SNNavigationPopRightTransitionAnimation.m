@@ -26,7 +26,7 @@
     [toView addSubview:maskView];
     
 	UIView * viewShadown = [[UIView alloc] init];
-	viewShadown.backgroundColor = [UIColor redColor];
+	viewShadown.backgroundColor = [UIColor clearColor];
 	viewShadown.frame = CGRectMake(SCREEN_WIDTH/2-10, 0, 10, SCREEN_HEIGHT);
 	viewShadown.layer.shadowColor = [UIColor blackColor].CGColor;
 	viewShadown.layer.shadowOpacity = 0.5f;

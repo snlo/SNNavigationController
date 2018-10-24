@@ -28,6 +28,7 @@
     self.navigationBar.hidden = YES;
     [self sn_navigationBar];
     self.delegate = self.sn_navigationDelegate;
+    [self sn_viewDidLoad];
 }
 #pragma mark -- getter / setter
 - (void)setSn_navigationBar:(SNNavigationBar *)sn_navigationBar {

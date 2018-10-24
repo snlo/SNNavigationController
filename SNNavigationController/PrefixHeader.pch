@@ -21,6 +21,7 @@
 
 #import "UIViewController+SNNavigationTransition.h"
 #import "UINavigationController+SNNavigationTransition.h"
+#import "UITabBarController+SNNavigationTransition.h"
 
 #import <objc/runtime.h>
 

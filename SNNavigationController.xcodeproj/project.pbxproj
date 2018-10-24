@@ -18,6 +18,9 @@
 		9817CCF5217DBCA400A3C307 /* InterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCF3217DBCA400A3C307 /* InterViewController.m */; };
 		9817CCF6217DBCA400A3C307 /* InterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9817CCF4217DBCA400A3C307 /* InterViewController.xib */; };
 		9817CCF9217DC10B00A3C307 /* ChangeToTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCF8217DC10B00A3C307 /* ChangeToTabBarViewController.m */; };
+		9817CCFC217F1BDD00A3C307 /* UITabBarController+SNNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CCFB217F1BDD00A3C307 /* UITabBarController+SNNavigationTransition.m */; };
+		9817CD042180439000A3C307 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CD032180439000A3C307 /* ThirdViewController.m */; };
+		9817CD072180510600A3C307 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817CD062180510600A3C307 /* FourthViewController.m */; };
 		98242512212ECB0D0006876D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242511212ECB0D0006876D /* AppDelegate.m */; };
 		98242515212ECB0D0006876D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98242514212ECB0D0006876D /* ViewController.m */; };
 		98242518212ECB0D0006876D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98242516212ECB0D0006876D /* Main.storyboard */; };
@@ -84,6 +87,12 @@
 		9817CCF4217DBCA400A3C307 /* InterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterViewController.xib; sourceTree = "<group>"; };
 		9817CCF7217DC10B00A3C307 /* ChangeToTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeToTabBarViewController.h; sourceTree = "<group>"; };
 		9817CCF8217DC10B00A3C307 /* ChangeToTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeToTabBarViewController.m; sourceTree = "<group>"; };
+		9817CCFA217F1BDD00A3C307 /* UITabBarController+SNNavigationTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+SNNavigationTransition.h"; sourceTree = "<group>"; };
+		9817CCFB217F1BDD00A3C307 /* UITabBarController+SNNavigationTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+SNNavigationTransition.m"; sourceTree = "<group>"; };
+		9817CD022180439000A3C307 /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		9817CD032180439000A3C307 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		9817CD052180510600A3C307 /* FourthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
+		9817CD062180510600A3C307 /* FourthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 		9824250D212ECB0D0006876D /* SNNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242510212ECB0D0006876D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98242511212ECB0D0006876D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -219,6 +228,10 @@
 				9817CCED217DBC0000A3C307 /* FirstViewController.m */,
 				9817CCEF217DBC1000A3C307 /* SecondViewController.h */,
 				9817CCF0217DBC1000A3C307 /* SecondViewController.m */,
+				9817CD022180439000A3C307 /* ThirdViewController.h */,
+				9817CD032180439000A3C307 /* ThirdViewController.m */,
+				9817CD052180510600A3C307 /* FourthViewController.h */,
+				9817CD062180510600A3C307 /* FourthViewController.m */,
 				9817CCF2217DBCA400A3C307 /* InterViewController.h */,
 				9817CCF3217DBCA400A3C307 /* InterViewController.m */,
 				9817CCF4217DBCA400A3C307 /* InterViewController.xib */,
@@ -330,6 +343,8 @@
 			children = (
 				982425E32137BF9F0006876D /* UINavigationController+SNNavigationTransition.h */,
 				982425E42137BF9F0006876D /* UINavigationController+SNNavigationTransition.m */,
+				9817CCFA217F1BDD00A3C307 /* UITabBarController+SNNavigationTransition.h */,
+				9817CCFB217F1BDD00A3C307 /* UITabBarController+SNNavigationTransition.m */,
 				982425E62137C1730006876D /* UIViewController+SNNavigationTransition.h */,
 				982425E72137C1730006876D /* UIViewController+SNNavigationTransition.m */,
 				982425F5213922470006876D /* SNNavigationNavigationBarPushPopTransitionAnimation.h */,
@@ -548,6 +563,8 @@
 				982425DC2137BB100006876D /* SNTransitionAnimationController.m in Sources */,
 				982425B921354A8C0006876D /* SNTabBar.m in Sources */,
 				982425E52137BF9F0006876D /* UINavigationController+SNNavigationTransition.m in Sources */,
+				9817CD072180510600A3C307 /* FourthViewController.m in Sources */,
+				9817CD042180439000A3C307 /* ThirdViewController.m in Sources */,
 				9824254B212ECE250006876D /* UINavigationBar+SNNavigationBar.m in Sources */,
 				982425D92137BA900006876D /* SNNavigationTransitionDelegate.m in Sources */,
 				9817CCEE217DBC0000A3C307 /* FirstViewController.m in Sources */,
@@ -557,6 +574,7 @@
 				98F7A84A2148BA4700C7624F /* SNNavigationItem.m in Sources */,
 				982425F4213912410006876D /* SNNavigationPopRightTransitionAnimation.m in Sources */,
 				9817CCF9217DC10B00A3C307 /* ChangeToTabBarViewController.m in Sources */,
+				9817CCFC217F1BDD00A3C307 /* UITabBarController+SNNavigationTransition.m in Sources */,
 				98242557212EDCD40006876D /* SNNavigationControllerTool.m in Sources */,
 				982425B621354A740006876D /* SNNavigationBar.m in Sources */,
 				9824254E212ECE440006876D /* UINavigationItem+SNNavigationItem.m in Sources */,

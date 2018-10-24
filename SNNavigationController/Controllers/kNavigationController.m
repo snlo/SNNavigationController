@@ -64,7 +64,7 @@
 
 #pragma mark -- private methods
 - (void)configureUserInterface {
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 - (void)configureDataSource {
     

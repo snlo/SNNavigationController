@@ -10,7 +10,6 @@
 
 @interface SNNavigationItem : NSObject
 
-
 /**
  导航栏背景色，默认白色
  */
@@ -37,9 +36,10 @@
  */
 @property (nonatomic, assign) BOOL showSearchBarMark;
 
-//首页强制大标题
+/**
+ 首页强制大标题
+ */
 @property (nonatomic, assign) BOOL forcePrefersLargeTitles;
-
 
 /**
  导航栏左边按钮集

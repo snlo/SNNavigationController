@@ -21,4 +21,10 @@ snna_singletonInterface(SNNavigationControllerTool)
  */
 void snna_replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod);
 
+
+/**
+ 设置颜色透明度
+ */
++ (UIColor *)setColor:(UIColor *)color alpha:(CGFloat)alpha;
+
 @end

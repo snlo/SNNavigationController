@@ -1,28 +1,29 @@
 //
-//  SecondViewController.m
+//  FourthViewController.m
 //  SNNavigationController
 //
-//  Created by snlo on 2018/10/22.
+//  Created by snlo on 2018/10/24.
 //  Copyright © 2018 snlo. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "FourthViewController.h"
 
 #import "ViewControllerCell.h"
 
 #import "InterViewController.h"
 
-@interface SecondViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FourthViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation SecondViewController
+@implementation FourthViewController
 
 #pragma mark -- life cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     // update form data
 }
 - (void)viewWillLayoutSubviews {
@@ -75,12 +76,11 @@
     cell.textLabel.text = @"hihi";
     return cell;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 48;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0001;
+    return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.0001;
@@ -107,9 +107,15 @@
 
 #pragma mark -- private methods
 - (void)configureUserInterface {
-    self.title = @"大标题导航栏";
+    
+    self.title = @"带搜索栏的大标题导航栏";
     self.sn_navigationItem.prefersLargeTitles = YES;
-    self.sn_navigationItem.forcePrefersLargeTitles = YES;
+    UIView * view = [self setSearchBarWith:78];
+    
+    UILabel * label = [[UILabel alloc] init];
+    label.text = @"🔍";
+    label.frame = view.bounds;
+    [view addSubview:label];
     
     self.sn_navigationItem.barBackgroudColor = [UIColor colorWithRed:((arc4random()%255)/255.00) green:((arc4random()%255)/255.00) blue:((arc4random()%255)/255.00) alpha:1.0];
     
@@ -118,7 +124,6 @@
     self.tableView.showsVerticalScrollIndicator = NO; //隐藏滚动条
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 14, 0, 0); //设置分割线缩颈
     self.tableView.separatorColor = [UIColor colorWithRed:((arc4random()%255)/255.00) green:((arc4random()%255)/255.00) blue:((arc4random()%255)/255.00) alpha:1.0];
-    
     
     UIButton * buttonRoot = [UIButton buttonWithType:UIButtonTypeCustom];
     [buttonRoot setTitle:@"首页" forState:UIControlStateNormal];

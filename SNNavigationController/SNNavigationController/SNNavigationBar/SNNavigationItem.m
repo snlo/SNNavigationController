@@ -19,7 +19,7 @@
 - (void)setPrefersLargeTitles:(BOOL)prefersLargeTitles {
     _prefersLargeTitles = prefersLargeTitles;
     if (_prefersLargeTitles) {
-        self.barHeight = ksNavigationBarHeight + 52;
+        self.barHeight = ksNavigationBarHeight + ksLargeHeight;
     } else {
         self.barHeight = ksNavigationBarHeight;
     }

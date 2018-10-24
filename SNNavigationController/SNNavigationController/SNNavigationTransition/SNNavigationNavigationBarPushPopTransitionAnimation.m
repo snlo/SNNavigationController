@@ -53,13 +53,17 @@
 		
 		[UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
 			// rotate the from view
-			navigationBar.viewFromLeftBarButtonStack.alpha = 0;
-			navigationBar.viewFromRightBarButtonStack.alpha = 0;
+			navigationBar.viewFromLeftBarButtonStack.alpha = 0.5;
+			navigationBar.viewFromRightBarButtonStack.alpha = 0.5;
 		}];
 		[UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
 			// rotate the to view
 			navigationBar.viewLeftBarButtonStack.alpha = 1;
 			navigationBar.viewRightBarButtonStack.alpha = 1;
+
+            navigationBar.viewFromRightBarButtonStack.alpha = 0.0;
+            navigationBar.viewFromLeftBarButtonStack.alpha = 0.0;
+
 		}];
 		
 		CGFloat leftWidth = navigationBar.viewLeftBarButtonStack.bounds.size.width;

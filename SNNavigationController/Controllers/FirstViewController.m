@@ -73,7 +73,7 @@
     NSString * identifier = @"ViewControllerCell";
     [tableView registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellReuseIdentifier:identifier];
     ViewControllerCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    cell.textLabel.text = @"hihi";
+    cell.textLabel.text = @"...";
     return cell;
 }
 
@@ -81,7 +81,7 @@
     return 48;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 10;
+    return 0.0001;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.0001;
@@ -98,19 +98,14 @@
     switch (indexPath.row) {
         case 0: {
             UIViewController * vc = [[UIViewController alloc] init];
-            vc.title = @"asdf";
+            vc.title = @"空白页";
             vc.view.backgroundColor = [UIColor whiteColor];
-            vc.sn_navigationItem.prefersLargeTitles = YES;
             
-            
-            [self.sn_navigationController pushViewController:vc animated:YES];
-        } break;
-        case 1: {
-            InterViewController * vc = [[InterViewController alloc] init];
             [self.sn_navigationController pushViewController:vc animated:YES];
         } break;
         default: {
-            
+            InterViewController * vc = [[InterViewController alloc] init];
+            [self.sn_navigationController pushViewController:vc animated:YES];
         } break;
     }
     
@@ -125,21 +120,22 @@
 
 #pragma mark -- private methods
 - (void)configureUserInterface {
-    self.title = @"First";
+    self.title = @"小标题导航栏";
+    self.sn_navigationItem.barBackgroudColor = [UIColor colorWithRed:((arc4random()%255)/255.00) green:((arc4random()%255)/255.00) blue:((arc4random()%255)/255.00) alpha:1.0];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO; //隐藏滚动条
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 14, 0, 0); //设置分割线缩颈
-    self.tableView.separatorColor = [UIColor blueColor]; //分割线颜色
+    self.tableView.separatorColor = [UIColor colorWithRed:((arc4random()%255)/255.00) green:((arc4random()%255)/255.00) blue:((arc4random()%255)/255.00) alpha:1.0];
     
     
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"root" forState:UIControlStateNormal];
-    self.sn_navigationItem.rightBarButtonItems = @[button];
-    self.sn_navigationItem.rightBarButtonItems = @[button];
+    UIButton * buttonRoot = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonRoot setTitle:@"首页" forState:UIControlStateNormal];
     
-    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+    self.sn_navigationItem.leftBarButtonItems = @[buttonRoot];
+    
+    [[buttonRoot rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [self dismissViewControllerAnimated:YES completion:^{
             
         }];

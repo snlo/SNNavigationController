@@ -25,5 +25,9 @@ void snna_replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod
     }
 }
 
++ (UIColor *)setColor:(UIColor *)color alpha:(CGFloat)alpha {
+    
+    return [color colorWithAlphaComponent:alpha];
+}
 
 @end
