@@ -13,6 +13,8 @@
 
 #import "SNNavigationControllerTool.h"
 
+#import "UIViewController+SNNavigationTransition.h"
+
 @implementation SNNavigationNavigationBarPushPopTransitionAnimation
 
 #pragma mark -- 只针对导航栏动画

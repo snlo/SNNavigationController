@@ -15,6 +15,8 @@
 #import "SNNavigationPopLeftTransitionAnimation.h"
 #import "SNNavigationPopRightTransitionAnimation.h"
 
+#import "UITabBarController+SNNavigationTransition.h"
+
 static const NSString * kPopViewController = @"ihgiqwefba234665:<>:>:&&jklsdbjklasbdjfh";
 
 @interface SNNavigationTransitionDelegate () {
