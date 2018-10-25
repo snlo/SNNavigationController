@@ -145,6 +145,7 @@
     self.title = @"详情页";
     self.sn_navigationItem.barBackgroudColor = [UIColor colorWithRed:((arc4random()%255)/255.00) green:((arc4random()%255)/255.00) blue:((arc4random()%255)/255.00) alpha:1.0];
     self.sn_navigationController.sn_navigationBar.separatorLine.hidden = YES;
+    self.sn_pullScreenBackPanGesture.enabled = YES;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

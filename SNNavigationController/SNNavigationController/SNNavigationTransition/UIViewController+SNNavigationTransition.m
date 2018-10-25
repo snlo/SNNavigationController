@@ -276,9 +276,7 @@
         self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
         self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
     }];
-    
-    
-    
+
     [self sn_viewDidLoad];
 }
 
@@ -337,16 +335,16 @@
 }
 
 #pragma mark -- 转场代理
-- (void)setSn_navigationDelegate:(SNNavigationTransitionDelegate *)sn_navigationDelegate {
-    objc_setAssociatedObject(self, @selector(sn_navigationDelegate), sn_navigationDelegate, OBJC_ASSOCIATION_RETAIN);
-}
-- (SNNavigationTransitionDelegate *)sn_navigationDelegate {
-    SNNavigationTransitionDelegate * delegate = objc_getAssociatedObject(self, _cmd);
-    if (!delegate) {
-        delegate = [[SNNavigationTransitionDelegate alloc] init];
-        objc_setAssociatedObject(self, @selector(sn_navigationDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
-    } return delegate;
-}
+//- (void)setSn_navigationDelegate:(SNNavigationTransitionDelegate *)sn_navigationDelegate {
+//    objc_setAssociatedObject(self, @selector(sn_navigationDelegate), sn_navigationDelegate, OBJC_ASSOCIATION_RETAIN);
+//}
+//- (SNNavigationTransitionDelegate *)sn_navigationDelegate {
+//    SNNavigationTransitionDelegate * delegate = objc_getAssociatedObject(self, _cmd);
+//    if (!delegate) {
+//        delegate = [[SNNavigationTransitionDelegate alloc] init];
+//        objc_setAssociatedObject(self, @selector(sn_navigationDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
+//    } return delegate;
+//}
 
 #pragma mark -- 滑动视图
 - (void)setSn_currentScrollView:(UIScrollView *)sn_currentScrollView {
