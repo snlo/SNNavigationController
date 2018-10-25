@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SNNavigationController"
-  s.version      = "0.0.1"
+  s.version      = "0.0.3"
   s.summary      = "custom navigation controller."
 
   # This description is used to generate tags and improve search results.
@@ -133,7 +133,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  
+
   s.dependency 'Masonry'
   s.dependency 'ReactiveObjC'
   s.dependency 'Aspects'
