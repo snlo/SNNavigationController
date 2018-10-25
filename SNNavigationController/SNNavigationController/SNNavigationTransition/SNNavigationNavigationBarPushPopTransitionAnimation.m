@@ -13,7 +13,10 @@
 
 #import "SNNavigationControllerTool.h"
 
+#import "SNNavigationTransitionDelegate.h"
+
 #import "UIViewController+SNNavigationTransition.h"
+#import "UINavigationController+SNNavigationTransition.h"
 
 @implementation SNNavigationNavigationBarPushPopTransitionAnimation
 

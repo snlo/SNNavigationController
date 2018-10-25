@@ -24,6 +24,9 @@
 #define ks_SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define ks_SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+#define ksLargeHeight 52.00f
+#define ksMargin 16.00f
+
 snna_singletonInterface(SNNavigationControllerTool)
 
 /**

@@ -10,9 +10,6 @@
 
 #import "SNNavigationItem.h"
 
-static CGFloat const ksLargeHeight = 52.00f;
-static CGFloat const ksMargin = 16.00f;
-
 @interface SNNavigationBar : UIView
 
 
