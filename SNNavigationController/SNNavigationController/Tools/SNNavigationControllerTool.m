@@ -8,9 +8,6 @@
 
 #import "SNNavigationControllerTool.h"
 
-#import <objc/runtime.h>
-#import <objc/message.h>
-
 snna_singletonImplemention(SNNavigationControllerTool)
 
 void snna_replaceMethod(Class aClass, SEL aMethod, Class newClass, SEL newMethod) {

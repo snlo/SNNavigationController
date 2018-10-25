@@ -88,6 +88,7 @@
 		9817CD032180439000A3C307 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		9817CD052180510600A3C307 /* FourthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
 		9817CD062180510600A3C307 /* FourthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
+		9817CD082181AE6900A3C307 /* SNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNNavigationController.h; sourceTree = "<group>"; };
 		9824250D212ECB0D0006876D /* SNNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98242510212ECB0D0006876D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98242511212ECB0D0006876D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 				98242555212EDCD40006876D /* SNNavigationControllerTool.h */,
 				98242556212EDCD40006876D /* SNNavigationControllerTool.m */,
 				982425B021352D0F0006876D /* SNNa_Singletion.h */,
+				9817CD082181AE6900A3C307 /* SNNavigationController.h */,
 			);
 			path = Tools;
 			sourceTree = "<group>";

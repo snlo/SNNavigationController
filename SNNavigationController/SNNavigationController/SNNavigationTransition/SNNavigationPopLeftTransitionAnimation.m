@@ -8,6 +8,8 @@
 
 #import "SNNavigationPopLeftTransitionAnimation.h"
 
+#import "SNNavigationControllerTool.h"
+
 @implementation SNNavigationPopLeftTransitionAnimation
 
 - (void)navigationAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController fromView:(UIView *)fromView toView:(UIView *)toView {
@@ -16,7 +18,7 @@
     [containerView addSubview:toView];
     [containerView sendSubviewToBack:toView];
     
-    toView.frame = CGRectMake(-SCREEN_WIDTH/2, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
+    toView.frame = CGRectMake(-ks_SCREEN_WIDTH/2, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
     
     
     UIView * maskView = [[UIView alloc] init];
@@ -28,7 +30,7 @@
 
 	UIView * viewShadown = [[UIView alloc] init];
 	viewShadown.backgroundColor = [UIColor whiteColor];
-	viewShadown.frame = CGRectMake(SCREEN_WIDTH/2, 0, 10, SCREEN_HEIGHT);
+	viewShadown.frame = CGRectMake(ks_SCREEN_WIDTH/2, 0, 10, ks_SCREEN_HEIGHT);
 	viewShadown.layer.shadowColor = [UIColor blackColor].CGColor;
 	viewShadown.layer.shadowOpacity = 0.5f;
 	viewShadown.layer.shadowOffset = CGSizeMake(3, 0);
@@ -43,10 +45,10 @@
 								 options:0
 							  animations:^{
 		
-        fromView.frame = CGRectMake(SCREEN_WIDTH, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
+        fromView.frame = CGRectMake(ks_SCREEN_WIDTH, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
         toView.frame = CGRectMake(0, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
         maskView.alpha = 0.0;
-		viewShadown.frame = CGRectMake(SCREEN_WIDTH, 0, 10, SCREEN_HEIGHT);
+		viewShadown.frame = CGRectMake(ks_SCREEN_WIDTH, 0, 10, ks_SCREEN_HEIGHT);
 		
     } completion:^(BOOL finished) {
         if ([transitionContext transitionWasCancelled]) {
@@ -55,7 +57,7 @@
         } else {
             // reset from- view to its original state
             [fromView removeFromSuperview];
-            fromView.frame = CGRectMake(SCREEN_WIDTH, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
+            fromView.frame = CGRectMake(ks_SCREEN_WIDTH, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
             toView.frame = CGRectMake(0, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
 			
 			

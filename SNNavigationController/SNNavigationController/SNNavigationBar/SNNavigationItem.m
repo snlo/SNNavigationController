@@ -8,6 +8,8 @@
 
 #import "SNNavigationItem.h"
 
+#import "SNNavigationControllerTool.h"
+
 @implementation SNNavigationItem
 
 #pragma mark -- getter / setter
@@ -28,9 +30,5 @@
 - (void)setShowSearchBar:(BOOL)showSearchBar {
     _showSearchBar = showSearchBar;
 }
-
-
-
-
 
 @end

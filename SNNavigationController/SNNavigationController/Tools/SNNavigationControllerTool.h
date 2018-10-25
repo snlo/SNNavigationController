@@ -9,10 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import <objc/runtime.h>
+#import <objc/message.h>
+
+#import <Masonry.h>
+#import <ReactiveObjC.h>
+#import <Aspects.h>
+
 #import "SNNa_Singletion.h"
 
-#define ksIs_iPhoneX (SCREEN_HEIGHT / SCREEN_WIDTH > 2.1 ? YES : NO)
+#define ksIs_iPhoneX (ks_SCREEN_HEIGHT / ks_SCREEN_WIDTH > 2.1 ? YES : NO)
 #define ksNavigationBarHeight (ksIs_iPhoneX ? 88:64)
+
+#define ks_SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define ks_SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 snna_singletonInterface(SNNavigationControllerTool)
 

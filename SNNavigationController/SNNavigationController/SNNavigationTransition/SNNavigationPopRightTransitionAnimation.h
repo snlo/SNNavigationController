@@ -10,6 +10,4 @@
 
 @interface SNNavigationPopRightTransitionAnimation : SNNavigationNavigationBarPushPopTransitionAnimation
 
-
-
 @end

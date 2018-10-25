@@ -8,9 +8,11 @@
 
 #import "UIViewController+SNNavigationTransition.h"
 
-#import <objc/runtime.h>
+#import "SNNavigationControllerTool.h"
 
 #import "SNTransitionInteractionController.h"
+
+#import "UITabBarController+SNNavigationTransition.h"
 
 @interface UIViewController ()
 
@@ -55,10 +57,10 @@
     if ([self.tabBarController.viewControllers containsObject:self]) { //标签栏首次进入配置
         if (self.tabBarController) {
             @weakify(self);
-            self.tabBarController.selectedItemBlock = ^{
+            self.tabBarController.sn_selectedItemBlock = ^{
                 @strongify(self);
                 //高度
-                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.sn_navigationItem.barHeight);
+                self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, ks_SCREEN_WIDTH, self.sn_navigationItem.barHeight);
                 
                 //大标题视图展示
                 if (self.sn_navigationItem.prefersLargeTitles) {
@@ -150,7 +152,6 @@
     if (self.sn_currentScrollView && (isPrefersLargeTitles || isShowSearchBar) && !self.isScrollViewSignalMark) {
         
         //常量记录
-        
         __block CGFloat center_Y = self.sn_navigationController.sn_navigationBar.viewLargeTitle.center.y;
         __block CGFloat barHeight = self.sn_navigationItem.barHeight;
         __block CGFloat center_search_Y = self.sn_navigationController.sn_navigationBar.viewSearch.center.y;
@@ -171,21 +172,21 @@
             }
             
             if (offset_y != 0) { //排除首次偏移
-                self.sn_navigationController.sn_navigationBar.viewLargeTitle.center = CGPointMake(SCREEN_WIDTH/2, center_Y-(offset_y<0?offset_y:0));
+                self.sn_navigationController.sn_navigationBar.viewLargeTitle.center = CGPointMake(ks_SCREEN_WIDTH/2, center_Y-(offset_y<0?offset_y:0));
                 if (isShowSearchBar) {
                     
-                    self.sn_navigationController.sn_navigationBar.viewSearch.center = CGPointMake(SCREEN_WIDTH/2, center_search_Y-(offset_y<height_Large?offset_y:height_Large));
-                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, barHeight-((offset_y)<(height_Large+height_sreach)?(offset_y):(height_Large+height_sreach)));
+                    self.sn_navigationController.sn_navigationBar.viewSearch.center = CGPointMake(ks_SCREEN_WIDTH/2, center_search_Y-(offset_y<height_Large?offset_y:height_Large));
+                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, ks_SCREEN_WIDTH, barHeight-((offset_y)<(height_Large+height_sreach)?(offset_y):(height_Large+height_sreach)));
                     
                 } else {
 
-                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, barHeight-(offset_y<height_Large? offset_y : height_Large));
+                    self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, ks_SCREEN_WIDTH, barHeight-(offset_y<height_Large? offset_y : height_Large));
                 }
                 
                 self.sn_navigationController.sn_navigationBar.labelLargeTitle.alpha = 1;
                 self.sn_navigationController.sn_navigationBar.labelLargeTitle.hidden = NO;
-                self.sn_navigationController.sn_navigationBar.labelLargeTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
-                self.sn_navigationController.sn_navigationBar.labelLargeFromTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
+                self.sn_navigationController.sn_navigationBar.labelLargeTitle.center = CGPointMake(ks_SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
+                self.sn_navigationController.sn_navigationBar.labelLargeFromTitle.center = CGPointMake(ks_SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
                 
                 if (isPrefersLargeTitles) {
                     self.sn_navigationController.sn_navigationBar.labelTitle.hidden = NO;
@@ -236,7 +237,7 @@
                 } else {
                     self.sn_navigationItem.prefersLargeTitles = NO;
                     self.sn_navigationItem.barHeight = ksNavigationBarHeight + sreach_height;
-                    self.sn_navigationController.sn_navigationBar.labelLargeTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y);
+                    self.sn_navigationController.sn_navigationBar.labelLargeTitle.center = CGPointMake(ks_SCREEN_WIDTH/2 , center_label_y);
                 }
             }
         }];
@@ -289,7 +290,7 @@
     }
     self.sn_navigationItem.barHeight = ksNavigationBarHeight + height_Large + height;
     self.sn_navigationItem.showSearchBar = YES;
-    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+height_Large, SCREEN_WIDTH, height);
+    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+height_Large, ks_SCREEN_WIDTH, height);
     [self.sn_navigationController.sn_navigationBar.viewSearch layoutIfNeeded];
 
     self.sn_navigationController.sn_navigationBar.viewSearch.backgroundColor = [UIColor redColor];
@@ -333,18 +334,6 @@
         return objc_getAssociatedObject(self, _cmd);
     }
 }
-
-#pragma mark -- 转场代理
-//- (void)setSn_navigationDelegate:(SNNavigationTransitionDelegate *)sn_navigationDelegate {
-//    objc_setAssociatedObject(self, @selector(sn_navigationDelegate), sn_navigationDelegate, OBJC_ASSOCIATION_RETAIN);
-//}
-//- (SNNavigationTransitionDelegate *)sn_navigationDelegate {
-//    SNNavigationTransitionDelegate * delegate = objc_getAssociatedObject(self, _cmd);
-//    if (!delegate) {
-//        delegate = [[SNNavigationTransitionDelegate alloc] init];
-//        objc_setAssociatedObject(self, @selector(sn_navigationDelegate), delegate, OBJC_ASSOCIATION_RETAIN);
-//    } return delegate;
-//}
 
 #pragma mark -- 滑动视图
 - (void)setSn_currentScrollView:(UIScrollView *)sn_currentScrollView {

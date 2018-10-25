@@ -12,25 +12,9 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-/**
- 屏幕宽高
- */
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+#import "SNNavigationController.h"
 
-#import "UIViewController+SNNavigationTransition.h"
-#import "UINavigationController+SNNavigationTransition.h"
-#import "UITabBarController+SNNavigationTransition.h"
-
-#import <objc/runtime.h>
-
-#import "SNNavigationTransitionDelegate.h"
-#import "SNNavigationControllerTool.h"
-
-
-#import <Masonry.h>
 #import <ReactiveObjC.h>
-#import <Aspects.h>
 
 #endif /* PrefixHeader_pch */

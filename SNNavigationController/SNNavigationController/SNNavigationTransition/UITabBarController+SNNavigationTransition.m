@@ -8,6 +8,8 @@
 
 #import "UITabBarController+SNNavigationTransition.h"
 
+#import "SNNavigationControllerTool.h"
+
 @interface UITabBarController () <UITabBarControllerDelegate>
 
 @end
@@ -17,22 +19,25 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        snna_replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
-        
+        snna_replaceMethod(self, @selector(viewDidLoad), self, @selector(snta_viewDidLoad));
     });
 }
 
-- (void)sn_viewDidLoad {
+- (void)snta_viewDidLoad {
     
     self.delegate = self;
+    
+    @weakify(self);
     [self aspect_hookSelector:@selector(tabBarController:didSelectViewController:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, UITabBarController* tabBarController, UIViewController* viewController) {
-        if (self.selectedItemBlock) {
-            self.selectedItemBlock();
+        
+        @strongify(self);
+        if (self.sn_selectedItemBlock) {
+            self.sn_selectedItemBlock();
         }
         
     } error:NULL];
     
-    [self sn_viewDidLoad];
+    [self snta_viewDidLoad];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
@@ -40,12 +45,11 @@
 }
 
 
-
 #pragma mark -- getter
-- (void)setSelectedItemBlock:(SNSelectedTabBarItemBlock)selectedItemBlock {
-    objc_setAssociatedObject(self, @selector(selectedItemBlock), selectedItemBlock, OBJC_ASSOCIATION_COPY);
+- (void)setSn_selectedItemBlock:(SNNASelectedTabBarItemBlock)sn_selectedItemBlock {
+    objc_setAssociatedObject(self, @selector(sn_selectedItemBlock), sn_selectedItemBlock, OBJC_ASSOCIATION_COPY);
 }
-- (SNSelectedTabBarItemBlock)selectedItemBlock {
+- (SNNASelectedTabBarItemBlock)sn_selectedItemBlock {
     return objc_getAssociatedObject(self, _cmd);
 }
 

@@ -8,6 +8,11 @@
 
 #import "SNNavigationNavigationBarPushPopTransitionAnimation.h"
 
+#import "SNNavigationBar.h"
+#import "SNNavigationItem.h"
+
+#import "SNNavigationControllerTool.h"
+
 @implementation SNNavigationNavigationBarPushPopTransitionAnimation
 
 #pragma mark -- 只针对导航栏动画
@@ -71,15 +76,15 @@
         if (leftWidth < rightWidth) {
             leftWidth = rightWidth;
         }
-		navigationBar.viewTitle.frame = CGRectMake(ksMargin+leftWidth, navigationBar.viewTitle.frame.origin.y, SCREEN_WIDTH-ksMargin*2-leftWidth-leftWidth, navigationBar.viewTitle.frame.size.height);
+		navigationBar.viewTitle.frame = CGRectMake(ksMargin+leftWidth, navigationBar.viewTitle.frame.origin.y, ks_SCREEN_WIDTH-ksMargin*2-leftWidth-leftWidth, navigationBar.viewTitle.frame.size.height);
 		
         if (self.reverse) { // pop
             navigationBar.backgroundColor = navigationItemTo.barBackgroudColor;
-            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, navigationItemTo.barHeight);
+            navigationBar.frame = CGRectMake(0, 0, ks_SCREEN_WIDTH, navigationItemTo.barHeight);
             
         } else { // push
             navigationBar.backgroundColor = navigationItemTo.barBackgroudColor;
-            navigationBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, navigationItemTo.barHeight);
+            navigationBar.frame = CGRectMake(0, 0, ks_SCREEN_WIDTH, navigationItemTo.barHeight);
         }
 
     } completion:^(BOOL finished) {
@@ -120,14 +125,14 @@
     navigationBar.labelFromTile.alpha = 1;
     navigationBar.labelFromTile.hidden = NO;
 	
-	CGFloat centerX = SCREEN_WIDTH/2;
+	CGFloat centerX = ks_SCREEN_WIDTH/2;
 	CGFloat centerY = (ksIs_iPhoneX?44:20) + 22;
     
     if (self.reverse) { // pop
         
         navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
-        navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin , 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
-        navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin , 0, ks_SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin, 0, ks_SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
         
         if (navigationItemFrom.prefersLargeTitles == navigationItemTo.prefersLargeTitles) {
             navigationBar.labelFromTile.hidden = navigationItemFrom.prefersLargeTitles;
@@ -144,8 +149,8 @@
 		navigationBar.labelTitle.center = CGPointMake(moveCenterX, centerY);
         navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
         
-        navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
-        navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin + ks_SCREEN_WIDTH/2, 0, ks_SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+        navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin, 0, ks_SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
         
         
         if (navigationItemTo.prefersLargeTitles == navigationItemFrom.prefersLargeTitles) {
@@ -224,11 +229,11 @@
         if (leftWidth < rightWidth) {
             leftWidth = rightWidth;
         }
-        navigationBar.labelTitle.frame = CGRectMake(navigationBar.labelTitle.frame.origin.x, navigationBar.labelTitle.frame.origin.y, SCREEN_WIDTH-ksMargin*2-leftWidth*2, navigationBar.labelTitle.frame.size.height);
+        navigationBar.labelTitle.frame = CGRectMake(navigationBar.labelTitle.frame.origin.x, navigationBar.labelTitle.frame.origin.y, ks_SCREEN_WIDTH-ksMargin*2-leftWidth*2, navigationBar.labelTitle.frame.size.height);
         navigationBar.labelTitle.center = CGPointMake(centerX, centerY);
 
         if (self.reverse) { // pop
-			CGFloat moveCenterX = SCREEN_WIDTH-ksMargin;
+			CGFloat moveCenterX = ks_SCREEN_WIDTH-ksMargin;
 #pragma mark -- 判断动画方向
 			if (self.rectEdge == UIRectEdgeLeft) {
 				moveCenterX = navigationBar.viewRightBarButtonStack.frame.origin.x;
@@ -240,14 +245,14 @@
             
 			navigationBar.labelFromTile.center = CGPointMake(moveCenterX, centerY);
             
-            navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin + SCREEN_WIDTH/2, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
+            navigationBar.labelLargeFromTitle.frame = CGRectMake(ksMargin + ks_SCREEN_WIDTH/2, 0, ks_SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
             
             
         } else { // push
             
             navigationBar.labelFromTile.center = CGPointMake(centerX, centerY);
             
-            navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-2*ksMargin, ksLargeHeight);
+            navigationBar.labelLargeTitle.frame = CGRectMake(ksMargin, 0, ks_SCREEN_WIDTH-2*ksMargin, ksLargeHeight);
             
         }
         

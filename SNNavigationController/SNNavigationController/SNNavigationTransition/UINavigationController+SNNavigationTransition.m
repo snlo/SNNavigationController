@@ -8,6 +8,7 @@
 
 #import "UINavigationController+SNNavigationTransition.h"
 
+#import "SNNavigationControllerTool.h"
 
 @interface UINavigationController ()
 
@@ -18,17 +19,16 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        snna_replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
+        snna_replaceMethod(self, @selector(viewDidLoad), self, @selector(snna_viewDidLoad));
     });
 }
 
-
-
-- (void)sn_viewDidLoad {
+- (void)snna_viewDidLoad {
     self.navigationBar.hidden = YES;
     [self sn_navigationBar];
     self.delegate = self.sn_navigationDelegate;
-    [self sn_viewDidLoad];
+    
+    [self snna_viewDidLoad];
 }
 #pragma mark -- getter / setter
 - (void)setSn_navigationBar:(SNNavigationBar *)sn_navigationBar {
