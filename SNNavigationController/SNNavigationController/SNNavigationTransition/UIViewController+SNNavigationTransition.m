@@ -13,9 +13,11 @@
 #import "SNTransitionInteractionController.h"
 
 #import "UITabBarController+SNNavigationTransition.h"
+#import "UINavigationController+SNNavigationTransition.h"
 
 #import "SNNavigationBar.h"
 #import "SNNavigationItem.h"
+
 
 @interface UIViewController ()
 
