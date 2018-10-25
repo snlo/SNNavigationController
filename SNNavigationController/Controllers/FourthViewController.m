@@ -117,6 +117,8 @@
     label.frame = view.bounds;
     [view addSubview:label];
     
+    
+    
     self.sn_navigationItem.barBackgroudColor = [UIColor colorWithRed:((arc4random()%255)/255.00) green:((arc4random()%255)/255.00) blue:((arc4random()%255)/255.00) alpha:1.0];
     
     self.tableView.delegate = self;

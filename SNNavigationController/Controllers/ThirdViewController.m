@@ -129,6 +129,10 @@
         }];
     }];
     
+    [RACObserve(self.tableView, contentOffset) subscribeNext:^(id  _Nullable x) {
+        NSLog(@" - - -- - - -- - %f",self.tableView.contentOffset.y);
+    }];
+    
 }
 - (void)configureDataSource {
     

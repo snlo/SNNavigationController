@@ -111,6 +111,7 @@
 		_labelFromTile.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
 		_labelFromTile.textColor = [UIColor blackColor];
 		_labelFromTile.textAlignment = NSTextAlignmentCenter;
+        _labelFromTile.hidden = YES;
 		[self insertSubview:_labelFromTile aboveSubview:self.viewTitle];
 	} return _labelFromTile;
 }
@@ -194,6 +195,7 @@
 		_labelLargeFromTitle = [[UILabel alloc] init];
 		_labelLargeFromTitle.frame = CGRectMake(ksMargin, 0, SCREEN_WIDTH-ksMargin*2, ksLargeHeight);
         _labelLargeFromTitle.font = [UIFont systemFontOfSize:24 weight:UIFontWeightMedium];
+        _labelLargeFromTitle.hidden = YES;
 		[self.viewLargeTitle addSubview:_labelLargeFromTitle];
 	} return _labelLargeFromTitle;
 }

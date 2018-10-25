@@ -12,6 +12,9 @@ typedef void(^SNSelectedTabBarItemBlock)(void);
 
 @interface UITabBarController (SNNavigationTransition) 
 
+/**
+ 点击 item 的回调
+ */
 @property (nonatomic, copy) SNSelectedTabBarItemBlock selectedItemBlock;
 
 @end

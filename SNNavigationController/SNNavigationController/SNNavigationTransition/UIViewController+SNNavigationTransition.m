@@ -104,7 +104,6 @@
             self.sn_navigationController.sn_navigationBar.viewSearch.alpha = self.sn_navigationItem.showSearchBar?1:0;
             
             //小标题展示
-//            self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
             self.sn_navigationController.sn_navigationBar.labelTitle.alpha = 1.0;
             self.sn_navigationController.sn_navigationBar.labelTitle.hidden = self.sn_navigationItem.prefersLargeTitles;
             
@@ -119,12 +118,6 @@
             }
         }
     }
-    
-    //基本属性交接
-    [RACObserve(self, title) subscribeNext:^(id  _Nullable x) {
-        self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
-        self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
-    }];
 
 	self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
 
@@ -190,6 +183,7 @@
                 }
                 
                 self.sn_navigationController.sn_navigationBar.labelLargeTitle.alpha = 1;
+                self.sn_navigationController.sn_navigationBar.labelLargeTitle.hidden = NO;
                 self.sn_navigationController.sn_navigationBar.labelLargeTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
                 self.sn_navigationController.sn_navigationBar.labelLargeFromTitle.center = CGPointMake(SCREEN_WIDTH/2 , center_label_y -(offset_y > 0 ? offset_y: 0));
                 
@@ -278,6 +272,10 @@
     [RACObserve(self.sn_navigationItem, barBackgroudColor) subscribeNext:^(id  _Nullable x) {
         self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
     }];
+    [RACObserve(self, title) subscribeNext:^(id  _Nullable x) {
+        self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
+        self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
+    }];
     
     
     
@@ -286,6 +284,7 @@
 
 #pragma mark -- public methods
 - (UIView *)setSearchBarWith:(CGFloat)height {
+    return [UIView new]; //禁止设置搜索栏
     CGFloat height_Large = 0.00f;
     if (self.sn_navigationItem.prefersLargeTitles) {
         height_Large = ksLargeHeight;
