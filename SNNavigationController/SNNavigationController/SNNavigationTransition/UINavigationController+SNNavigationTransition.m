@@ -10,6 +10,9 @@
 
 #import "SNNavigationControllerTool.h"
 
+#import "SNNavigationBar.h"
+#import "SNNavigationItem.h"
+
 @interface UINavigationController ()
 
 @end

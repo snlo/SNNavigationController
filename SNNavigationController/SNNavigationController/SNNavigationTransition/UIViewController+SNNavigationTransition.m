@@ -14,6 +14,9 @@
 
 #import "UITabBarController+SNNavigationTransition.h"
 
+#import "SNNavigationBar.h"
+#import "SNNavigationItem.h"
+
 @interface UIViewController ()
 
 @property (nonatomic, weak) UIScrollView * sn_currentScrollView;
