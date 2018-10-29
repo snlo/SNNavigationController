@@ -55,7 +55,6 @@
     
     navigationBar.backgroundColor = navigationItemFrom.barBackgroudColor;
     
-    [self handleTitleLabelAnimateTransition:transitionContext to:navigationItemTo from:navigationItemFrom with:navigationBar and:duration and:toViewController and:fromViewController];
     
     toViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = YES;
     fromViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = YES;
@@ -101,9 +100,10 @@
         }
         toViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = NO;
         fromViewController.sn_navigationController.sn_navigationDelegate.percentDrivenTransition.interactionInProgress = NO;
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
     
-    
+//    [self handleTitleLabelAnimateTransition:transitionContext to:navigationItemTo from:navigationItemFrom with:navigationBar and:duration and:toViewController and:fromViewController];
     
     [self navigationAnimateTransition:transitionContext fromViewController:fromViewController toViewController:toViewController fromView:fromView toView:toView];
 }
