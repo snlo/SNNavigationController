@@ -51,7 +51,7 @@
 		viewShadown.frame = CGRectMake(ks_SCREEN_WIDTH, 0, 10, ks_SCREEN_HEIGHT);
 		
     } completion:^(BOOL finished) {
-        if ([transitionContext transitionWasCancelled]) {
+        if (transitionContext.transitionWasCancelled) {
             toView.frame = CGRectMake(0, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
             fromView.frame = CGRectMake(0, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
         } else {
@@ -59,11 +59,10 @@
             [fromView removeFromSuperview];
             fromView.frame = CGRectMake(ks_SCREEN_WIDTH, fromView.frame.origin.y, fromView.frame.size.width, fromView.frame.size.height);
             toView.frame = CGRectMake(0, toView.frame.origin.y, toView.frame.size.width, toView.frame.size.height);
-			
-			
-			[transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+
         }
 		[maskView removeFromSuperview];
+        [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
     }];
 }
 

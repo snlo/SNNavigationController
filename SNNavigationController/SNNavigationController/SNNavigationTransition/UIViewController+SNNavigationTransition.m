@@ -38,16 +38,107 @@
         snna_replaceMethod(self, @selector(viewWillDisappear:), self, @selector(sn_viewWillDisappear:));
         snna_replaceMethod(self, @selector(viewDidDisappear:), self, @selector(sn_viewDidDisappear:));
         snna_replaceMethod(self, @selector(viewDidLoad), self, @selector(sn_viewDidLoad));
-        
     });
 }
 
 - (void)sn_viewWillAppear:(BOOL)animated {
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"]) {
+        return;
+    }
     if ([self isKindOfClass:[UINavigationController class]] ||
         [self isKindOfClass:[UITabBarController class]]) {
         return;
     }
-    //处理多导航栏
+    if (self.isShowCustomNavigationBar) {
+        [self CustomNavigationBar_viewWillAppear];
+    }
+    if (self.isShowSNNavigationBar) {
+        [self SNNavigationBar_viewWillAppear];
+    }
+    if (self.isShowSystemNavigationBar) {
+        [self SystemNavigationBar_viewWillAppear];
+    }
+    
+    self.isWillDisappear = NO;
+    [self sn_viewWillAppear:animated];
+}
+- (void)sn_viewDidAppear:(BOOL)animated {
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"]) {
+        return;
+    }
+    if (self.isShowCustomNavigationBar) {
+        [self CustomNavigationBar_viewDidAppear];
+    }
+    if (self.isShowSNNavigationBar) {
+        [self SNNavigationBar_viewDidAppear];
+    }
+    if (self.isShowSystemNavigationBar) {
+        [self SystemNavigationBar_viewDidAppear];
+    }
+    
+    [self sn_viewDidAppear:animated];
+}
+- (void)sn_viewDidLoad {
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"]) {
+        return;
+    }
+    if (self.isShowCustomNavigationBar) {
+        [self CustomNavigationBar_viewDidLoad];
+    }
+    if (self.isShowSNNavigationBar) {
+        [self SNNavigationBar_viewDidLoad];
+    }
+    if (self.isShowSystemNavigationBar) {
+        [self SystemNavigationBar_viewDidLoad];
+    }
+
+    [self sn_viewDidLoad];
+}
+- (void)sn_viewWillDisappear:(BOOL)animated {
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"]) {
+        return;
+    }
+    self.isWillDisappear = YES;
+    self.isScrollViewSignalMark = YES;
+    
+    [self sn_viewWillDisappear:animated];
+}
+- (void)sn_viewDidDisappear:(BOOL)animated {
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"]) {
+        return;
+    }
+    [self sn_viewDidDisappear:animated];
+}
+
+#pragma mark -- public methods
+- (UIView *)setSearchBarWith:(CGFloat)height {
+    return [UIView new]; //禁止设置搜索栏
+    CGFloat height_Large = 0.00f;
+    if (self.sn_navigationItem.prefersLargeTitles) {
+        height_Large = ksLargeHeight;
+    }
+    self.sn_navigationItem.barHeight = ksNavigationBarHeight + height_Large + height;
+    self.sn_navigationItem.showSearchBar = YES;
+    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+height_Large, ks_SCREEN_WIDTH, height);
+    [self.sn_navigationController.sn_navigationBar.viewSearch layoutIfNeeded];
+
+    self.sn_navigationController.sn_navigationBar.viewSearch.backgroundColor = [UIColor redColor];
+    return self.sn_navigationController.sn_navigationBar.viewSearch;
+}
+
+#pragma mark -- CustomNavigationBar
+- (void)CustomNavigationBar_viewWillAppear {
+    
+}
+- (void)CustomNavigationBar_viewDidLoad {
+    
+}
+- (void)CustomNavigationBar_viewDidAppear {
+    
+}
+
+#pragma mark -- SNNavigationBar :
+- (void)SNNavigationBar_viewWillAppear {
     if (self.tabBarController) {
         if ([self.tabBarController.sn_navigationController isEqual:self.sn_navigationController]) {
             self.tabBarController.sn_navigationController.sn_navigationBar.hidden = NO;
@@ -125,32 +216,56 @@
             }
         }
     }
-
-	self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
-
+    
+    self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
+    
     //处理滑动视图偏移
-//    __block UIScrollView * scrollview;
     [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[UIScrollView class]]) {
             self.sn_currentScrollView = obj;
         }
     }];
     if (self.sn_currentScrollView && !self.isScrollViewSignalMark) {
-        [NSLayoutConstraint constraintWithItem:self.sn_currentScrollView
-                                     attribute:NSLayoutAttributeTop
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.view
-                                     attribute:NSLayoutAttributeTop
-                                    multiplier:1.0f
-                                      constant:ksNavigationBarHeight].active = YES;
+//        [NSLayoutConstraint constraintWithItem:self.sn_currentScrollView
+//                                     attribute:NSLayoutAttributeTop
+//                                     relatedBy:NSLayoutRelationEqual
+//                                        toItem:self.view
+//                                     attribute:NSLayoutAttributeTop
+//                                    multiplier:1.0f
+//                                      constant:ksNavigationBarHeight].active = YES;
+        
+        for (NSLayoutConstraint * constraint in self.view.constraints) {
+            if (constraint.firstAttribute == NSLayoutAttributeTop) {
+                constraint.constant = ksNavigationBarHeight;
+            }
+        }
         self.sn_currentScrollView.contentInset = UIEdgeInsetsMake(self.sn_navigationItem.barHeight-ksNavigationBarHeight, 0, 0, 0);
     }
-    self.isWillDisappear = NO;
-    
-    [self sn_viewWillAppear:animated];
 }
-- (void)sn_viewDidAppear:(BOOL)animated {
-    
+- (void)SNNavigationBar_viewDidLoad {
+    [RACObserve(self.sn_navigationItem, leftBarButtonItems) subscribeNext:^(id  _Nullable x) {
+        if (self.sn_navigationController.sn_navigationBar.viewLeftBarButtonStack.alpha < 1) {
+            self.sn_navigationController.sn_navigationBar.leftFromBarButtonItems = self.sn_navigationItem.leftBarButtonItems;
+        } else {
+            self.sn_navigationController.sn_navigationBar.leftBarButtonItems = self.sn_navigationItem.leftBarButtonItems;
+        }
+    }];
+    [RACObserve(self.sn_navigationItem, rightBarButtonItems) subscribeNext:^(id  _Nullable x) {
+        if (self.sn_navigationController.sn_navigationBar.viewRightBarButtonStack.alpha < 1) {
+            self.sn_navigationController.sn_navigationBar.rightFromBarButtonItems = self.sn_navigationItem.rightBarButtonItems;
+        } else {
+            self.sn_navigationController.sn_navigationBar.rightBarButtonItems = self.sn_navigationItem.rightBarButtonItems;
+        }
+    }];
+    [RACObserve(self.sn_navigationItem, barBackgroudColor) subscribeNext:^(id  _Nullable x) {
+        self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
+    }];
+    [RACObserve(self, title) subscribeNext:^(id  _Nullable x) {
+        self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
+        self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
+    }];
+}
+- (void)SNNavigationBar_viewDidAppear {
     BOOL isShowSearchBar = self.sn_navigationItem.showSearchBar;
     BOOL isPrefersLargeTitles = self.sn_navigationItem.prefersLargeTitles;
     
@@ -184,7 +299,7 @@
                     self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, ks_SCREEN_WIDTH, barHeight-((offset_y)<(height_Large+height_sreach)?(offset_y):(height_Large+height_sreach)));
                     
                 } else {
-
+                    
                     self.sn_navigationController.sn_navigationBar.frame = CGRectMake(0, 0, ks_SCREEN_WIDTH, barHeight-(offset_y<height_Large? offset_y : height_Large));
                 }
                 
@@ -247,59 +362,17 @@
             }
         }];
     }
+}
+
+#pragma mark -- SystemNavigationBar
+- (void)SystemNavigationBar_viewWillAppear {
     
-    [self sn_viewDidAppear:animated];
 }
-- (void)sn_viewWillDisappear:(BOOL)animated {
-    self.isWillDisappear = YES;
-    self.isScrollViewSignalMark = YES;
-    [self sn_viewWillDisappear:animated];
-}
-- (void)sn_viewDidDisappear:(BOOL)animated {
+- (void)SystemNavigationBar_viewDidLoad {
     
-    [self sn_viewDidDisappear:animated];
 }
-- (void)sn_viewDidLoad {
-
-    [RACObserve(self.sn_navigationItem, leftBarButtonItems) subscribeNext:^(id  _Nullable x) {
-        if (self.sn_navigationController.sn_navigationBar.viewLeftBarButtonStack.alpha < 1) {
-            self.sn_navigationController.sn_navigationBar.leftFromBarButtonItems = self.sn_navigationItem.leftBarButtonItems;
-        } else {
-            self.sn_navigationController.sn_navigationBar.leftBarButtonItems = self.sn_navigationItem.leftBarButtonItems;
-        }
-    }];
-    [RACObserve(self.sn_navigationItem, rightBarButtonItems) subscribeNext:^(id  _Nullable x) {
-        if (self.sn_navigationController.sn_navigationBar.viewRightBarButtonStack.alpha < 1) {
-            self.sn_navigationController.sn_navigationBar.rightFromBarButtonItems = self.sn_navigationItem.rightBarButtonItems;
-        } else {
-            self.sn_navigationController.sn_navigationBar.rightBarButtonItems = self.sn_navigationItem.rightBarButtonItems;
-        }
-    }];
-    [RACObserve(self.sn_navigationItem, barBackgroudColor) subscribeNext:^(id  _Nullable x) {
-        self.sn_navigationController.sn_navigationBar.backgroundColor = self.sn_navigationItem.barBackgroudColor;
-    }];
-    [RACObserve(self, title) subscribeNext:^(id  _Nullable x) {
-        self.sn_navigationController.sn_navigationBar.labelTitle.text = self.title;
-        self.sn_navigationController.sn_navigationBar.labelLargeTitle.text = self.title;
-    }];
-
-    [self sn_viewDidLoad];
-}
-
-#pragma mark -- public methods
-- (UIView *)setSearchBarWith:(CGFloat)height {
-    return [UIView new]; //禁止设置搜索栏
-    CGFloat height_Large = 0.00f;
-    if (self.sn_navigationItem.prefersLargeTitles) {
-        height_Large = ksLargeHeight;
-    }
-    self.sn_navigationItem.barHeight = ksNavigationBarHeight + height_Large + height;
-    self.sn_navigationItem.showSearchBar = YES;
-    self.sn_navigationController.sn_navigationBar.viewSearch.frame = CGRectMake(0, ksNavigationBarHeight+height_Large, ks_SCREEN_WIDTH, height);
-    [self.sn_navigationController.sn_navigationBar.viewSearch layoutIfNeeded];
-
-    self.sn_navigationController.sn_navigationBar.viewSearch.backgroundColor = [UIColor redColor];
-    return self.sn_navigationController.sn_navigationBar.viewSearch;
+- (void)SystemNavigationBar_viewDidAppear {
+    
 }
 
 #pragma mark -- getter / setter
@@ -329,12 +402,16 @@
 - (UINavigationController *)sn_navigationController {
     if (self.navigationController) {
         return self.navigationController;
-    } else if (self.tabBarController) {
+    } else if (self.tabBarController.navigationController) {
         return self.tabBarController.navigationController;
     } else if ([self isKindOfClass:[UINavigationController class]]) {
         return (UINavigationController *)self;
     } else if ([self isKindOfClass:[UITabBarController class]]) {
-        return ((UITabBarController *)self).navigationController;
+        if (((UITabBarController *)self).navigationController) {
+            return ((UITabBarController *)self).navigationController;
+        } else {
+            return objc_getAssociatedObject(self, _cmd);
+        }
     } else {
         return objc_getAssociatedObject(self, _cmd);
     }
@@ -383,6 +460,45 @@
         gesture.enabled = NO;
         objc_setAssociatedObject(self, @selector(sn_pullScreenBackPanGesture), gesture, OBJC_ASSOCIATION_RETAIN);
     } return gesture;
+}
+#pragma mark -- BOOL
+- (void)setIsShowCustomNavigationBar:(BOOL)isShowCustomNavigationBar {
+    if (isShowCustomNavigationBar) {
+        self.isShowSNNavigationBar = NO;
+        self.isShowSystemNavigationBar = NO;
+    }
+    NSNumber * number = [NSNumber numberWithBool:isShowCustomNavigationBar];
+    objc_setAssociatedObject(self, @selector(isShowCustomNavigationBar), number, OBJC_ASSOCIATION_ASSIGN);
+}
+- (BOOL)isShowCustomNavigationBar {
+    NSNumber * number = objc_getAssociatedObject(self, _cmd);
+    return [number boolValue];
+}
+
+- (void)setIsShowSNNavigationBar:(BOOL)isShowSNNavigationBar {
+    if (isShowSNNavigationBar) {
+        self.isShowCustomNavigationBar = NO;
+        self.isShowSystemNavigationBar = NO;
+    }
+    NSNumber * number = [NSNumber numberWithBool:isShowSNNavigationBar];
+    objc_setAssociatedObject(self, @selector(isShowSNNavigationBar), number, OBJC_ASSOCIATION_ASSIGN);
+}
+- (BOOL)isShowSNNavigationBar {
+    NSNumber * number = objc_getAssociatedObject(self, _cmd);
+    return [number boolValue];
+}
+
+- (void)setIsShowSystemNavigationBar:(BOOL)isShowSystemNavigationBar {
+    if (isShowSystemNavigationBar) {
+        self.isShowCustomNavigationBar = NO;
+        self.isShowSNNavigationBar = NO;
+    }
+    NSNumber * number = [NSNumber numberWithBool:isShowSystemNavigationBar];
+    objc_setAssociatedObject(self, @selector(isShowSystemNavigationBar), number, OBJC_ASSOCIATION_ASSIGN);
+}
+- (BOOL)isShowSystemNavigationBar {
+    NSNumber * number = objc_getAssociatedObject(self, _cmd);
+    return [number boolValue];
 }
 
 #pragma mark -- SNNavigationItem

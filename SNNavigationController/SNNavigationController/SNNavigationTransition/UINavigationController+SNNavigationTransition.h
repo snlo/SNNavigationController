@@ -23,4 +23,9 @@
  */
 @property (nonatomic, weak) SNNavigationTransitionDelegate * sn_navigationDelegate;
 
+/**
+ 是否为‘SNNavigationBar’默认为‘NO’
+ */
+@property (nonatomic, assign) BOOL isSNNavigationBar;
+
 @end

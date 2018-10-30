@@ -143,6 +143,12 @@
 #pragma mark -- private methods
 - (void)configureUserInterface {
     self.title = @"详情页";
+    
+    
+    self.isShowSystemNavigationBar = YES;
+    self.isShowSNNavigationBar = YES;
+    self.isShowCustomNavigationBar = YES;
+    
     self.sn_navigationItem.barBackgroudColor = [UIColor colorWithRed:((arc4random()%255)/255.00) green:((arc4random()%255)/255.00) blue:((arc4random()%255)/255.00) alpha:1.0];
     self.sn_pullScreenBackPanGesture.enabled = YES;
     
@@ -180,6 +186,7 @@
 //        self.sn_navigationItem.barBackgroudColor = [SNNavigationControllerTool setColor:self.sn_navigationItem.barBackgroudColor alpha:0.00];
         self.sn_navigationController.sn_navigationBar.separatorLine.hidden = YES;
     });
+    
     
 }
 - (void)configureDataSource {

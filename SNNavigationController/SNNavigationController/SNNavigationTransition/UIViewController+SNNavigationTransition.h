@@ -13,6 +13,20 @@
 @interface UIViewController (SNNavigationTransition)
 
 /**
+ 展示自定义导航栏，这类导航栏在外部实现
+ */
+@property (nonatomic, assign) BOOL isShowCustomNavigationBar;
+
+/**
+ 展示‘sn_navigationBar’导航栏
+ */
+@property (nonatomic, assign) BOOL isShowSNNavigationBar;
+/**
+ 展示系统导航栏
+ */
+@property (nonatomic, assign) BOOL isShowSystemNavigationBar;
+
+/**
  包含了tabBarController.navigationController
  */
 @property (nonatomic, strong) UINavigationController * sn_navigationController;
@@ -30,11 +44,11 @@
 @property (nonatomic, readonly, strong) SNNavigationItem * sn_navigationItem;
 
 /**
- 先设置大小标题如果需要 (废除)
+ 先设置大小标题如果需要
 
  @param height 搜索栏高度
  @return 搜索栏视图
  */
-- (UIView *)setSearchBarWith:(CGFloat)height;
+- (UIView *)setSearchBarWith:(CGFloat)height __attribute__((deprecated("waiting for update.")));
 
 @end

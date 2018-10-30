@@ -27,9 +27,12 @@
 }
 
 - (void)snna_viewDidLoad {
-    self.navigationBar.hidden = YES;
-    [self sn_navigationBar];
-    self.delegate = self.sn_navigationDelegate;
+    
+    if (self.isSNNavigationBar) {
+        self.navigationBar.hidden = YES;
+        [self sn_navigationBar];
+        self.delegate = self.sn_navigationDelegate;
+    }
     
     [self snna_viewDidLoad];
 }
@@ -57,5 +60,13 @@
     } return delegate;
 }
 
+- (void)setIsSNNavigationBar:(BOOL)isSNNavigationBar {
+    NSNumber * number = [NSNumber numberWithBool:isSNNavigationBar];
+    objc_setAssociatedObject(self, @selector(isSNNavigationBar), number, OBJC_ASSOCIATION_ASSIGN);
+}
+- (BOOL)isSNNavigationBar {
+    NSNumber * number = objc_getAssociatedObject(self, _cmd);
+    return [number boolValue];
+}
 
 @end
