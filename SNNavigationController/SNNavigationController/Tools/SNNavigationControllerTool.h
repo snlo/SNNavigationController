@@ -12,9 +12,9 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-#import <Masonry.h>
-#import <ReactiveObjC.h>
-#import <Aspects.h>
+#import <Masonry/Masonry.h>
+#import <ReactiveObjC/ReactiveObjC.h>
+#import <Aspects/Aspects.h>
 
 #import "SNNa_Singletion.h"
 
