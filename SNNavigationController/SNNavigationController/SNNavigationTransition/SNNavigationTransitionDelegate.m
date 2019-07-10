@@ -122,7 +122,7 @@ static const NSString * kPopViewController = @"ihgiqwefba234665:<>:>:&&jklsdbjkl
         case UIGestureRecognizerStateBegan: {
             self.percentDrivenTransition = [[SNTransitionInteractionController alloc] init];
             self.percentDrivenTransition.interactionInProgress = YES;
-            [viewController.navigationController popVi.ewControllerAnimated:YES];
+            [viewController.navigationController popViewControllerAnimated:YES];
         } break;
         case UIGestureRecognizerStateChanged: {
             self.percentDrivenTransition.interactionInProgress = YES;
